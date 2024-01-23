@@ -20,11 +20,6 @@ dependencyResolutionManagement {
 rootProject.name = "ANetKit"
 include ':app'
 include ':netk'
-//SwiftKit
-include ':SwiftKit'
-project(':SwiftKit').projectDir = new File("C:\\Users\\${System.getenv().get("USERNAME")}\\Documents\\GitHub\\SwiftKit")
-include ':SwiftKit:basick'
-include ':SwiftKit:uicorek'
 include ':netk_connection'
 include ':netk_connection_test'
 include ':netk_observer'
@@ -33,3 +28,9 @@ include ':netk_retrofit'
 include ':netk_retrofit_test'
 include ':netk_filedownload'
 include ':netk_filedownload_test'
+//SwiftKit
+include ':SwiftKit'
+project(':SwiftKit').projectDir = new File("C:\\Users\\${System.getenv().get("USERNAME")}\\Documents\\GitHub\\SwiftKit")
+include ':SwiftKit:basick'
+include ':SwiftKit:uicorek'
+
