@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    compileSdk rootProject.android.compileSdk
+    compileSdk 33
 
     defaultConfig {
-        applicationId rootProject.android.applicationId
-        minSdk rootProject.android.minSdk
-        targetSdk rootProject.android.targetSdk
-        versionCode rootProject.android.versionCode
-        versionName rootProject.android.versionName
+        applicationId "com.mozhimen.netktest"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,11 +36,11 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation project(path: ':netk')
-    implementation 'com.github.mozhimen.SwiftKit:basick:1.1.3'
-    implementation 'com.github.mozhimen.SwiftKit:componentk:1.1.3'
+    implementation project(':netk')
+    implementation project(':netk_connection')
+    implementation project(':SwiftKit:basick')
+
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

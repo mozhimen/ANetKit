@@ -1,5 +1,7 @@
 package com.mozhimen.netk
 
+import com.mozhimen.basick.manifestk.annors.AManifestKRequire
+import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.netk.commons.INetKFactory
 import com.mozhimen.netk.commons.INetKInterceptor
 import com.mozhimen.netk.helpers.MethodParser
@@ -16,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap
  * @Date 2021/9/26 20:46
  * @Version 1.0
  */
+@AManifestKRequire(CPermission.INTERNET)
 open class NetKAsync constructor(
     private val _baseUrl: String,
     private val _factory: INetKFactory

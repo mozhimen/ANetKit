@@ -1,5 +1,7 @@
 package com.mozhimen.netk
 
+import com.mozhimen.basick.manifestk.annors.AManifestKRequire
+import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.netk.helpers.ClientBuilder
 import okhttp3.Interceptor
 import retrofit2.Retrofit
@@ -14,6 +16,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
  * @Date 2022/5/12 16:01
  * @Version 1.0
  */
+@AManifestKRequire(CPermission.INTERNET)
 class NetKRxJava(
     private val _baseUrl: String
 ) {

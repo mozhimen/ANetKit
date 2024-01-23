@@ -2,24 +2,21 @@ package com.mozhimen.netk
 
 import android.Manifest
 import android.os.Bundle
-import com.mozhimen.basick.basek.BaseKActivity
-import com.mozhimen.componentk.permissionk.PermissionK
-import com.mozhimen.componentk.permissionk.annors.PermissionKAnnor
+import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVBVM
+import com.mozhimen.basick.manifestk.annors.AManifestKRequire
+import com.mozhimen.basick.manifestk.permission.ManifestKPermission
+import com.mozhimen.basick.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.netk.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
 
-@PermissionKAnnor([Manifest.permission.INTERNET])
-class MainActivity : BaseKActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
+@AManifestKRequire(Manifest.permission.INTERNET)
+@APermissionCheck(Manifest.permission.INTERNET)
+class MainActivity : BaseActivityVBVM<ActivityMainBinding, MainViewModel>() {
     override fun initData(savedInstanceState: Bundle?) {
-        PermissionK.initPermissions(this) {
+        ManifestKPermission.requestPermissions(this) {
             if (it) {
-                initView(savedInstanceState)
+                super.initData(savedInstanceState)
             }
         }
-    }
-
-    override fun injectVM() {
-        vb.vm = vm
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -27,9 +24,12 @@ class MainActivity : BaseKActivity<ActivityMainBinding, MainViewModel>(R.layout.
             vm.getRealtimeWeatherAsync()
         }
 
-
         vb.netkBtn2GetWeather.setOnClickListener {
             vm.getRealTimeWeatherRxJava()
         }
+    }
+
+    override fun bindViewVM(vb: ActivityMainBinding) {
+        vb.vm = vm
     }
 }

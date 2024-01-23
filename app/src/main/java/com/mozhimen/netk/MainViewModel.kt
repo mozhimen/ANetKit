@@ -2,7 +2,7 @@ package com.mozhimen.netk
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.mozhimen.basick.basek.BaseKViewModel
+import com.mozhimen.basick.elemk.androidx.lifecycle.bases.BaseViewModel
 import com.mozhimen.netk.commons.INetKListener
 import com.mozhimen.netk.customs.RxJavaResponse
 import com.mozhimen.netk.mos.NetKResponse
@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
  * @Date 2022/10/25 0:29
  * @Version 1.0
  */
-class MainViewModel : BaseKViewModel() {
+class MainViewModel : BaseViewModel() {
     val uiWeather1 = MutableLiveData<String>()
     private var _lastTime1 = System.currentTimeMillis()
     fun getRealtimeWeatherAsync() {
