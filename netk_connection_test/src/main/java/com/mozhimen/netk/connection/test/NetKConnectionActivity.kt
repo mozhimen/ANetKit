@@ -14,7 +14,7 @@ import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.manifestk.permission.ManifestKPermission
 import com.mozhimen.basick.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.basick.elemk.android.net.cons.ENetType
-import com.mozhimen.basick.utilk.android.net.UtilKNetConn
+import com.mozhimen.basick.utilk.android.net.UtilKNet
 import com.mozhimen.netk.connection.NetKConnectionProxy
 import com.mozhimen.netk.connection.test.databinding.ActivityNetkConnectionBinding
 
@@ -60,7 +60,7 @@ class NetKConnectionActivity : BaseActivityVB<ActivityNetkConnectionBinding>() {
                             // for ActivityCompat#requestPermissions for more details.
                             ""
                         } else
-                            "WIFI risi ${UtilKNetConn.getWifiStrength()}"
+                            "WIFI risi ${UtilKNet.getWifiStrength()}"
                     }
 
                     ENetType.MOBILE_4G, ENetType.MOBILE_2G, ENetType.MOBILE_3G -> "移动网"

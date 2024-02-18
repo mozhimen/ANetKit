@@ -14,16 +14,19 @@ import com.mozhimen.basick.elemk.android.net.cons.CConnectivityManager
 import com.mozhimen.basick.elemk.android.net.cons.CNetType
 import com.mozhimen.basick.elemk.android.os.cons.CVersCode
 import com.mozhimen.basick.lintk.annors.ANetType
+import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_WIFI_STATE
+import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
 import com.mozhimen.basick.taskk.handler.TaskKHandler
 import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
-import com.mozhimen.basick.utilk.android.net.UtilKNetConn
+import com.mozhimen.basick.utilk.android.net.UtilKNet
 import com.mozhimen.basick.utilk.android.net.eNetType2strNetType
 import com.mozhimen.basick.utilk.android.net.networkCapabilities2netType
 import com.mozhimen.basick.utilk.android.util.it
 import com.mozhimen.basick.utilk.android.util.wt
 import com.mozhimen.basick.utilk.bases.IUtilK
-import com.mozhimen.netk.observer.annors.ANetKObserver
 import com.mozhimen.netk.observer.commons.INetKObserver
+import com.mozhimen.netk.observer.utils.NetKObserverUtil
 import java.lang.reflect.Method
 import java.util.HashMap
 
@@ -34,12 +37,15 @@ import java.util.HashMap
  * @Date 2023/9/27 10:52
  * @Version 1.0
  */
+@OPermission_INTERNET
+@OPermission_ACCESS_WIFI_STATE
+@OPermission_ACCESS_NETWORK_STATE
 @RequiresApi(CVersCode.V_21_5_L)
-class NetworkCallbackImpl : ConnectivityManager.NetworkCallback(), IUtilK, INetKObserver {
-    companion object {
-        @JvmStatic
-        val instance = INSTANCE.holder
-    }
+class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INetKObserver {
+//    companion object {
+//        @JvmStatic
+//        val instance = INSTANCE.holder
+//    }
 
     //////////////////////////////////////////////////////////////////////////////////
 
@@ -89,9 +95,9 @@ class NetworkCallbackImpl : ConnectivityManager.NetworkCallback(), IUtilK, INetK
     override fun register(obj: Any) {
         val clz = obj.javaClass
         if (!_checkManMap.containsKey(clz)) {
-            val method = findAnnotationMethod(clz) ?: return
+            val method = NetKObserverUtil.findAnnotationMethod(clz) ?: return
             _checkManMap[obj] = method
-            post(obj, method, UtilKNetConn.getNetType().eNetType2strNetType())
+            post(obj, method, UtilKNet.getActiveNetType().eNetType2strNetType())
         }
     }
 
@@ -104,22 +110,6 @@ class NetworkCallbackImpl : ConnectivityManager.NetworkCallback(), IUtilK, INetK
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-
-    // 查找监听的方法
-    private fun findAnnotationMethod(clazz: Class<*>): Method? {
-        val methods = clazz.methods
-        for (method in methods) {
-            method.getAnnotation(ANetKObserver::class.java) ?: continue// 看是否有注解
-            val genericReturnType = method.genericReturnType.toString()// 判断返回类型
-            if ("void" != genericReturnType)
-                throw RuntimeException("The return type of the method【${method.name}】 must be void!")// 方法的返回类型必须为void
-            val parameterTypes = method.genericParameterTypes// 检查参数，必须有一个String型的参数
-            if (parameterTypes.size != 1 || parameterTypes[0].toString() != "class ${String::class.java.name}")
-                throw RuntimeException("The parameter types size of the method【${method.name}】must be one (type name must be java.lang.String)!")
-            return method
-        }
-        return null
-    }
 
     // 执行
     private fun post(str: @ANetType String) {
@@ -140,16 +130,21 @@ class NetworkCallbackImpl : ConnectivityManager.NetworkCallback(), IUtilK, INetK
         }
     }
 
+    //////////////////////////////////////////////////////////////////////////////////
+
+    @OPermission_ACCESS_NETWORK_STATE
+    @OPermission_ACCESS_WIFI_STATE
+    @OPermission_INTERNET
     inner class NetStatusReceiver : BaseConnectivityBroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             context ?: return
-            val type = UtilKNetConn.getNetType().eNetType2strNetType()
+            val type = UtilKNet.getActiveNetType().eNetType2strNetType()
             if (type == _liveNetType.value) return
             post(type)
         }
     }
 
-    private object INSTANCE {
-        val holder = NetworkCallbackImpl()
-    }
+//    private object INSTANCE {
+//        val holder = NetworkCallbackProxy()
+//    }
 }

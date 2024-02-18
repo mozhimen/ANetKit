@@ -5,13 +5,14 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.mozhimen.basick.elemk.android.os.cons.CVersCode
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.basick.manifestk.annors.AManifestKRequire
-import com.mozhimen.basick.manifestk.cons.CPermission
+import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_WIFI_STATE
+import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
 import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
 import com.mozhimen.basick.utilk.android.net.UtilKConnectivityManager
+import com.mozhimen.basick.utilk.android.os.UtilKBuildVersion
 import com.mozhimen.basick.utilk.bases.BaseUtilK
 import com.mozhimen.netk.observer.commons.INetKObserver
-import com.mozhimen.netk.observer.helpers.NetworkCallbackImpl
+import com.mozhimen.netk.observer.helpers.NetworkCallbackProxy
 
 /**
  * @ClassName NetKObserver
@@ -20,13 +21,7 @@ import com.mozhimen.netk.observer.helpers.NetworkCallbackImpl
  * @Date 2023/9/27 14:08
  * @Version 1.0
  */
-@OptIn(OPermission_ACCESS_NETWORK_STATE::class)
-@AManifestKRequire(
-    CPermission.ACCESS_NETWORK_STATE,
-    CPermission.ACCESS_WIFI_STATE,
-    CPermission.ACCESS_FINE_LOCATION,
-    CPermission.INTERNET
-)
+@OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class, OPermission_ACCESS_WIFI_STATE::class)
 @RequiresApi(CVersCode.V_21_5_L)
 class NetKObserver : BaseUtilK(), INetKObserver {
     companion object {
@@ -36,12 +31,15 @@ class NetKObserver : BaseUtilK(), INetKObserver {
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    private val _networkCallbackImpl = NetworkCallbackImpl()
+    private val _networkCallbackProxy = NetworkCallbackProxy()
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     init {
-        UtilKConnectivityManager.registerNetworkCallback(_context, NetworkRequest.Builder().build(), _networkCallbackImpl)
+        if (UtilKBuildVersion.isAfterV_24_7_N())
+            UtilKConnectivityManager.registerDefaultNetworkCallback(_context, _networkCallbackProxy)
+        else
+            UtilKConnectivityManager.registerNetworkCallback(_context, NetworkRequest.Builder().build(), _networkCallbackProxy)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,22 +49,22 @@ class NetKObserver : BaseUtilK(), INetKObserver {
     }
 
     override fun getNetType(): String =
-        _networkCallbackImpl.getNetType()
+        _networkCallbackProxy.getNetType()
 
     override fun getLiveNetType(): LiveData<String> =
-        _networkCallbackImpl.getLiveNetType()
+        _networkCallbackProxy.getLiveNetType()
 
     override fun register(obj: Any) {
-        _networkCallbackImpl.register(obj)
+        _networkCallbackProxy.register(obj)
     }
 
     override fun unRegister(obj: Any) {
-        _networkCallbackImpl.unRegister(obj)
+        _networkCallbackProxy.unRegister(obj)
     }
 
     override fun unRegisterAll() {
-        _networkCallbackImpl.unRegisterAll()
-        UtilKConnectivityManager.unregisterNetworkCallback(UtilKApplicationReflect.instance.applicationContext, _networkCallbackImpl)
+        _networkCallbackProxy.unRegisterAll()
+        UtilKConnectivityManager.unregisterNetworkCallback(UtilKApplicationReflect.instance.applicationContext, _networkCallbackProxy)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
