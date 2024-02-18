@@ -4,6 +4,7 @@ import android.net.NetworkRequest
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.mozhimen.basick.elemk.android.os.cons.CVersCode
+import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.basick.manifestk.annors.AManifestKRequire
 import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
@@ -19,6 +20,7 @@ import com.mozhimen.netk.observer.helpers.NetworkCallbackImpl
  * @Date 2023/9/27 14:08
  * @Version 1.0
  */
+@OptIn(OPermission_ACCESS_NETWORK_STATE::class)
 @AManifestKRequire(
     CPermission.ACCESS_NETWORK_STATE,
     CPermission.ACCESS_WIFI_STATE,

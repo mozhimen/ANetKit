@@ -20,6 +20,7 @@ import com.mozhimen.basick.utilk.android.net.UtilKNetConn
 import com.mozhimen.basick.utilk.android.net.eNetType2strNetType
 import com.mozhimen.basick.utilk.android.net.networkCapabilities2netType
 import com.mozhimen.basick.utilk.android.util.it
+import com.mozhimen.basick.utilk.android.util.wt
 import com.mozhimen.basick.utilk.bases.IUtilK
 import com.mozhimen.netk.observer.annors.ANetKObserver
 import com.mozhimen.netk.observer.commons.INetKObserver
@@ -68,7 +69,7 @@ class NetworkCallbackImpl : ConnectivityManager.NetworkCallback(), IUtilK, INetK
     override fun onCapabilitiesChanged(network: Network, networkCapabilities: NetworkCapabilities) {
         super.onCapabilitiesChanged(network, networkCapabilities)
         val type = networkCapabilities.networkCapabilities2netType().eNetType2strNetType()
-        "onCapabilitiesChanged: net status change (网络连接改变) $type".it(TAG)// 表明此网络连接成功验证
+        "onCapabilitiesChanged: net status change (网络连接改变) $type network $network networkCapabilities $networkCapabilities".wt(TAG)// 表明此网络连接成功验证
         if (type == _liveNetType.value) return
         TaskKHandler.post {
             post(type)
