@@ -24,7 +24,7 @@ import kotlin.coroutines.resume
  * @Date 2022/5/11 23:44
  * @Version 1.0
  */
-@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC_TRUE)
+@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC)
 class NetKRetrofitViewModel : BaseViewModel() {
 
     val uiWeather2 = MutableLiveData("")

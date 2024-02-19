@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC_TRUE)
+@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC)
 @APermissionCheck(CPermission.INTERNET)
 class NetKRetrofitActivity : BaseActivityVBVM<ActivityNetkHttpBinding, NetKRetrofitViewModel>() {
     override fun initData(savedInstanceState: Bundle?) {

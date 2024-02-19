@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
  * @Date 2022/5/12 16:01
  * @Version 1.0
  */
-@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC_TRUE)
+@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC)
 open class NetKRetrofit(
     baseUrl: String,
     connectTimeoutSecond: Long = 15,

@@ -4,6 +4,7 @@ import android.net.NetworkRequest
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.mozhimen.basick.elemk.android.os.cons.CVersCode
+import com.mozhimen.basick.lintk.annors.ANetType
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_WIFI_STATE
 import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
@@ -21,7 +22,7 @@ import com.mozhimen.netk.observer.helpers.NetworkCallbackProxy
  * @Date 2023/9/27 14:08
  * @Version 1.0
  */
-@OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class, OPermission_ACCESS_WIFI_STATE::class)
+@OptIn(OPermission_ACCESS_NETWORK_STATE::class)
 @RequiresApi(CVersCode.V_21_5_L)
 class NetKObserver : BaseUtilK(), INetKObserver {
     companion object {
@@ -31,7 +32,7 @@ class NetKObserver : BaseUtilK(), INetKObserver {
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    private val _networkCallbackProxy = NetworkCallbackProxy()
+    private val _networkCallbackProxy by lazy { NetworkCallbackProxy() }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,11 +49,11 @@ class NetKObserver : BaseUtilK(), INetKObserver {
         //无操作, 初始化
     }
 
-    override fun getNetType(): String =
-        _networkCallbackProxy.getNetType()
+    override fun getNetTypes(): Set<String> =
+        _networkCallbackProxy.getNetTypes()
 
-    override fun getLiveNetType(): LiveData<String> =
-        _networkCallbackProxy.getLiveNetType()
+    override fun getLiveNetTypes(): LiveData<Set<@ANetType String>> =
+        _networkCallbackProxy.getLiveNetTypes()
 
     override fun register(obj: Any) {
         _networkCallbackProxy.register(obj)

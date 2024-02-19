@@ -12,7 +12,7 @@ import com.mozhimen.netk.retrofit.NetKRetrofit
  * @Date 2021/12/13 22:16
  * @Version 1.0
  */
-@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC_TRUE)
+@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC)
 object ApiFactory {
     private val _baseUrl = "https://api.caiyunapp.com/v2.5/cIecnVlovchAFYIk/"
 
