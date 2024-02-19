@@ -64,18 +64,18 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
 
     override fun onAvailable(network: Network) {
         super.onAvailable(network)
-        "onAvailable: net connect success (网络已连接)".it(TAG)
+        "onAvailable: 网络已连接".it(TAG)
     }
 
     override fun onLost(network: Network) {
         super.onLost(network)
-        "onLost: net disconnect (网络已断开连接)".it(TAG)
+        "onLost: 网络已断开连接".it(TAG)
     }
 
     override fun onCapabilitiesChanged(network: Network, networkCapabilities: NetworkCapabilities) {
         super.onCapabilitiesChanged(network, networkCapabilities)
         val type = networkCapabilities.networkCapabilities2netType().eNetType2strNetType()
-        "onCapabilitiesChanged: net status change (网络连接改变) $type network $network networkCapabilities $networkCapabilities".wt(TAG)// 表明此网络连接成功验证
+        "onCapabilitiesChanged: 网络连接改变 $type network $network networkCapabilities $networkCapabilities".wt(TAG)// 表明此网络连接成功验证
         if (type == _liveNetType.value) return
         TaskKHandler.post {
             post(type)
