@@ -1,9 +1,7 @@
 package com.mozhimen.netk.retrofit
 
 import com.mozhimen.basick.elemk.android.util.cons.CLogPriority
-import com.mozhimen.basick.manifestk.annors.AManifestKRequire
-import com.mozhimen.basick.manifestk.cons.CApplication
-import com.mozhimen.basick.manifestk.cons.CPermission
+import com.mozhimen.basick.lintk.optins.application.OApplication_USES_CLEAR_TEXT_TRAFFIC
 import com.mozhimen.basick.utilk.android.util.UtilKLog
 import com.mozhimen.basick.utilk.bases.BaseUtilK
 import com.mozhimen.basick.utilk.squareup.moshi.UtilKMoshi
@@ -21,7 +19,7 @@ import java.util.concurrent.TimeUnit
  * @Date 2022/5/12 16:01
  * @Version 1.0
  */
-@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC)
+@OApplication_USES_CLEAR_TEXT_TRAFFIC
 open class NetKRetrofit(
     baseUrl: String,
     connectTimeoutSecond: Long = 15,

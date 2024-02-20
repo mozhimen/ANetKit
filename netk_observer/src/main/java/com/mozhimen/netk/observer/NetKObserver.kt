@@ -22,7 +22,7 @@ import com.mozhimen.netk.observer.helpers.NetworkCallbackProxy
  * @Date 2023/9/27 14:08
  * @Version 1.0
  */
-@OptIn(OPermission_ACCESS_NETWORK_STATE::class)
+@OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class)
 @RequiresApi(CVersCode.V_21_5_L)
 class NetKObserver : BaseUtilK(), INetKObserver {
     companion object {

@@ -17,6 +17,7 @@ import com.mozhimen.basick.elemk.android.net.cons.CConnectivityManager
 import com.mozhimen.basick.elemk.android.os.cons.CVersCode
 import com.mozhimen.basick.lintk.annors.ANetType
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
 import com.mozhimen.basick.taskk.handler.TaskKHandler
 import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
 import com.mozhimen.basick.utilk.android.net.UtilKNet
@@ -35,9 +36,10 @@ import java.lang.reflect.Method
  * @Date 2023/9/27 10:52
  * @Version 1.0
  */
-@SuppressLint("UnspecifiedRegisterReceiverFlag")
+@OPermission_INTERNET
 @OPermission_ACCESS_NETWORK_STATE
 @RequiresApi(CVersCode.V_21_5_L)
+@SuppressLint("UnspecifiedRegisterReceiverFlag")
 class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INetKObserver {
 
     private val _liveNetTypes: MutableLiveData<Set<@ANetType String>> = MutableLiveData()// 网络状态
@@ -159,6 +161,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
 
     //////////////////////////////////////////////////////////////////////////////////
 
+    @OPermission_INTERNET
     inner class NetworkStatusReceiver : BaseConnectivityBroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             context ?: return
