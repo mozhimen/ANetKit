@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit
  * @Date 2022/5/12 16:01
  * @Version 1.0
  */
-@OApplication_USES_CLEAR_TEXT_TRAFFIC
 open class NetKRetrofit(
     baseUrl: String,
     connectTimeoutSecond: Long = 15,
