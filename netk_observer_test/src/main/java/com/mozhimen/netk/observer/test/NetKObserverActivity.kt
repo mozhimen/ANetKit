@@ -3,7 +3,7 @@ package com.mozhimen.netk.observer.test
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVB
+import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
 import com.mozhimen.basick.lintk.optins.application.OApplication_USES_CLEAR_TEXT_TRAFFIC
 import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.manifestk.permission.ManifestKPermission
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
  * @Date 2024/1/15 20:47
  * @Version 1.0
  */
-class NetKObserverActivity : BaseActivityVB<ActivityNetkObserverBinding>()/*, INetKObserverOwner*/ {
+class NetKObserverActivity : BaseActivityVDB<ActivityNetkObserverBinding>()/*, INetKObserverOwner*/ {
     override fun initData(savedInstanceState: Bundle?) {
         ManifestKPermission.requestPermissions(this, arrayOf(CPermission.ACCESS_FINE_LOCATION)) {
             if (it) {
@@ -35,7 +35,7 @@ class NetKObserverActivity : BaseActivityVB<ActivityNetkObserverBinding>()/*, IN
     @SuppressLint("MissingPermission")
     override fun initView(savedInstanceState: Bundle?) {
         NetKObserver.instance.register(this)
-        vb.netkObserverTxt.setOnClickListener {
+        vdb.netkObserverTxt.setOnClickListener {
             UtilKNetworkInterface.printStrIp()
             lifecycleScope.launch {
                 UtilKHttpURLConnection.getStrIpOnBack().dt(TAG)
@@ -45,7 +45,7 @@ class NetKObserverActivity : BaseActivityVB<ActivityNetkObserverBinding>()/*, IN
 
     @ANetKObserver
     fun onNetChange(types: Set<String>) {
-        vb.netkObserverTxt.text = types.joinToString { it }
+        vdb.netkObserverTxt.text = types.joinToString { it }
     }
 
     override fun onDestroy() {

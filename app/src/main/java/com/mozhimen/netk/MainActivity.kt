@@ -20,16 +20,16 @@ class MainActivity : BaseActivityVBVM<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        vb.netkBtnGetWeather.setOnClickListener {
+        vdb.netkBtnGetWeather.setOnClickListener {
             vm.getRealtimeWeatherAsync()
         }
 
-        vb.netkBtn2GetWeather.setOnClickListener {
+        vdb.netkBtn2GetWeather.setOnClickListener {
             vm.getRealTimeWeatherRxJava()
         }
     }
 
     override fun bindViewVM(vb: ActivityMainBinding) {
-        vb.vm = vm
+        vdb.vm = vm
     }
 }

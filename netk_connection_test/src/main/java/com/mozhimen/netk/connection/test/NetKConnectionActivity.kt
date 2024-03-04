@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.mozhimen.basick.elemk.android.content.cons.CPackageManager
 import com.mozhimen.basick.elemk.android.net.cons.ENetType
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVB
+import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
 import com.mozhimen.basick.elemk.commons.IConnectionListener
 import com.mozhimen.basick.lintk.optins.OApiCall_BindLifecycle
 import com.mozhimen.basick.lintk.optins.OApiInit_ByLazy
@@ -28,14 +28,14 @@ import com.mozhimen.netk.connection.test.databinding.ActivityNetkConnectionBindi
  * @Date 2023/2/13 15:36
  * @Version 1.0
  */
-class NetKConnectionActivity : BaseActivityVB<ActivityNetkConnectionBinding>() {
+class NetKConnectionActivity : BaseActivityVDB<ActivityNetkConnectionBinding>() {
     @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OPermission_ACCESS_NETWORK_STATE::class)
     private val _netKConnectionProxy: NetKConnectionProxy<NetKConnectionActivity> by lazy { NetKConnectionProxy(this, _netKConnListener).apply { bindLifecycle(this@NetKConnectionActivity) } }
 
     @OptIn(OPermission_ACCESS_WIFI_STATE::class, OPermission_ACCESS_FINE_LOCATION::class)
     private val _netKConnListener = object : IConnectionListener {
         override fun onDisconnect() {
-            vb.netkConnTxt.text = "断网了"
+            vdb.netkConnTxt.text = "断网了"
         }
 
         @SuppressLint("SetTextI18n")
@@ -62,7 +62,7 @@ class NetKConnectionActivity : BaseActivityVB<ActivityNetkConnectionBinding>() {
                 }
             }
 
-            vb.netkConnTxt.text = "有连接 ${stringBuilder.substring(0, stringBuilder.length - 1)}"
+            vdb.netkConnTxt.text = "有连接 ${stringBuilder.substring(0, stringBuilder.length - 1)}"
         }
     }
 

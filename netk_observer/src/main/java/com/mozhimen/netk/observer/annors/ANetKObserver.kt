@@ -10,7 +10,7 @@ package com.mozhimen.netk.observer.annors
 /**
  *     @ANetKObserver
  *     fun onNetChange(net: String) {
- *         vb.netkObserverTxt.text = net
+ *         vdb.netkObserverTxt.text = net
  *     }
  */
 @Target(AnnotationTarget.FUNCTION)

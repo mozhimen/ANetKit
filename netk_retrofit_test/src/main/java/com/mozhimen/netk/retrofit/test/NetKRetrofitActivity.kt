@@ -28,22 +28,22 @@ class NetKRetrofitActivity : BaseActivityVBVM<ActivityNetkHttpBinding, NetKRetro
 
     override fun bindViewVM(vb: ActivityNetkHttpBinding) {
         Log.d(TAG, "bindViewVM: ")
-        vb.vm = vm
+        vdb.vm = vm
     }
 
     @SuppressLint("SetTextI18n")
     override fun initView(savedInstanceState: Bundle?) {
 
-        vb.netkBtn1GetWeather.setOnClickListener {
+        vdb.netkBtn1GetWeather.setOnClickListener {
             vm.getRealtimeWeatherCoroutine()
         }
 
-        vb.netkBtn2GetWeather.setOnClickListener {
+        vdb.netkBtn2GetWeather.setOnClickListener {
             val time = System.currentTimeMillis()
             lifecycleScope.launch(Dispatchers.IO) {
                 vm.getRealtimeWeatherCoroutineSync().bean?.let { bean ->
                     withContext(Dispatchers.Main) {
-                        vb.netkTxt2.text = bean.result.realtime.temperature.toString() + " ${System.currentTimeMillis() - time}"
+                        vdb.netkTxt2.text = bean.result.realtime.temperature.toString() + " ${System.currentTimeMillis() - time}"
                     }
                 }
             }
