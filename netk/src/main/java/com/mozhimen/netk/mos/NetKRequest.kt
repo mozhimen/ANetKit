@@ -35,8 +35,8 @@ open class NetKRequest {
      * scheme-host-port:443
      * https:www.mozhimen.top/basicsk/ ---relativeUrl: user/login==>https:www.mozhimen.top/basicsk/user/login
      * 另外一个场景
-     * https:www.mozhimen.top/uicorek/
-     * https:www.mozhimen.top/uicorek/ ---relativeUrl: /v2/user/login==>https:www.mozhimen.top/uicorek/user/login
+     * https:www.mozhimen.top/xmlk/
+     * https:www.mozhimen.top/xmlk/ ---relativeUrl: /v2/user/login==>https:www.mozhimen.top/xmlk/user/login
      */
     fun endPointUrl(): String {
         require(relativeUrl != null) {
