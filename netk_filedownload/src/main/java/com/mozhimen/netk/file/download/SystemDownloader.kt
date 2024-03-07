@@ -7,7 +7,7 @@ import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
 import com.mozhimen.basick.utilk.android.app.UtilKLaunchActivity
 import com.mozhimen.basick.utilk.android.content.UtilKPackageManager
 import com.mozhimen.basick.utilk.android.util.UtilKLog
-import com.mozhimen.basick.utilk.bases.IUtilK
+import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.basick.utilk.android.net.uri2strFilePathName
 import com.mozhimen.netk.file.download.bases.BaseDownloader
 import java.io.File

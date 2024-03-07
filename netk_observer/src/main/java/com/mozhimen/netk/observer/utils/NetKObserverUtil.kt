@@ -1,7 +1,7 @@
 package com.mozhimen.netk.observer.utils
 
 import android.util.Log
-import com.mozhimen.basick.utilk.bases.IUtilK
+import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.observer.annors.ANetKObserver
 import java.lang.reflect.Method
 

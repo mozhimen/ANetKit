@@ -7,7 +7,7 @@ import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
 import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
-import com.mozhimen.basick.utilk.bases.IUtilK
+import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.basick.utilk.java.io.file2fileOutputStream
 import com.mozhimen.basick.utilk.kotlin.UtilKStrMd5
 import com.mozhimen.netk.file.download.DownloadUtils.getPercent

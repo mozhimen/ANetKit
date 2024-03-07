@@ -23,7 +23,7 @@ import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
 import com.mozhimen.basick.utilk.android.net.UtilKNet
 import com.mozhimen.basick.utilk.android.net.eNetType2strNetType
 import com.mozhimen.basick.utilk.android.net.networkCapabilities2netTypes
-import com.mozhimen.basick.utilk.bases.IUtilK
+import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.observer.commons.INetKObserver
 import com.mozhimen.netk.observer.commons.INetKObserverOwner
 import com.mozhimen.netk.observer.utils.NetKObserverUtil
