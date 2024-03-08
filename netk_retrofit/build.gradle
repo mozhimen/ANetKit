@@ -33,7 +33,7 @@ android {
 dependencies {
 
     implementation project(':SwiftKit:basick')
-    implementation project(':netk_okhttp')
+    implementation project(project.path.replace(project.name, '') +':netk_okhttp')
 
     //////////////////////////////////////////////////////////////////
     api 'com.squareup.retrofit2:retrofit:2.9.0'//retrofit
