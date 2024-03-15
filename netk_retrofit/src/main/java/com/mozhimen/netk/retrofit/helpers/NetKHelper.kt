@@ -7,7 +7,7 @@ import com.mozhimen.basick.elemk.mos.MResultIST
 import com.mozhimen.basick.utilk.android.util.et
 import com.mozhimen.basick.utilk.android.util.vt
 import com.mozhimen.basick.utilk.bases.BaseUtilK
-import com.mozhimen.netk.retrofit.commons.NetKRep
+import com.mozhimen.netk.retrofit.cons.SNetKRep
 import com.mozhimen.netk.retrofit.cons.CResCode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -19,39 +19,39 @@ import kotlinx.coroutines.flow.*
  * @Date 2022/10/26 11:01
  * @Version 1.0
  */
-suspend fun <T> Flow<NetKRep<T>>.asNetKRes(
+suspend fun <T> Flow<SNetKRep<T>>.asNetKRes(
     onSuccess: ISuspendA_Listener<T>,
     onFail: ISuspendAB_Listener<Int, String>/*onSuccess: suspend (data: R) -> Unit, onFail: suspend (code: Int, msg: String) -> Unit*/
 ) {
     NetKHelper.asNetRes(this, onSuccess, onFail)
 }
 
-suspend fun <T> Flow<NetKRep<T>>.asNetKResSync(): MResultIST<T?> =
+suspend fun <T> Flow<SNetKRep<T>>.asNetKResSync(): MResultIST<T?> =
     NetKHelper.asNetKResSync(this)
 
 object NetKHelper : BaseUtilK() {
     @JvmStatic
-    fun <R> createFlow(invoke: ISuspend_AListener<R?>): Flow<NetKRep<R>> = flow {
-        emit(NetKRep.Uninitialized)
+    fun <R> createFlow(invoke: ISuspend_AListener<R?>): Flow<SNetKRep<R>> = flow {
+        emit(SNetKRep.Uninitialized)
         val result: R? = invoke()
         result?.let {
-            emit(NetKRep.MSuccess(result))
-        } ?: emit(NetKRep.Empty)
+            emit(SNetKRep.MSuccess(result))
+        } ?: emit(SNetKRep.Empty)
     }.onStart {
-        emit(NetKRep.Loading)
+        emit(SNetKRep.Loading)
     }.catch { e ->
-        emit(NetKRep.MError(e))
+        emit(SNetKRep.MError(e))
     }.flowOn(Dispatchers.IO)
 
     @JvmStatic
-    suspend fun <T> asNetRes(flow: Flow<NetKRep<T>>, onSuccess: ISuspendA_Listener<T>, onFail: ISuspendAB_Listener<Int, String>) {
+    suspend fun <T> asNetRes(flow: Flow<SNetKRep<T>>, onSuccess: ISuspendA_Listener<T>, onFail: ISuspendAB_Listener<Int, String>) {
         flow.onEach {
             "asNetRes: ${it::class.simpleName}".vt(TAG)
         }.collectLatest {
             when (it) {
-                NetKRep.Empty -> onFail(CResCode.Empty, "result is null")
-                is NetKRep.MSuccess -> onSuccess(it.data)
-                is NetKRep.MError -> {
+                SNetKRep.Empty -> onFail(CResCode.Empty, "result is null")
+                is SNetKRep.MSuccess -> onSuccess(it.data)
+                is SNetKRep.MError -> {
                     val netKThrowable = NetKRepErrorParser.getThrowable(it.exception)
                     "asNetKRes: Error code ${netKThrowable.code} message ${netKThrowable.message}".et(TAG)
                     onFail(netKThrowable.code, netKThrowable.message)
@@ -63,15 +63,15 @@ object NetKHelper : BaseUtilK() {
     }
 
     @JvmStatic
-    suspend fun <T> asNetKResSync(flow: Flow<NetKRep<T>>): MResultIST<T?> {
+    suspend fun <T> asNetKResSync(flow: Flow<SNetKRep<T>>): MResultIST<T?> {
         var res: MResultIST<T?> = MResultIST(CResCode.Empty, null, null)
         flow.onEach {
             "asNetKResSync: ${it::class.simpleName}".vt(TAG)
         }.collectLatest {
             res = when (it) {
-                NetKRep.Empty -> MResultIST(CResCode.Empty, "result is null", null)
-                is NetKRep.MSuccess -> MResultIST(CResCode.SUCCESS, null, it.data)
-                is NetKRep.MError -> {
+                SNetKRep.Empty -> MResultIST(CResCode.Empty, "result is null", null)
+                is SNetKRep.MSuccess -> MResultIST(CResCode.SUCCESS, null, it.data)
+                is SNetKRep.MError -> {
                     val netKThrowable = NetKRepErrorParser.getThrowable(it.exception)
                     "asNetKResSync: Error code ${netKThrowable.code} message ${netKThrowable.message}".et(TAG)
                     MResultIST(netKThrowable.code, netKThrowable.message, null)
