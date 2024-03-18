@@ -2,7 +2,7 @@ package com.mozhimen.netk.retrofit.helpers
 
 import com.google.gson.JsonParseException
 import com.mozhimen.basick.utilk.bases.BaseUtilK
-import com.mozhimen.basick.utilk.android.util.et
+import com.mozhimen.basick.utilk.android.util.e
 import com.mozhimen.netk.retrofit.mos.MNetKThrowable
 import org.json.JSONException
 import retrofit2.HttpException
@@ -22,7 +22,7 @@ object NetKRepErrorParser : BaseUtilK() {
     @JvmStatic
     fun getThrowable(e: Throwable): MNetKThrowable {
         e.printStackTrace()
-        e.message?.et(TAG)
+        e.message?.e(TAG)
         return when (e) {
             is HttpException -> {
                 val message = when (e.code()) {

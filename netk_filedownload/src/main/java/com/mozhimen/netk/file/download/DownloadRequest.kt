@@ -3,7 +3,7 @@ package com.mozhimen.netk.file.download
 import android.content.Context
 import android.net.Uri
 import androidx.annotation.DrawableRes
-import com.mozhimen.basick.utilk.android.util.UtilKLog.et
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper.e
 import com.mozhimen.basick.utilk.android.widget.showToast
 import com.mozhimen.basick.utilk.androidx.core.UtilKNotificationManagerCompat
 import com.mozhimen.basick.utilk.bases.BaseUtilK

@@ -7,7 +7,7 @@ import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivi
 import com.mozhimen.basick.lintk.optins.application.OApplication_USES_CLEAR_TEXT_TRAFFIC
 import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.manifestk.permission.ManifestKPermission
-import com.mozhimen.basick.utilk.android.util.dt
+import com.mozhimen.basick.utilk.android.util.d
 import com.mozhimen.basick.utilk.java.net.UtilKHttpURLConnection
 import com.mozhimen.basick.utilk.java.net.UtilKNetworkInterface
 import com.mozhimen.netk.observer.NetKObserver
@@ -38,7 +38,7 @@ class NetKObserverActivity : BaseActivityVDB<ActivityNetkObserverBinding>()/*, I
         vdb.netkObserverTxt.setOnClickListener {
             UtilKNetworkInterface.printStrIp()
             lifecycleScope.launch {
-                UtilKHttpURLConnection.getStrIpOnBack().dt(TAG)
+                UtilKHttpURLConnection.getStrIpOnBack().d(TAG)
             }
         }
     }

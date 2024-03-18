@@ -1,8 +1,7 @@
 package com.mozhimen.netk.retrofit
 
-import com.mozhimen.basick.elemk.android.util.cons.CLogPriority
-import com.mozhimen.basick.lintk.optins.application.OApplication_USES_CLEAR_TEXT_TRAFFIC
-import com.mozhimen.basick.utilk.android.util.UtilKLog
+import com.mozhimen.basick.elemk.android.util.cons.CLog
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.bases.BaseUtilK
 import com.mozhimen.basick.utilk.squareup.moshi.UtilKMoshi
 import okhttp3.Interceptor
@@ -31,7 +30,7 @@ open class NetKRetrofit(
             if (BuildConfig.DEBUG) {
                 connectTimeout(connectTimeoutSecond, TimeUnit.SECONDS)
                 readTimeout(readTimeoutSecond, TimeUnit.SECONDS)
-                addInterceptor(HttpLoggingInterceptor { msg -> UtilKLog.longLog(CLogPriority.V, TAG, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY })
+                addInterceptor(HttpLoggingInterceptor { msg -> UtilKLogWrapper.longLog(CLog.VERBOSE, TAG, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY })
                 if (_interceptors.isNotEmpty())
                     for (interceptor in _interceptors) addInterceptor(interceptor)
             }

@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
 import com.mozhimen.basick.utilk.android.app.UtilKLaunchActivity
 import com.mozhimen.basick.utilk.android.content.UtilKPackageManager
-import com.mozhimen.basick.utilk.android.util.UtilKLog
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.basick.utilk.android.net.uri2strFilePathName
 import com.mozhimen.netk.file.download.bases.BaseDownloader
@@ -93,12 +93,12 @@ internal class SystemDownloader(request: DownloadRequest) : BaseDownloader(reque
 
     private fun printDownloadStatus(downloadId: Long, status: Int) {
         when (status) {
-            CDownloadManager.STATUS_PENDING -> UtilKLog.dt(TAG, "downloadId=$downloadId, status=STATUS_PENDING")
-            CDownloadManager.STATUS_PAUSED -> UtilKLog.dt(TAG, "downloadId=$downloadId, status=STATUS_PAUSED")
-            CDownloadManager.STATUS_RUNNING -> UtilKLog.dt(TAG, "downloadId=$downloadId, status=STATUS_RUNNING")
-            CDownloadManager.STATUS_SUCCESSFUL -> UtilKLog.dt(TAG, "downloadId=$downloadId, status=STATUS_SUCCESSFUL")
-            CDownloadManager.STATUS_FAILED -> UtilKLog.dt(TAG, "downloadId=$downloadId, status=STATUS_FAILED")
-            CDownloadManager.STATUS_UNKNOWN -> UtilKLog.dt(TAG, "downloadId=$downloadId, status=STATUS_UNKNOWN")
+            CDownloadManager.STATUS_PENDING -> UtilKLogWrapper.d(TAG, "downloadId=$downloadId, status=STATUS_PENDING")
+            CDownloadManager.STATUS_PAUSED -> UtilKLogWrapper.d(TAG, "downloadId=$downloadId, status=STATUS_PAUSED")
+            CDownloadManager.STATUS_RUNNING -> UtilKLogWrapper.d(TAG, "downloadId=$downloadId, status=STATUS_RUNNING")
+            CDownloadManager.STATUS_SUCCESSFUL -> UtilKLogWrapper.d(TAG, "downloadId=$downloadId, status=STATUS_SUCCESSFUL")
+            CDownloadManager.STATUS_FAILED -> UtilKLogWrapper.d(TAG, "downloadId=$downloadId, status=STATUS_FAILED")
+            CDownloadManager.STATUS_UNKNOWN -> UtilKLogWrapper.d(TAG, "downloadId=$downloadId, status=STATUS_UNKNOWN")
         }
     }
 

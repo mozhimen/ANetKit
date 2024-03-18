@@ -7,7 +7,7 @@ import android.net.Uri
 import com.mozhimen.basick.utilk.android.content.UtilKPackageInfo
 import com.mozhimen.basick.utilk.android.net.uri2strFilePathName
 import com.mozhimen.basick.utilk.android.os.UtilKBuildVersion
-import com.mozhimen.basick.utilk.android.util.UtilKLog.et
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper.e
 import com.mozhimen.basick.utilk.bases.BaseUtilK
 import com.mozhimen.netk.file.download.BuildConfig
 import java.io.File
