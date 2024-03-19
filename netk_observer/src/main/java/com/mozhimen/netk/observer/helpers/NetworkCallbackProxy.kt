@@ -19,7 +19,7 @@ import com.mozhimen.basick.lintk.annors.ANetType
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
 import com.mozhimen.basick.taskk.handler.TaskKHandler
-import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
+import com.mozhimen.basick.utilk.android.app.UtilKApplicationWrapper
 import com.mozhimen.basick.utilk.android.net.UtilKNet
 import com.mozhimen.basick.utilk.android.net.eNetType2strNetType
 import com.mozhimen.basick.utilk.android.net.networkCapabilities2netTypes
@@ -52,7 +52,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
         val intentFilter = IntentFilter().apply {
             addAction(CConnectivityManager.CONNECTIVITY_ACTION/*"android.net.conn.CONNECTIVITY_CHANGE"*/)
         }
-        UtilKApplicationReflect.instance.applicationContext.registerReceiver(_networkStatusReceiver, intentFilter)
+        UtilKApplicationWrapper.instance.applicationContext.registerReceiver(_networkStatusReceiver, intentFilter)
     }
 
     //////////////////////////////////////////////////////////////////////////////////

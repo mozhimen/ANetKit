@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData
 import com.mozhimen.basick.elemk.android.os.cons.CVersCode
 import com.mozhimen.basick.lintk.annors.ANetType
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_WIFI_STATE
 import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
-import com.mozhimen.basick.utilk.android.app.UtilKApplicationReflect
+import com.mozhimen.basick.utilk.android.app.UtilKApplicationWrapper
 import com.mozhimen.basick.utilk.android.net.UtilKConnectivityManager
 import com.mozhimen.basick.utilk.android.os.UtilKBuildVersion
 import com.mozhimen.basick.utilk.bases.BaseUtilK
@@ -65,7 +64,7 @@ class NetKObserver : BaseUtilK(), INetKObserver {
 
     override fun unRegisterAll() {
         _networkCallbackProxy.unRegisterAll()
-        UtilKConnectivityManager.unregisterNetworkCallback(UtilKApplicationReflect.instance.applicationContext, _networkCallbackProxy)
+        UtilKConnectivityManager.unregisterNetworkCallback(UtilKApplicationWrapper.instance.applicationContext, _networkCallbackProxy)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
