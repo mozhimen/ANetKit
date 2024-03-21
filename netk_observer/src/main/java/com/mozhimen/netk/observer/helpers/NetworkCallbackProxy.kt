@@ -124,7 +124,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
                 return
             }
             _invokeMethods[obj] = method
-            val types = UtilKNet.getActiveNetTypes().map { it.eNetType2strNetType() }.toSet()
+            val types = UtilKNet.getNetTypes_ofActive().map { it.eNetType2strNetType() }.toSet()
             Log.d(TAG, "register: types $types")
             post(obj, method, types)
         }
@@ -165,7 +165,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
     inner class NetworkStatusReceiver : BaseConnectivityBroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             context ?: return
-            val types: Set<String> = UtilKNet.getActiveNetTypes().map { it.eNetType2strNetType() }.toSet()
+            val types: Set<String> = UtilKNet.getNetTypes_ofActive().map { it.eNetType2strNetType() }.toSet()
             if (types == _liveNetTypes.value) return
             Log.d(TAG, "onReceive: types $types")
             post(types)
