@@ -20,8 +20,8 @@ import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_ST
 import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
 import com.mozhimen.basick.taskk.handler.TaskKHandler
 import com.mozhimen.basick.utilk.android.app.UtilKApplicationWrapper
-import com.mozhimen.basick.utilk.android.net.UtilKNet
-import com.mozhimen.basick.utilk.android.net.eNetType2strNetType
+import com.mozhimen.basick.utilk.wrapper.UtilKNet
+import com.mozhimen.basick.utilk.wrapper.eNetType2strNetType
 import com.mozhimen.basick.utilk.android.net.networkCapabilities2netTypes
 import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.observer.commons.INetKObserver

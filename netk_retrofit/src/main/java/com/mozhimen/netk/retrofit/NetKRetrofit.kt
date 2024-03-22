@@ -30,7 +30,7 @@ open class NetKRetrofit(
             if (BuildConfig.DEBUG) {
                 connectTimeout(connectTimeoutSecond, TimeUnit.SECONDS)
                 readTimeout(readTimeoutSecond, TimeUnit.SECONDS)
-                addInterceptor(HttpLoggingInterceptor { msg -> UtilKLogWrapper.longLog(CLog.VERBOSE, TAG, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY })
+                addInterceptor(HttpLoggingInterceptor { msg -> UtilKLogWrapper.pringln_ofLongLog(CLog.VERBOSE, TAG, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY })
                 if (_interceptors.isNotEmpty())
                     for (interceptor in _interceptors) addInterceptor(interceptor)
             }
