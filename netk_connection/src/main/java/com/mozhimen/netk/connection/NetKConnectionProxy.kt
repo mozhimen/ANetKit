@@ -9,6 +9,7 @@ import com.mozhimen.basick.elemk.commons.IConnectionListener
 import com.mozhimen.basick.lintk.optins.OApiCall_BindLifecycle
 import com.mozhimen.basick.lintk.optins.OApiInit_ByLazy
 import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
 
 
 /**
@@ -18,19 +19,23 @@ import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_ST
  * @Date 2023/2/13 15:41
  * @Version 1.0
  */
-@OptIn(OPermission_ACCESS_NETWORK_STATE::class)
 @OApiCall_BindLifecycle
 @OApiInit_ByLazy
-class NetKConnectionProxy<C>(
-    context: C,
-    private val _listener: IConnectionListener,
-    receiver: BaseConnectivityBroadcastReceiver = BaseConnectivityBroadcastReceiver(),
-) : BaseBroadcastReceiverProxy<C>(context, receiver, arrayOf(CConnectivityManager.CONNECTIVITY_ACTION)) where C : Context, C : LifecycleOwner {
+class NetKConnectionProxy<C> : BaseBroadcastReceiverProxy<C> where C : Context, C : LifecycleOwner {
 
-    init {
+    private val _listener: IConnectionListener
+
+    @OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class)
+    constructor(
+        context: C,
+        listener: IConnectionListener,
+        receiver: BaseConnectivityBroadcastReceiver = BaseConnectivityBroadcastReceiver(),
+    ) : super(context, receiver, arrayOf(CConnectivityManager.CONNECTIVITY_ACTION)) {
+        _listener = listener
         (_receiver as BaseConnectivityBroadcastReceiver).registerListener(_listener)
     }
 
+    @OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class)
     override fun onDestroy(owner: LifecycleOwner) {
         (_receiver as BaseConnectivityBroadcastReceiver).unRegisterListener(_listener)
         super.onDestroy(owner)
