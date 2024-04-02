@@ -4,6 +4,7 @@ import com.mozhimen.basick.elemk.android.util.cons.CLog
 import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.bases.BaseUtilK
 import com.mozhimen.basick.utilk.squareup.moshi.UtilKMoshi
+import com.mozhimen.basick.utilk.squareup.moshi.UtilKMoshiWrapper
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -83,6 +84,6 @@ open class NetKRetrofit(
         Retrofit.Builder()
             .baseUrl(url)
             .client(_okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(UtilKMoshi.moshiBuilder))
+            .addConverterFactory(MoshiConverterFactory.create(UtilKMoshiWrapper.moshiBuilder))
             .build()
 }
