@@ -6,7 +6,6 @@ import androidx.annotation.IntDef
  * @ClassName _METHOD
  * @Description TODO
  * @Author Kolin Zhao / Mozhimen
- * @Date 2021/12/20 13:20
  * @Version 1.0
  */
 @IntDef(value = [_METHOD._GET, _METHOD._POST, _METHOD._PUT, _METHOD._DELETE])
