@@ -54,6 +54,6 @@ class NetKObserverActivity : BaseActivityVDB<ActivityNetkObserverBinding>()/*, I
     }
 
 //    override fun onChanged(types: Set<String>) {
-//        Log.d(TAG, "onChanged: $types")
+//        UtilKLogWrapper.d(TAG, "onChanged: $types")
 //    }
 }

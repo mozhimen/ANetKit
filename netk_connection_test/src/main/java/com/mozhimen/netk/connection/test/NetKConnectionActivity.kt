@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import androidx.core.app.ActivityCompat
 import com.mozhimen.basick.elemk.android.content.cons.CPackageManager
 import com.mozhimen.basick.elemk.android.net.cons.ENetType
@@ -42,7 +43,7 @@ class NetKConnectionActivity : BaseActivityVDB<ActivityNetkConnectionBinding>() 
         override fun onConnect(types: Set<ENetType>) {
             val stringBuilder = StringBuilder()
             types.forEach {
-                Log.d(TAG, "onConnect: ${it.eNetType2strNetType()}")
+                UtilKLogWrapper.d(TAG, "onConnect: ${it.eNetType2strNetType()}")
                 when (it) {
                     ENetType.MOBILE_4G -> stringBuilder.append("移动网络4G").append(",")
                     ENetType.MOBILE_3G -> stringBuilder.append("移动网络3G").append(",")

@@ -1,6 +1,7 @@
 package com.mozhimen.netk.helpers
 
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.cachek.CacheK
 import com.mozhimen.basick.eventk.commons.HandlerRef
 import com.mozhimen.netk.annors._CacheStrategy
@@ -55,7 +56,7 @@ class Scheduler(
                                 cacheResponseK
                             )
                         }
-                        Log.d(TAG, "enqueue cacheStrategy key ${_request.getCacheKey()}")
+                        UtilKLogWrapper.d(TAG, "enqueue cacheStrategy key ${_request.getCacheKey()}")
                     }
                 })
             }
@@ -65,7 +66,7 @@ class Scheduler(
                     dispatchInterceptor(_request, response)
                     saveCacheIfNeed(response)
                     callback.onSuccess(response)
-                    Log.d(TAG, "enqueue save cache cacheKey ${_request.getCacheKey()}")
+                    UtilKLogWrapper.d(TAG, "enqueue save cache cacheKey ${_request.getCacheKey()}")
                 }
 
                 override fun onFail(throwable: Throwable) {

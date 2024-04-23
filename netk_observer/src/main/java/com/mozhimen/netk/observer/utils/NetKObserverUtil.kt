@@ -1,6 +1,7 @@
 package com.mozhimen.netk.observer.utils
 
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.observer.annors.ANetKObserver
 import java.lang.reflect.Method
@@ -22,7 +23,7 @@ object NetKObserverUtil : IUtilK {
             if ("void" != genericReturnType)
                 throw RuntimeException("The return type of the method < ${method.name} > must be void!")// 方法的返回类型必须为void
             val parameterTypes = method.genericParameterTypes// 检查参数，必须有一个String型的参数
-            Log.d(TAG, "findAnnotationMethod: ${parameterTypes[0]}?=${Set::class.java.name}<${String::class.java.name}>")
+            UtilKLogWrapper.d(TAG, "findAnnotationMethod: ${parameterTypes[0]}?=${Set::class.java.name}<${String::class.java.name}>")
             if (parameterTypes.size != 1 || parameterTypes[0].toString() != "${Set::class.java.name}<${String::class.java.name}>")
                 throw RuntimeException("The parameter types size of the method < ${method.name} > must be one (type name must be java.util.Set<java.lang.String>)!")
             return method
@@ -40,7 +41,7 @@ object NetKObserverUtil : IUtilK {
             if ("void" != genericReturnType)
                 throw RuntimeException("The return type of the method < ${method.name} > must be void!")// 方法的返回类型必须为void
             val parameterTypes = method.genericParameterTypes// 检查参数，必须有一个String型的参数
-            Log.d(TAG, "findAnnotationMethod: ${parameterTypes[0]}?=${Set::class.java.name}<${String::class.java.name}>")
+            UtilKLogWrapper.d(TAG, "findAnnotationMethod: ${parameterTypes[0]}?=${Set::class.java.name}<${String::class.java.name}>")
             if (parameterTypes.size != 1 || parameterTypes[0].toString() != "${Set::class.java.name}<${String::class.java.name}>")
                 throw RuntimeException("The parameter types size of the method < ${method.name} > must be one (type name must be java.util.Set<java.lang.String>)!")
             return method

@@ -3,6 +3,7 @@ package com.mozhimen.netk.file.download.test
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
 import com.mozhimen.basick.lintk.optin.OptInApiCall_BindLifecycle
 import com.mozhimen.basick.lintk.optin.OptInApiDeprecated_ThirdParty
@@ -38,36 +39,36 @@ class NetKFileActivity : BaseActivityVDB<ActivityNetkFileBinding>() {
 
 //    private val _fileDownloadSingleListener = object : IFileDownloadSingleListener {
 //        override fun onComplete(task: DownloadTask) {
-//            Log.d(TAG, "onComplete: path ${task.uri?.path}")
-//            Log.d(TAG, "onComplete: isFileExists ${task.uri.path?.let { UtilKStrFile.isFileExist(it) } ?: "null"}")
+//            UtilKLogWrapper.d(TAG, "onComplete: path ${task.uri?.path}")
+//            UtilKLogWrapper.d(TAG, "onComplete: isFileExists ${task.uri.path?.let { UtilKStrFile.isFileExist(it) } ?: "null"}")
 //            vdb.netkFileBtn1.isClickable = true
 //        }
 //
 //        override fun onFail(task: DownloadTask, e: Exception?) {
 //            e?.printStackTrace()
-//            Log.e(TAG, "onFail fail msg: ${e?.message}")
+//            UtilKLogWrapper.e(TAG, "onFail fail msg: ${e?.message}")
 //            vdb.netkFileBtn1.isClickable = true
 //        }
 //    }
 
     private val _downloadListener = object : IDownloadListener {
         override fun onDownloadStart() {
-            Log.d(TAG, "onDownloadStart")
+            UtilKLogWrapper.d(TAG, "onDownloadStart")
         }
 
         override fun onProgressUpdate(percent: Int) {
-            Log.d(TAG, "onProgressUpdate: percent $percent")
+            UtilKLogWrapper.d(TAG, "onProgressUpdate: percent $percent")
         }
 
         override fun onDownloadComplete(uri: Uri) {
-            Log.d(TAG, "onDownloadComplete: path ${uri.path}")
-            Log.d(TAG, "onDownloadComplete: isFileExists ${uri.path?.let { UtilKStrFile.isFileExist(it) } ?: "null"}")
+            UtilKLogWrapper.d(TAG, "onDownloadComplete: path ${uri.path}")
+            UtilKLogWrapper.d(TAG, "onDownloadComplete: isFileExists ${uri.path?.let { UtilKStrFile.isFileExist(it) } ?: "null"}")
             vdb.netkFileBtn2.isClickable = true
         }
 
         override fun onDownloadFailed(e: Throwable) {
             e.printStackTrace()
-            Log.e(TAG, "onDownloadFailed fail msg: ${e.message}")
+            UtilKLogWrapper.e(TAG, "onDownloadFailed fail msg: ${e.message}")
             vdb.netkFileBtn2.isClickable = true
         }
     }

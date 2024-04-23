@@ -9,6 +9,7 @@ import android.net.LinkProperties
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -60,14 +61,14 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
     //网络连接成功回调
     override fun onAvailable(network: Network) {
         super.onAvailable(network)
-        Log.d(TAG, "onAvailable: 网络连接成功回调")
+        UtilKLogWrapper.d(TAG, "onAvailable: 网络连接成功回调")
     }
 
     //网络状态变化
     override fun onCapabilitiesChanged(network: Network, networkCapabilities: NetworkCapabilities) {
         super.onCapabilitiesChanged(network, networkCapabilities)
         val types = networkCapabilities.networkCapabilities2netTypes().map { it.eNetType2strNetType() }.toSet()
-        Log.w(TAG, "onCapabilitiesChanged: 网络状态变化 $types network $network networkCapabilities $networkCapabilities")// 表明此网络连接成功验证
+        UtilKLogWrapper.w(TAG, "onCapabilitiesChanged: 网络状态变化 $types network $network networkCapabilities $networkCapabilities")// 表明此网络连接成功验证
         if (types == _liveNetTypes.value) return
         TaskKHandler.post {
             post(types)
@@ -77,31 +78,31 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
     //网络连接属性变化
     override fun onLinkPropertiesChanged(network: Network, linkProperties: LinkProperties) {
         super.onLinkPropertiesChanged(network, linkProperties)
-        Log.i(TAG, "onLinkPropertiesChanged: 网络连接属性变化")
+        UtilKLogWrapper.i(TAG, "onLinkPropertiesChanged: 网络连接属性变化")
     }
 
     //访问的网络阻塞状态发生变化
     override fun onBlockedStatusChanged(network: Network, blocked: Boolean) {
         super.onBlockedStatusChanged(network, blocked)
-        Log.d(TAG, "onBlockedStatusChanged: 访问的网络阻塞状态发生变化")
+        UtilKLogWrapper.d(TAG, "onBlockedStatusChanged: 访问的网络阻塞状态发生变化")
     }
 
     //网络已断开连接
     override fun onLost(network: Network) {
         super.onLost(network)
-        Log.e(TAG, "onLost: 网络已断开连接")
+        UtilKLogWrapper.e(TAG, "onLost: 网络已断开连接")
     }
 
     //网络连接超时或网络不可达
     override fun onUnavailable() {
         super.onUnavailable()
-        Log.e(TAG, "onUnavailable: 网络连接超时或网络不可达")
+        UtilKLogWrapper.e(TAG, "onUnavailable: 网络连接超时或网络不可达")
     }
 
     //网络正在丢失连接
     override fun onLosing(network: Network, maxMsToLive: Int) {
         super.onLosing(network, maxMsToLive)
-        Log.e(TAG, "onLosing: 网络正在丢失连接")
+        UtilKLogWrapper.e(TAG, "onLosing: 网络正在丢失连接")
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +126,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
             }
             _invokeMethods[obj] = method
             val types = UtilKNet.getNetTypes_ofActive().map { it.eNetType2strNetType() }.toSet()
-            Log.d(TAG, "register: types $types")
+            UtilKLogWrapper.d(TAG, "register: types $types")
             post(obj, method, types)
         }
     }
@@ -167,7 +168,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
             context ?: return
             val types: Set<String> = UtilKNet.getNetTypes_ofActive().map { it.eNetType2strNetType() }.toSet()
             if (types == _liveNetTypes.value) return
-            Log.d(TAG, "onReceive: types $types")
+            UtilKLogWrapper.d(TAG, "onReceive: types $types")
             post(types)
         }
     }

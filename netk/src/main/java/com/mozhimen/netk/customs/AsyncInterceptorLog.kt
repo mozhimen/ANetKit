@@ -1,6 +1,7 @@
 package com.mozhimen.netk.customs
 
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.netk.annors.methods._METHOD
 import com.mozhimen.netk.commons.INetKChain
 import com.mozhimen.netk.commons.INetKInterceptor
@@ -18,7 +19,7 @@ class AsyncInterceptorLog : INetKInterceptor {
         val request = chain.request()
         val response = chain.response()
         if (chain.isRequestPeriod) {
-            Log.d(TAG, "intercept endPointUrl ${chain.request().endPointUrl()}")
+            UtilKLogWrapper.d(TAG, "intercept endPointUrl ${chain.request().endPointUrl()}")
         }
         if (!chain.isRequestPeriod && chain.response() != null) {
             val outputBuilder = StringBuilder()
@@ -52,7 +53,7 @@ class AsyncInterceptorLog : INetKInterceptor {
             outputBuilder.append("response>>>>>\n")
             outputBuilder.append(response?.rawData + "\n")
 
-            Log.d(TAG, "intercept builder $outputBuilder")
+            UtilKLogWrapper.d(TAG, "intercept builder $outputBuilder")
         }
         return false
     }

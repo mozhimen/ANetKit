@@ -3,6 +3,7 @@ package com.mozhimen.netk.retrofit.test
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import androidx.lifecycle.lifecycleScope
 import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVBVM
 import com.mozhimen.basick.manifestk.cons.CPermission
@@ -27,7 +28,7 @@ class NetKRetrofitActivity : BaseActivityVBVM<ActivityNetkHttpBinding, NetKRetro
     }
 
     override fun bindViewVM(vb: ActivityNetkHttpBinding) {
-        Log.d(TAG, "bindViewVM: ")
+        UtilKLogWrapper.d(TAG, "bindViewVM: ")
         vdb.vm = vm
     }
 

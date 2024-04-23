@@ -1,6 +1,7 @@
 package com.mozhimen.netk
 
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import androidx.lifecycle.MutableLiveData
 import com.mozhimen.basick.elemk.androidx.lifecycle.bases.BaseViewModel
 import com.mozhimen.netk.commons.INetKListener
@@ -24,12 +25,12 @@ class MainViewModel : BaseViewModel() {
         ApiFactorys.createAsync(Apis::class.java).getRealTimeWeatherAsync("121.321504,31.194874").enqueue(object : INetKListener<Weather> {
             override fun onSuccess(response: NetKResponse<Weather>) {
                 val duration = System.currentTimeMillis() - _lastTime1
-                Log.i(TAG, "getRealtimeWeatherAsync onSuccess duration: $duration")
+                UtilKLogWrapper.i(TAG, "getRealtimeWeatherAsync onSuccess duration: $duration")
                 uiWeather1.postValue(response.data?.result?.realtime?.temperature.toString() + " " + duration)
             }
 
             override fun onFail(throwable: Throwable) {
-                Log.e(TAG, "getRealtimeWeatherAsync onFail ${throwable.message}")
+                UtilKLogWrapper.e(TAG, "getRealtimeWeatherAsync onFail ${throwable.message}")
             }
         })
     }
@@ -42,12 +43,12 @@ class MainViewModel : BaseViewModel() {
             object : RxJavaResponse<Weather>() {
                 override fun onSuccess(response: NetKResponse<Weather>) {
                     val duration = System.currentTimeMillis() - _lastTime3
-                    Log.i(TAG, "getRealTimeWeatherRxJava onSuccess duration $duration")
+                    UtilKLogWrapper.i(TAG, "getRealTimeWeatherRxJava onSuccess duration $duration")
                     uiWeather3.postValue(response.data?.result?.realtime?.temperature.toString() + " " + duration)
                 }
 
                 override fun onFailed(code: Int, message: String?) {
-                    Log.e(TAG, "getRealTimeWeatherRxJava onFail ${message ?: "msg loss"}")
+                    UtilKLogWrapper.e(TAG, "getRealTimeWeatherRxJava onFail ${message ?: "msg loss"}")
                 }
             }
         )

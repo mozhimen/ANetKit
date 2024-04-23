@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
 import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.basick.utilk.java.io.file2fileOutputStream
@@ -216,7 +217,7 @@ class EmbedDownloader(request: DownloadRequest) :
                     }
 
                     val destinationFile = prepareDestinationFile().also {
-                        Log.d(TAG, "download: prepareDestinationFile ${it.absolutePath}")
+                        UtilKLogWrapper.d(TAG, "download: prepareDestinationFile ${it.absolutePath}")
                     }
 
                     record = prepareRecord(destinationFile)
