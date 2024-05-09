@@ -24,8 +24,9 @@ include ':netk_connection'
 include ':netk_connection_test'
 include ':netk_observer'
 include ':netk_observer_test'
-include ':netk_retrofit'
-include ':netk_retrofit_test'
+include ':netk_okhttp3'
+include ':netk_retrofit2'
+include ':netk_retrofit2_test'
 include ':netk_filedownload'
 include ':netk_filedownload_test'
 //SwiftKit
@@ -34,4 +35,4 @@ project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
 
-include ':netk_okhttp'
+
