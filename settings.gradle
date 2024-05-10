@@ -36,3 +36,5 @@ include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
 
 
+include ':netk_retrofit2_rxjava2'
+include ':netk_okio2'
