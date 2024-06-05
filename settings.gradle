@@ -29,6 +29,8 @@ include ':netk_retrofit2'
 include ':netk_retrofit2_test'
 include ':netk_filedownload'
 include ':netk_filedownload_test'
+include ':netk_retrofit2_rxjava2'
+include ':netk_okio2'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
@@ -36,5 +38,3 @@ include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
 
 
-include ':netk_retrofit2_rxjava2'
-include ':netk_okio2'
