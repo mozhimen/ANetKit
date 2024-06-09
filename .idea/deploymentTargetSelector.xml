@@ -5,6 +5,9 @@
       <SelectionState runConfigName="netk_observer_test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="netk_retrofit_test">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
       <SelectionState runConfigName="netk_retrofit2_test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
