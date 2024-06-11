@@ -36,5 +36,12 @@ include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
-
+//ASerialKit
+include ':ASerialKit'
+project(':ASerialKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASerialKit")
+include ':ASerialKit:serialk_moshi'
+//ALibKit_Squareup
+include ':ALibKit_Squareup'
+project(':ALibKit_Squareup').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Squareup")
+include ':ALibKit_Squareup:retrofit2'
 

@@ -1,6 +1,5 @@
 package com.mozhimen.netk.observer.utils
 
-import android.util.Log
 import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.observer.annors.ANetKObserver

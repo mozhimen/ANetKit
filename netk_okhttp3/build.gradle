@@ -30,8 +30,8 @@ android {
 }
 
 dependencies {
-    api 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
-    api "com.squareup.okhttp3:logging-interceptor:4.12.0"
+    api project(':ALibKit_Squareup:okhttp3')
+    api project(':ALibKit_Squareup:okhttp3_log')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
