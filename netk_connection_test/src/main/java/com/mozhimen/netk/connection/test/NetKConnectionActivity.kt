@@ -31,7 +31,7 @@ import com.mozhimen.netk.connection.test.databinding.ActivityNetkConnectionBindi
  */
 class NetKConnectionActivity : BaseActivityVDB<ActivityNetkConnectionBinding>() {
     @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OPermission_ACCESS_NETWORK_STATE::class)
-    private val _netKConnectionProxy: NetKConnectionProxy<NetKConnectionActivity> by lazy { NetKConnectionProxy(this, _netKConnListener).apply { bindLifecycle(this@NetKConnectionActivity) } }
+    private val _netKConnectionProxy: NetKConnectionProxy<NetKConnectionActivity> by lazy_ofNone { NetKConnectionProxy(this, _netKConnListener).apply { bindLifecycle(this@NetKConnectionActivity) } }
 
     @OptIn(OPermission_ACCESS_WIFI_STATE::class, OPermission_ACCESS_FINE_LOCATION::class)
     private val _netKConnListener = object : IConnectionListener {

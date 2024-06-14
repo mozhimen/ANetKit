@@ -34,7 +34,7 @@ import java.io.File
 class NetKFileActivity : BaseActivityVDB<ActivityNetkFileBinding>() {
 //    private val _netKFile by lazy { NetKFileOkDownload(this) }
     private val _musicUrl = "http://192.168.2.6/construction-sites-images/voice/20221102/176f9197f0694591b16ffd47a0f117fe.wav"
-    private val _musicPath by lazy { UtilKStrPath.Absolute.Internal.getFiles() + "/netkfile/music.wav" }
+    private val _musicPath by lazy_ofNone { UtilKStrPath.Absolute.Internal.getFiles() + "/netkfile/music.wav" }
     private var _downloadRequest: DownloadRequest? = null
 
 //    private val _fileDownloadSingleListener = object : IFileDownloadSingleListener {
