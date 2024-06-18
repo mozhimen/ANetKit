@@ -11,6 +11,9 @@
       <SelectionState runConfigName="netk_retrofit2_test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="netk_mqtt_test">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

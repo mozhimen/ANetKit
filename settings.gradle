@@ -29,13 +29,21 @@ include ':netk_retrofit2'
 include ':netk_retrofit2_test'
 include ':netk_filedownload'
 include ':netk_filedownload_test'
-include ':netk_retrofit2_rxjava2'
 include ':netk_okio2'
+include ':netk_mqtt'
+include ':netk_mqtt_test'
+
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
+include ':SwiftKit:servicek'
+//ACacheKit
+include ':ACacheKit'
+project(':ACacheKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACacheKit")
+include ':ACacheKit:cachek_sharedpreferences'
+include ':ACacheKit:cachek_basic'
 //ASerialKit
 include ':ASerialKit'
 project(':ASerialKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASerialKit")
@@ -44,4 +52,7 @@ include ':ASerialKit:serialk_moshi'
 include ':ALibKit_Squareup'
 project(':ALibKit_Squareup').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Squareup")
 include ':ALibKit_Squareup:retrofit2'
+include ':ALibKit_Squareup:okhttp3'
+include ':ALibKit_Squareup:okhttp3_log'
+include ':ALibKit_Squareup:moshi'
 
