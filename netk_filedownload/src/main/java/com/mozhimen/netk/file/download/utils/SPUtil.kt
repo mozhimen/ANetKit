@@ -1,6 +1,6 @@
 package com.mozhimen.netk.file.download.utils
 
-import com.mozhimen.basick.cachek.sharedpreferences.CacheKSP
+import com.mozhimen.cachek.sharedpreferences.CacheKSP
 
 /**
  * @ClassName SPHelper
