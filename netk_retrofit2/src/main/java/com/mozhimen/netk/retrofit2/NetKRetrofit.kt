@@ -1,8 +1,11 @@
 package com.mozhimen.netk.retrofit2
 
 import com.mozhimen.basick.elemk.android.util.cons.CLog
+import com.mozhimen.basick.elemk.javax.net.bases.BaseHostnameVerifier
+import com.mozhimen.basick.elemk.javax.net.bases.BaseX509TrustManager
 import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.bases.BaseUtilK
+import com.mozhimen.basick.utilk.javax.net.UtilKSSLSocketFactory
 import com.mozhimen.serialk.moshi.UtilKMoshiWrapper
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -27,13 +30,15 @@ open class NetKRetrofit(
     private val _interceptors: ArrayList<Interceptor> = ArrayList()
     private val _okHttpClient by lazy {
         OkHttpClient.Builder().apply {
-            if (BuildConfig.DEBUG) {
-                connectTimeout(connectTimeoutSecond, TimeUnit.SECONDS)
-                readTimeout(readTimeoutSecond, TimeUnit.SECONDS)
+            connectTimeout(connectTimeoutSecond, TimeUnit.SECONDS)
+            readTimeout(readTimeoutSecond, TimeUnit.SECONDS)
+            sslSocketFactory(UtilKSSLSocketFactory.get_ofTLS(), BaseX509TrustManager())
+            hostnameVerifier(BaseHostnameVerifier())
+            if (BuildConfig.DEBUG)
                 addInterceptor(HttpLoggingInterceptor { msg -> UtilKLogWrapper.pringln_ofLongLog(CLog.VERBOSE, TAG, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY })
-                if (_interceptors.isNotEmpty())
-                    for (interceptor in _interceptors) addInterceptor(interceptor)
-            }
+            if (_interceptors.isNotEmpty())
+                for (interceptor in _interceptors)
+                    addInterceptor(interceptor)
         }.build()
     }
 
