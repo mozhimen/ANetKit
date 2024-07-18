@@ -8,7 +8,7 @@ import com.mozhimen.basick.lintk.optins.application.OApplication_USES_CLEAR_TEXT
 import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.manifestk.permission.ManifestKPermission
 import com.mozhimen.basick.utilk.android.util.d
-import com.mozhimen.basick.utilk.java.net.UtilKHttpURLConnection
+import com.mozhimen.basick.utilk.java.net.UtilKHttpURLConnectionWrapper
 import com.mozhimen.basick.utilk.java.net.UtilKNetworkInterface
 import com.mozhimen.netk.observer.NetKObserver
 import com.mozhimen.netk.observer.annors.ANetKObserver
@@ -36,9 +36,9 @@ class NetKObserverActivity : BaseActivityVDB<ActivityNetkObserverBinding>()/*, I
     override fun initView(savedInstanceState: Bundle?) {
         NetKObserver.instance.register(this)
         vdb.netkObserverTxt.setOnClickListener {
-            UtilKNetworkInterface.printStrIp()
+            UtilKNetworkInterface.printStrIP()
             lifecycleScope.launch {
-                UtilKHttpURLConnection.getStrIpOnBack().d(TAG)
+                UtilKHttpURLConnectionWrapper.getStrIPOnBack().d(TAG)
             }
         }
     }
