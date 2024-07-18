@@ -35,7 +35,7 @@ dependencies {
 
     //////////////////////////////////////////////////////////////////
     //kapt
-    kapt 'androidx.room:room-compiler:2.5.2'
+    kapt 'androidx.room:room-compiler:2.6.1'
 
     implementation project(':SwiftKit:basick')
 
