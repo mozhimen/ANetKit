@@ -55,3 +55,5 @@ include ':ALibKit_Squareup:okhttp3'
 include ':ALibKit_Squareup:okhttp3_logging_interceptor'
 include ':ALibKit_Squareup:moshi'
 
+include ':netk_netty'
+include ':netk_lan_netty'
