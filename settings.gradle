@@ -57,3 +57,4 @@ include ':ALibKit_Squareup:moshi'
 
 include ':netk_netty'
 include ':netk_lan_netty'
+include ':netk_okhttp3_interceptor'
