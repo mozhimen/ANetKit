@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -38,6 +41,7 @@ dependencies {
     implementation project(':SwiftKit:basick')
     implementation project(':SwiftKit:xmlk')
     implementation project(':netk_retrofit2')
+    implementation project(':netk_okhttp3_interceptor')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

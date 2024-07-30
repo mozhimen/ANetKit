@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cok_blue_e8f3ff"
             android:hint="当前的天气"
-            android:text="@{vm.uiWeather2}"
+            android:text="@{vm.uiWeather1}"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.button.MaterialButton
@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cok_blue_e8f3ff"
             android:hint="当前的天气"
+            android:text="@{vm.uiWeather2}"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.button.MaterialButton
@@ -43,5 +44,19 @@
             android:text="查询天气(异步转同步方法)"
             tools:ignore="HardcodedText" />
 
+        <TextView
+            android:id="@+id/netk_txt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cok_blue_e8f3ff"
+            android:hint="当前的天气"
+            android:text="@{vm.uiWeather3}"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/netk_btn3_get_weather"
+            style="@style/ComponentKStyle_Btn"
+            android:text="查询天气(缓存方案)"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 </layout>

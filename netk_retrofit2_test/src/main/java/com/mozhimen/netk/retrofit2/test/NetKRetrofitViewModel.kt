@@ -2,13 +2,8 @@ package com.mozhimen.netk.retrofit2.test
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mozhimen.basick.elemk.mos.MResultIST
 import com.mozhimen.basick.elemk.androidx.lifecycle.bases.BaseViewModel
-import com.mozhimen.basick.manifestk.annors.AManifestKRequire
-import com.mozhimen.basick.manifestk.cons.CApplication
-import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.netk.retrofit2.test.customs.ApiFactory
-import com.mozhimen.componentktest.netk.http.mos.Weather
 import com.mozhimen.netk.retrofit2.helpers.NetKHelper
 import com.mozhimen.netk.retrofit2.helpers.asNetKRes
 import com.mozhimen.netk.retrofit2.helpers.asNetKResSync
@@ -24,19 +19,20 @@ import kotlin.coroutines.resume
  * @Date 2022/5/11 23:44
  * @Version 1.0
  */
-@AManifestKRequire(CPermission.INTERNET, CApplication.USES_CLEAR_TEXT_TRAFFIC)
 class NetKRetrofitViewModel : BaseViewModel() {
 
+    val uiWeather1 = MutableLiveData("")
     val uiWeather2 = MutableLiveData("")
+    val uiWeather3 = MutableLiveData("")
 
     fun getRealtimeWeatherCoroutine() {
         val time = System.currentTimeMillis()
         viewModelScope.launch(Dispatchers.IO) {
-            NetKHelper.createFlow { ApiFactory.apis.getRealTimeWeatherCoroutine("121.321504,31.194874") }.asNetKRes(
+            NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
                 onSuccess = { data ->
-                    uiWeather2.postValue(data.result.realtime.temperature.toString() + " ${System.currentTimeMillis() - time}")
+                    uiWeather1.postValue(data.id.toString() + " ${System.currentTimeMillis() - time}")
                 }, onFail = { code, msg ->
-                    uiWeather2.postValue("$code $msg ${System.currentTimeMillis() - time}")
+                    uiWeather1.postValue("$code $msg ${System.currentTimeMillis() - time}")
                 })
         }
     }
@@ -44,15 +40,36 @@ class NetKRetrofitViewModel : BaseViewModel() {
     suspend fun getRealtimeWeatherCoroutine1(): String = suspendCancellableCoroutine { coroutine ->
         viewModelScope.launch(Dispatchers.IO) {
             val time = System.currentTimeMillis()
-            NetKHelper.createFlow { ApiFactory.apis.getRealTimeWeatherCoroutine("121.321504,31.194874") }.asNetKRes(
+            NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
                 onSuccess = { data ->
-                    coroutine.resume(data.result.realtime.temperature.toString() + " ${System.currentTimeMillis() - time}")
+                    coroutine.resume(data.id.toString() + " ${System.currentTimeMillis() - time}")
                 }, onFail = { code, msg ->
                     coroutine.resume("$code $msg ${System.currentTimeMillis() - time}")
                 })
         }
     }
 
-    suspend fun getRealtimeWeatherCoroutineSync(): MResultIST<Weather?> =
-        NetKHelper.createFlow { ApiFactory.apis.getRealTimeWeatherCoroutine("121.321504,31.194874") }.asNetKResSync()
+    fun getRealtimeWeatherCoroutineSync() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val time = System.currentTimeMillis()
+            val res = NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKResSync()
+            if (res.bean != null) {
+                uiWeather2.postValue(res.bean!!.id.toString() + " ${System.currentTimeMillis() - time}")
+            } else {
+                uiWeather2.postValue("${res.code} ${res.msg} ${System.currentTimeMillis() - time}")
+            }
+        }
+    }
+
+    fun getRealtimeWeatherCache() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val time= System.currentTimeMillis()
+            val res = NetKHelper.createFlow { ApiFactory.apisCache.get_ofCache() }.asNetKResSync()
+            if (res.bean != null) {
+                uiWeather3.postValue(res.bean!!.id.toString() + " ${System.currentTimeMillis() - time}")
+            } else {
+                uiWeather3.postValue("${res.code} ${res.msg} ${System.currentTimeMillis() - time}")
+            }
+        }
+    }
 }

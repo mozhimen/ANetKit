@@ -1,8 +1,8 @@
 package com.mozhimen.netk.retrofit2.test.customs
 
-import com.mozhimen.componentktest.netk.http.mos.Weather
+import com.mozhimen.netk.retrofit2.test.mos.ArticleRes
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Headers
 
 /**
  * @ClassName TestApi
@@ -14,7 +14,11 @@ import retrofit2.http.Path
 interface Apis {
 
     //121.321504,31.194874
-    @GET("{loc}/realtime.json")
-    suspend fun getRealTimeWeatherCoroutine(@Path("loc") loc: String): Weather?
+    @GET("/posts/2")
+    suspend fun get_ofCoroutine(): ArticleRes?
 
+    //121.321504,31.194874
+//    @Headers("Cache-Control:public, only-if-cached, max-stale=120")
+    @GET("/posts/2")
+    suspend fun get_ofCache(): ArticleRes?
 }
