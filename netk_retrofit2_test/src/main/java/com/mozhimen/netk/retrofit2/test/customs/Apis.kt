@@ -1,8 +1,10 @@
 package com.mozhimen.netk.retrofit2.test.customs
 
+import com.mozhimen.netk.retrofit2.cache.annors.ACacheHeader
 import com.mozhimen.netk.retrofit2.test.mos.ArticleRes
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import java.util.concurrent.TimeUnit
 
 /**
  * @ClassName TestApi
@@ -20,5 +22,6 @@ interface Apis {
     //121.321504,31.194874
 //    @Headers("Cache-Control:public, only-if-cached, max-stale=120")
     @GET("/posts/2")
+    @ACacheHeader(1, TimeUnit.MINUTES)
     suspend fun get_ofCache(): ArticleRes?
 }

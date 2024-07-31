@@ -1,12 +1,8 @@
 package com.mozhimen.netk.retrofit2.test.customs
 
-import com.mozhimen.basick.manifestk.annors.AManifestKRequire
-import com.mozhimen.basick.manifestk.cons.CApplication
-import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.utilk.kotlin.megaBytes
-import com.mozhimen.netk.okhttp3.interceptor.impls.InterceptorCacheOffline
-import com.mozhimen.netk.okhttp3.interceptor.impls.InterceptorCacheOnline
 import com.mozhimen.netk.retrofit2.NetKRetrofit
+import com.mozhimen.netk.retrofit2.cache.impls.InterceptorANetKRetrofit2Cache
 
 /**
  * @ClassName ApiFactory
@@ -20,7 +16,7 @@ object ApiFactory {
 
     val netKRetrofit = NetKRetrofit(_baseUrl)
 
-    val netKRetrofitCache = NetKRetrofit(_baseUrl, cacheSize = 10L.megaBytes(), interceptors = listOf(InterceptorCacheOffline()))
+    val netKRetrofitCache = NetKRetrofit(_baseUrl, cacheSize = 10L.megaBytes(), networkInterceptors = listOf(InterceptorANetKRetrofit2Cache()))
 
     //示例1
     val apis: Apis = netKRetrofit.create(Apis::class.java)

@@ -3,7 +3,7 @@ package com.mozhimen.netk.retrofit2.cache.test
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mozhimen.basick.utilk.java.io.UtilKFileDir
-import com.mozhimen.netk.retrofit2.cache.responseCache
+import com.mozhimen.netk.retrofit2.cache.supportCache
 import com.mozhimen.netk.retrofit2.cache.test.commons.RandomApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -32,7 +32,7 @@ class MainViewModel /*@Inject*/ constructor(/*private val api: RandomApi*/) : Vi
             )
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-            .responseCache(Cache(directory = File(UtilKFileDir.Internal.getCache(), "retrofit"), 10 * 1024))
+            .supportCache(Cache(directory = File(UtilKFileDir.Internal.getCache(), "retrofit"), 10 * 1024))
     }
 
     private val _channelState = Channel<ViewState>(capacity = Channel.Factory.CONFLATED).apply {

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
     AnnotationTarget.PROPERTY_SETTER
 )
 @Retention(AnnotationRetention.RUNTIME)
-annotation class ANetKCache constructor(
+annotation class ACacheHeader constructor(
     val value: Int,
     /**
      * [TimeUnit] for the cache to stay

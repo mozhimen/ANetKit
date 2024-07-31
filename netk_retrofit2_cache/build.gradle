@@ -33,6 +33,7 @@ android {
 dependencies {
     implementation project(':ALibKit_Squareup:okhttp3_logging_interceptor')
     implementation project(':ALibKit_Squareup:retrofit2')
+    implementation project(':SwiftKit:basick')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
