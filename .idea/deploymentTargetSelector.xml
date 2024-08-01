@@ -19,7 +19,7 @@
       </SelectionState>
       <SelectionState runConfigName="netk_retrofit2_test">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-07-30T08:19:38.740823300Z">
+        <DropdownSelection timestamp="2024-08-01T09:55:57.780473500Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=TGIBR46DT4CM7H9H" />
@@ -30,6 +30,14 @@
       </SelectionState>
       <SelectionState runConfigName="netk_retrofit2_cache_test">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-07-31T02:21:59.545305600Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=TGIBR46DT4CM7H9H" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>

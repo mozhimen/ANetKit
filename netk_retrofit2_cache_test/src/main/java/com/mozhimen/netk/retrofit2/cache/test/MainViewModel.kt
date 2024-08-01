@@ -65,7 +65,7 @@ class MainViewModel /*@Inject*/ constructor(/*private val api: RandomApi*/) : Vi
 
     sealed class ViewState {
         object Initial : ViewState()
-        data class Update(val value: Int, val fromCache: Boolean, val validityMillis: Long) : ViewState()
+        data class Update constructor(val value: Int, val fromCache: Boolean, val validityMillis: Long) : ViewState()
         data class Error(val error: Throwable) : ViewState()
     }
 }

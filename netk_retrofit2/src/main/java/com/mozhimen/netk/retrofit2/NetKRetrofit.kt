@@ -32,6 +32,12 @@ open class NetKRetrofit constructor(
     networkInterceptors: List<Interceptor> = emptyList()
 ) : BaseUtilK() {
 
+    companion object{
+        val cacheFolder: File by lazy { File(UtilKFileDir.Internal.getCache(), "netk_retrofit_cache") }
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+
     private val _okHttpClient by lazy {
         OkHttpClient.Builder().apply {
             connectTimeout(connectTimeoutSecond, TimeUnit.SECONDS)
@@ -40,17 +46,21 @@ open class NetKRetrofit constructor(
             hostnameVerifier(BaseHostnameVerifier())
             if (cacheSize > 0L)
                 cache(Cache(cacheFolder, cacheSize))
-//            if (BuildConfig.DEBUG)
-//                addInterceptor(HttpLoggingInterceptor { msg -> UtilKLogWrapper.pringln_ofLongLog(CLog.VERBOSE, TAG, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY })
             if (interceptors.isNotEmpty())
                 for (interceptor in interceptors)
                     addInterceptor(interceptor)
             if (networkInterceptors.isNotEmpty())
                 for (networkInterceptor in networkInterceptors)
                     addNetworkInterceptor(networkInterceptor)
- }.build()
+            if (BuildConfig.DEBUG)
+                addInterceptor(HttpLoggingInterceptor { msg ->
+                    UtilKLogWrapper.pringln_ofLongLog(CLog.VERBOSE, TAG, msg)
+                }.also { it.level = HttpLoggingInterceptor.Level.BODY })
+        }.build()
     }
 
+    @get:Synchronized
+    @set:Synchronized
     private var _retrofit: Retrofit? = null
         get() {
             if (field != null)
@@ -74,15 +84,10 @@ open class NetKRetrofit constructor(
             field = value
         }
 
-    val cacheFolder: File by lazy { File(UtilKFileDir.Internal.getCache(), "netk_retrofit_cache") }
-
     /////////////////////////////////////////////////////////////////////////
 
     @Synchronized
     fun <SERVICE : Any> create(service: Class<SERVICE>): SERVICE {
-        if (_retrofit == null) {
-            _retrofit = NetKRetrofitUtil.getRetrofit_ofMoshi(baseUrl, _okHttpClient)
-        }
         return _retrofit!!.create(service) as SERVICE
     }
 

@@ -2,16 +2,11 @@ package com.mozhimen.netk.retrofit2.test
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
-import androidx.lifecycle.lifecycleScope
 import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDBVM
 import com.mozhimen.basick.manifestk.cons.CPermission
 import com.mozhimen.basick.manifestk.permission.ManifestKPermission
 import com.mozhimen.basick.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.netk.retrofit2.test.databinding.ActivityNetkHttpBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @APermissionCheck(CPermission.INTERNET)
 class NetKRetrofitActivity : BaseActivityVDBVM<ActivityNetkHttpBinding, NetKRetrofitViewModel>() {
@@ -38,7 +33,11 @@ class NetKRetrofitActivity : BaseActivityVDBVM<ActivityNetkHttpBinding, NetKRetr
         }
 
         vdb.netkBtn3GetWeather.setOnClickListener {
-            vm.getRealtimeWeatherCache()
+            vm.getRealtimeWeatherRetrofitCache()
+        }
+
+        vdb.netkBtn4GetWeather.setOnClickListener {
+            vm.getRealtimeWeatherOkhttp3Cache()
         }
     }
 }

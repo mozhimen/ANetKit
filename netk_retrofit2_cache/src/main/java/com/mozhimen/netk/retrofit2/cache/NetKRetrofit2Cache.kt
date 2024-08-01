@@ -1,6 +1,8 @@
 package com.mozhimen.netk.retrofit2.cache
 
 import com.mozhimen.basick.elemk.commons.IA_BListener
+import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.retrofit2.cache.annors.ACacheHeader
 import com.mozhimen.netk.retrofit2.cache.impls.InterceptorANetKRetrofit2Cache
 import okhttp3.Cache
@@ -31,7 +33,7 @@ fun Retrofit.supportCache(
 
 /////////////////////////////////////////////////////////////////////////////
 
-object NetKRetrofit2Cache {
+object NetKRetrofit2Cache : IUtilK {
     @JvmStatic
     fun supportCache(
         retrofit: Retrofit,
@@ -51,9 +53,10 @@ object NetKRetrofit2Cache {
     ): Retrofit {
         val okHttpClient = retrofit.callFactory().let { callFactory ->
             check(callFactory is OkHttpClient) { "RetrofitCache only works with OkHttp as Http Client!" }
+            UtilKLogWrapper.d(TAG, "supportCache: ")
             callFactory.newBuilder()
-                .addNetworkInterceptor(InterceptorANetKRetrofit2Cache(cacheControl))
                 .cache(cache)
+                .addNetworkInterceptor(InterceptorANetKRetrofit2Cache(cacheControl))
                 .build()
         }
         return retrofit.newBuilder()
