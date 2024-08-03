@@ -19,7 +19,7 @@
       </SelectionState>
       <SelectionState runConfigName="netk_retrofit2_test">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-08-01T09:55:57.780473500Z">
+        <DropdownSelection timestamp="2024-08-02T01:57:24.069062Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=TGIBR46DT4CM7H9H" />

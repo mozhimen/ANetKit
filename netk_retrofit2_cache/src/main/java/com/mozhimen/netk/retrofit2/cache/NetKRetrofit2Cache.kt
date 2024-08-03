@@ -4,7 +4,7 @@ import com.mozhimen.basick.elemk.commons.IA_BListener
 import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.utilk.commons.IUtilK
 import com.mozhimen.netk.retrofit2.cache.annors.ACacheHeader
-import com.mozhimen.netk.retrofit2.cache.impls.InterceptorANetKRetrofit2Cache
+import com.mozhimen.netk.retrofit2.cache.impls.InterceptorRetrofit2Cache
 import okhttp3.Cache
 import okhttp3.CacheControl
 import okhttp3.OkHttpClient
@@ -56,7 +56,7 @@ object NetKRetrofit2Cache : IUtilK {
             UtilKLogWrapper.d(TAG, "supportCache: ")
             callFactory.newBuilder()
                 .cache(cache)
-                .addNetworkInterceptor(InterceptorANetKRetrofit2Cache(cacheControl))
+                .addNetworkInterceptor(InterceptorRetrofit2Cache(cacheControl))
                 .build()
         }
         return retrofit.newBuilder()

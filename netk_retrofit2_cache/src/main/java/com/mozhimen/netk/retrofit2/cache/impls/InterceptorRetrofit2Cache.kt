@@ -1,6 +1,5 @@
 package com.mozhimen.netk.retrofit2.cache.impls
 
-import android.util.Log
 import com.mozhimen.basick.elemk.commons.IA_BListener
 import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.netk.okhttp3.interceptor.commons.IInterceptor
@@ -12,7 +11,7 @@ import okhttp3.Request
 import okhttp3.Response
 import retrofit2.Invocation
 
-class InterceptorANetKRetrofit2Cache constructor(
+class InterceptorRetrofit2Cache constructor(
     private val _onGetCacheControl: IA_BListener<ACacheHeader, CacheControl> = {
         CacheControl.Builder()
             .maxAge(it.value, it.unit)
