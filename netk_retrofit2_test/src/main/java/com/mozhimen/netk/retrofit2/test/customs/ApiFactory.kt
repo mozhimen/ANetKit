@@ -1,7 +1,7 @@
 package com.mozhimen.netk.retrofit2.test.customs
 
-import com.mozhimen.basick.utilk.commons.IUtilK
-import com.mozhimen.basick.utilk.kotlin.megaBytes
+import com.mozhimen.kotlin.utilk.commons.IUtilK
+import com.mozhimen.kotlin.utilk.kotlin.megaBytes
 import com.mozhimen.netk.okhttp3.cache.NetKOkhttp3Cache
 import com.mozhimen.netk.okhttp3.cache.impls.InterceptorOkhttp3Cache
 import com.mozhimen.netk.retrofit2.NetKRetrofit

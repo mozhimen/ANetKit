@@ -3,17 +3,17 @@ package com.mozhimen.netk.file.download.test
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
-import com.mozhimen.basick.lintk.optin.OptInApiCall_BindLifecycle
-import com.mozhimen.basick.lintk.optin.OptInApiDeprecated_ThirdParty
-import com.mozhimen.basick.lintk.optin.OptInApiInit_ByLazy
-import com.mozhimen.basick.manifestk.cons.CPermission
-import com.mozhimen.basick.manifestk.permission.ManifestKPermission
-import com.mozhimen.basick.manifestk.permission.annors.APermissionCheck
-import com.mozhimen.basick.manifestk.annors.AManifestKRequire
-import com.mozhimen.basick.utilk.kotlin.UtilKStrFile
-import com.mozhimen.basick.utilk.kotlin.UtilKStrPath
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDB
+import com.mozhimen.kotlin.lintk.optin.OptInApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optin.OptInApiDeprecated_ThirdParty
+import com.mozhimen.kotlin.lintk.optin.OptInApiInit_ByLazy
+import com.mozhimen.kotlin.elemk.android.cons.CPermission
+import com.mozhimen.manifestk.permission.ManifestKPermission
+import com.mozhimen.manifestk.permission.annors.APermissionCheck
+import com.mozhimen.kotlin.lintk.annors.AManifestRequire
+import com.mozhimen.kotlin.utilk.kotlin.UtilKStrFile
+import com.mozhimen.kotlin.utilk.kotlin.UtilKStrPath
 import com.mozhimen.netk.file.download.DownloadRequest
 import com.mozhimen.netk.file.download.annors.ADownloadEngine
 import com.mozhimen.netk.file.download.annors.ANotificationVisibility
@@ -21,7 +21,7 @@ import com.mozhimen.netk.file.download.commons.IDownloadListener
 import com.mozhimen.netk.file.download.test.databinding.ActivityNetkFileBinding
 import java.io.File
 
-@AManifestKRequire(
+@AManifestRequire(
     CPermission.READ_EXTERNAL_STORAGE,
     CPermission.WRITE_EXTERNAL_STORAGE,
     CPermission.INTERNET

@@ -3,14 +3,14 @@ package com.mozhimen.netk.observer
 import android.net.NetworkRequest
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
-import com.mozhimen.basick.elemk.android.os.cons.CVersCode
-import com.mozhimen.basick.lintk.annors.ANetType
-import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
-import com.mozhimen.basick.utilk.android.app.UtilKApplicationWrapper
-import com.mozhimen.basick.utilk.android.net.UtilKConnectivityManager
-import com.mozhimen.basick.utilk.android.os.UtilKBuildVersion
-import com.mozhimen.basick.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.elemk.android.os.cons.CVersCode
+import com.mozhimen.kotlin.lintk.annors.ANetType
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_INTERNET
+import com.mozhimen.kotlin.utilk.android.app.UtilKApplicationWrapper
+import com.mozhimen.kotlin.utilk.android.net.UtilKConnectivityManager
+import com.mozhimen.kotlin.utilk.android.os.UtilKBuildVersion
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.netk.observer.commons.INetKObserver
 import com.mozhimen.netk.observer.helpers.NetworkCallbackProxy
 

@@ -1,8 +1,8 @@
 package com.mozhimen.netk.retrofit2.cache
 
-import com.mozhimen.basick.elemk.commons.IA_BListener
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.basick.utilk.commons.IUtilK
+import com.mozhimen.kotlin.elemk.commons.IA_BListener
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.commons.IUtilK
 import com.mozhimen.netk.retrofit2.cache.annors.ACacheHeader
 import com.mozhimen.netk.retrofit2.cache.impls.InterceptorRetrofit2Cache
 import okhttp3.Cache

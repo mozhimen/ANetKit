@@ -6,11 +6,11 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
-import com.mozhimen.basick.utilk.commons.IUtilK
-import com.mozhimen.basick.utilk.java.io.file2fileOutputStream
-import com.mozhimen.basick.utilk.kotlin.UtilKStrMd5
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
+import com.mozhimen.kotlin.utilk.commons.IUtilK
+import com.mozhimen.kotlin.utilk.java.io.file2fileOutputStream
+import com.mozhimen.kotlin.utilk.kotlin.UtilKStrMd5
 import com.mozhimen.netk.file.download.DownloadUtils.getPercent
 import com.mozhimen.netk.file.download.annors.ANotificationVisibility
 import com.mozhimen.netk.file.download.cons.CErrorCode

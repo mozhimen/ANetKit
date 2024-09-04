@@ -5,10 +5,10 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
-import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
-import com.mozhimen.basick.utilk.android.database.getColumnValue
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper.d
-import com.mozhimen.basick.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
+import com.mozhimen.kotlin.utilk.android.database.getColumnValue
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper.d
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.netk.file.download.annors.ANotificationVisibility
 
 /**

@@ -2,10 +2,10 @@ package com.mozhimen.netk.retrofit2.test
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDBVM
-import com.mozhimen.basick.manifestk.cons.CPermission
-import com.mozhimen.basick.manifestk.permission.ManifestKPermission
-import com.mozhimen.basick.manifestk.permission.annors.APermissionCheck
+import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDBVM
+import com.mozhimen.kotlin.elemk.android.cons.CPermission
+import com.mozhimen.manifestk.permission.ManifestKPermission
+import com.mozhimen.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.netk.retrofit2.test.databinding.ActivityNetkHttpBinding
 
 @APermissionCheck(CPermission.INTERNET)

@@ -2,9 +2,9 @@ package com.mozhimen.netk.retrofit2.test
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mozhimen.basick.elemk.androidx.lifecycle.bases.BaseViewModel
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.basick.utilk.wrapper.UtilKRes
+import com.mozhimen.kotlin.elemk.androidx.lifecycle.bases.BaseViewModel
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.wrapper.UtilKRes
 import com.mozhimen.netk.retrofit2.test.customs.ApiFactory
 import com.mozhimen.netk.retrofit2.helpers.NetKHelper
 import com.mozhimen.netk.retrofit2.helpers.asNetKRes

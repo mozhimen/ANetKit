@@ -2,9 +2,9 @@ package com.mozhimen.netk.mqtt.test
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
-import com.mozhimen.basick.lintk.optins.OApiCall_BindLifecycle
-import com.mozhimen.basick.lintk.optins.OApiInit_ByLazy
+import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDB
+import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy
 import com.mozhimen.netk.mqtt.NetKMQTTServiceProxy
 import com.mozhimen.netk.mqtt.test.databinding.ActivityMainBinding
 import com.mozhimen.servicek.bases.BaseServiceResCallback

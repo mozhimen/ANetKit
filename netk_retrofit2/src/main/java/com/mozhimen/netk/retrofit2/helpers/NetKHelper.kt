@@ -1,12 +1,12 @@
 package com.mozhimen.netk.retrofit2.helpers
 
-import com.mozhimen.basick.elemk.commons.ISuspendAB_Listener
-import com.mozhimen.basick.elemk.commons.ISuspendA_Listener
-import com.mozhimen.basick.elemk.commons.ISuspend_AListener
-import com.mozhimen.basick.elemk.mos.MResultIST
-import com.mozhimen.basick.utilk.android.util.e
-import com.mozhimen.basick.utilk.android.util.v
-import com.mozhimen.basick.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.elemk.commons.ISuspendAB_Listener
+import com.mozhimen.kotlin.elemk.commons.ISuspendA_Listener
+import com.mozhimen.kotlin.elemk.commons.ISuspend_AListener
+import com.mozhimen.kotlin.elemk.mos.MResultIST
+import com.mozhimen.kotlin.utilk.android.util.e
+import com.mozhimen.kotlin.utilk.android.util.v
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.netk.retrofit2.cons.SNetKRep
 import com.mozhimen.netk.retrofit2.cons.CResCode
 import kotlinx.coroutines.Dispatchers

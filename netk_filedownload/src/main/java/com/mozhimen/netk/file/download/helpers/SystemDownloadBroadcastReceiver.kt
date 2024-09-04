@@ -2,9 +2,9 @@ package com.mozhimen.netk.file.download.helpers
 
 import android.content.Context
 import android.content.Intent
-import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
-import com.mozhimen.basick.elemk.android.content.bases.BaseBroadcastReceiver
-import com.mozhimen.basick.utilk.android.app.UtilKDownloadManager
+import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
+import com.mozhimen.kotlin.elemk.android.content.bases.BaseBroadcastReceiver
+import com.mozhimen.kotlin.utilk.android.app.UtilKDownloadManager
 
 /**
  * @author by chiclaim@google.com

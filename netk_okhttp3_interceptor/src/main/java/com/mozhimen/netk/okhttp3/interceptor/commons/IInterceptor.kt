@@ -1,6 +1,6 @@
 package com.mozhimen.netk.okhttp3.interceptor.commons
 
-import com.mozhimen.basick.utilk.commons.IUtilK
+import com.mozhimen.kotlin.utilk.commons.IUtilK
 import okhttp3.Interceptor
 
 /**

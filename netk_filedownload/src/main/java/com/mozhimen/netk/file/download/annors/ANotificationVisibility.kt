@@ -1,7 +1,7 @@
 package com.mozhimen.netk.file.download.annors
 
 import androidx.annotation.IntDef
-import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
+import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
 
 /**
  *

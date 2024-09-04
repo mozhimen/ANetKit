@@ -1,12 +1,12 @@
 package com.mozhimen.netk.retrofit2
 
-import com.mozhimen.basick.elemk.android.util.cons.CLog
-import com.mozhimen.basick.elemk.javax.net.bases.BaseHostnameVerifier
-import com.mozhimen.basick.elemk.javax.net.bases.BaseX509TrustManager
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.basick.utilk.bases.BaseUtilK
-import com.mozhimen.basick.utilk.java.io.UtilKFileDir
-import com.mozhimen.basick.utilk.javax.net.UtilKSSLSocketFactory
+import com.mozhimen.kotlin.elemk.android.util.cons.CLog
+import com.mozhimen.kotlin.elemk.javax.net.bases.BaseHostnameVerifier
+import com.mozhimen.kotlin.elemk.javax.net.bases.BaseX509TrustManager
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.utilk.java.io.UtilKFileDir
+import com.mozhimen.kotlin.utilk.javax.net.UtilKSSLSocketFactory
 import com.mozhimen.netk.retrofit2.utils.NetKRetrofitUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

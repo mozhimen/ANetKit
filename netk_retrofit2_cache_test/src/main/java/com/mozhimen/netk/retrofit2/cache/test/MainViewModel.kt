@@ -2,7 +2,7 @@ package com.mozhimen.netk.retrofit2.cache.test
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mozhimen.basick.utilk.java.io.UtilKFileDir
+import com.mozhimen.kotlin.utilk.java.io.UtilKFileDir
 import com.mozhimen.netk.retrofit2.cache.supportCache
 import com.mozhimen.netk.retrofit2.cache.test.commons.RandomApi
 import kotlinx.coroutines.Dispatchers

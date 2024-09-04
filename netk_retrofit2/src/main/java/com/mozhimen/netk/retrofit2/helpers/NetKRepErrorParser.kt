@@ -1,8 +1,8 @@
 package com.mozhimen.netk.retrofit2.helpers
 
 import com.google.gson.JsonParseException
-import com.mozhimen.basick.utilk.bases.BaseUtilK
-import com.mozhimen.basick.utilk.android.util.e
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.utilk.android.util.e
 import com.mozhimen.netk.retrofit2.mos.MNetKThrowable
 import org.json.JSONException
 import retrofit2.HttpException

@@ -9,22 +9,22 @@ import android.net.LinkProperties
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mozhimen.basick.elemk.android.content.bases.BaseConnectivityBroadcastReceiver
-import com.mozhimen.basick.elemk.android.net.cons.CConnectivityManager
-import com.mozhimen.basick.elemk.android.os.cons.CVersCode
-import com.mozhimen.basick.lintk.annors.ANetType
-import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
-import com.mozhimen.basick.taskk.handler.TaskKHandler
-import com.mozhimen.basick.utilk.android.app.UtilKApplicationWrapper
-import com.mozhimen.basick.utilk.wrapper.UtilKNet
-import com.mozhimen.basick.utilk.wrapper.eNetType2strNetType
-import com.mozhimen.basick.utilk.android.net.networkCapabilities2netTypes
-import com.mozhimen.basick.utilk.commons.IUtilK
+import com.mozhimen.kotlin.elemk.android.content.bases.BaseConnectivityBroadcastReceiver
+import com.mozhimen.kotlin.elemk.android.net.cons.CConnectivityManager
+import com.mozhimen.kotlin.elemk.android.os.cons.CVersCode
+import com.mozhimen.kotlin.lintk.annors.ANetType
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_INTERNET
+import com.mozhimen.kotlin.utilk.android.app.UtilKApplicationWrapper
+import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
+import com.mozhimen.kotlin.utilk.wrapper.eNetType2strNetType
+import com.mozhimen.kotlin.utilk.android.net.networkCapabilities2netTypes
+import com.mozhimen.kotlin.utilk.android.os.UtilKHandlerWrapper
+import com.mozhimen.kotlin.utilk.commons.IUtilK
 import com.mozhimen.netk.observer.commons.INetKObserver
 import com.mozhimen.netk.observer.commons.INetKObserverOwner
 import com.mozhimen.netk.observer.utils.NetKObserverUtil
@@ -70,7 +70,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
         val types = networkCapabilities.networkCapabilities2netTypes().map { it.eNetType2strNetType() }.toSet()
         UtilKLogWrapper.w(TAG, "onCapabilitiesChanged: 网络状态变化 $types network $network networkCapabilities $networkCapabilities")// 表明此网络连接成功验证
         if (types == _liveNetTypes.value) return
-        TaskKHandler.post {
+        UtilKHandlerWrapper.post {
             post(types)
         }
     }

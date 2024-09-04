@@ -2,14 +2,14 @@ package com.mozhimen.netk.connection
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
-import com.mozhimen.basick.elemk.android.content.bases.BaseBroadcastReceiverProxy
-import com.mozhimen.basick.elemk.android.content.bases.BaseConnectivityBroadcastReceiver
-import com.mozhimen.basick.elemk.android.net.cons.CConnectivityManager
-import com.mozhimen.basick.elemk.commons.IConnectionListener
-import com.mozhimen.basick.lintk.optins.OApiCall_BindLifecycle
-import com.mozhimen.basick.lintk.optins.OApiInit_ByLazy
-import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.basick.lintk.optins.permission.OPermission_INTERNET
+import com.mozhimen.kotlin.elemk.android.content.bases.BaseBroadcastReceiverProxy
+import com.mozhimen.kotlin.elemk.android.content.bases.BaseConnectivityBroadcastReceiver
+import com.mozhimen.kotlin.elemk.android.net.cons.CConnectivityManager
+import com.mozhimen.kotlin.elemk.commons.IConnectionListener
+import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_INTERNET
 
 
 /**

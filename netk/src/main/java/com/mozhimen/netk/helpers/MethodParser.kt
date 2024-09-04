@@ -1,7 +1,7 @@
 package com.mozhimen.netk.helpers
 
 import com.mozhimen.basick.extsk.throwIllegalStateException
-import com.mozhimen.basick.utilk.UtilKDataType
+import com.mozhimen.kotlin.utilk.UtilKDataType
 import com.mozhimen.netk.commons.INetKCall
 import com.mozhimen.netk.annors.*
 import com.mozhimen.netk.annors.methods.*

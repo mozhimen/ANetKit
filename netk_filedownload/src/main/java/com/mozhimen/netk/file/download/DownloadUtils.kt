@@ -1,7 +1,7 @@
 package com.mozhimen.netk.file.download
 
 import android.content.Context
-import com.mozhimen.basick.utilk.kotlin.UtilKStrMd5
+import com.mozhimen.kotlin.utilk.kotlin.UtilKStrMd5
 import com.mozhimen.netk.file.download.utils.SPUtil
 import java.io.File
 

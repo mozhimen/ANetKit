@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.ContentObserver
 import android.os.Handler
 import android.os.Looper
-import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
+import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
 import com.mozhimen.netk.file.download.cons.CErrorCode
 import com.mozhimen.netk.file.download.mos.DownloadException
 import com.mozhimen.netk.file.download.DownloadUtils.getPercent

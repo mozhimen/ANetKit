@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.Uri
-import com.mozhimen.basick.utilk.android.content.UtilKPackageInfo
-import com.mozhimen.basick.utilk.android.net.uri2strFilePathName
-import com.mozhimen.basick.utilk.android.os.UtilKBuildVersion
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper.e
-import com.mozhimen.basick.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.utilk.android.content.UtilKPackageInfo
+import com.mozhimen.kotlin.utilk.android.net.uri2strFilePathName
+import com.mozhimen.kotlin.utilk.android.os.UtilKBuildVersion
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper.e
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.netk.file.download.BuildConfig
 import java.io.File
 

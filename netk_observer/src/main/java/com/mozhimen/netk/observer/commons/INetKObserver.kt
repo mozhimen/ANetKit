@@ -1,7 +1,7 @@
 package com.mozhimen.netk.observer.commons
 
 import androidx.lifecycle.LiveData
-import com.mozhimen.basick.lintk.annors.ANetType
+import com.mozhimen.kotlin.lintk.annors.ANetType
 
 /**
  * @ClassName INetKObserver

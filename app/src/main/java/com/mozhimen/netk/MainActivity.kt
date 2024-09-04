@@ -2,13 +2,13 @@ package com.mozhimen.netk
 
 import android.Manifest
 import android.os.Bundle
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVBVM
-import com.mozhimen.basick.manifestk.annors.AManifestKRequire
-import com.mozhimen.basick.manifestk.permission.ManifestKPermission
-import com.mozhimen.basick.manifestk.permission.annors.APermissionCheck
+import com.mozhimen.kotlin.elemk.androidx.appcompat.bases.databinding.BaseActivityVBVM
+import com.mozhimen.kotlin.lintk.annors.AManifestRequire
+import com.mozhimen.manifestk.permission.ManifestKPermission
+import com.mozhimen.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.netk.databinding.ActivityMainBinding
 
-@AManifestKRequire(Manifest.permission.INTERNET)
+@AManifestRequire(Manifest.permission.INTERNET)
 @APermissionCheck(Manifest.permission.INTERNET)
 class MainActivity : BaseActivityVBVM<ActivityMainBinding, MainViewModel>() {
     override fun initData(savedInstanceState: Bundle?) {

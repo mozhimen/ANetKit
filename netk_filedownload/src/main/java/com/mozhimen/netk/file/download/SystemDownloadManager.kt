@@ -5,7 +5,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.database.Cursor
 import android.net.Uri
-import com.mozhimen.basick.elemk.android.app.cons.CDownloadManager
+import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
 import com.mozhimen.netk.file.download.utils.SPUtil
 import com.mozhimen.netk.file.download.mos.DownloadInfo
 

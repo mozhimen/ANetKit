@@ -1,7 +1,7 @@
 package com.mozhimen.netk.okhttp3.interceptor.impls
 
-import com.mozhimen.basick.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.basick.utilk.wrapper.UtilKNet
+import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
 import com.mozhimen.netk.okhttp3.interceptor.annors.AInterceptor
 import com.mozhimen.netk.okhttp3.interceptor.commons.IInterceptor
 import okhttp3.Interceptor

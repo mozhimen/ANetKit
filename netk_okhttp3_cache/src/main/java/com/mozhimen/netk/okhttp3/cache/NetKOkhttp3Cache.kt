@@ -1,6 +1,6 @@
 package com.mozhimen.netk.okhttp3.cache
 
-import com.mozhimen.basick.utilk.kotlin.megaBytes
+import com.mozhimen.kotlin.utilk.kotlin.megaBytes
 import com.mozhimen.netk.okhttp3.cache.annors.ACacheMode
 import com.mozhimen.netk.okhttp3.cache.commons.IOkhttp3Cache
 import com.mozhimen.netk.okhttp3.impls.CacheResponseBody

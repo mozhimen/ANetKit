@@ -1,7 +1,7 @@
 package com.mozhimen.netk.okhttp3.cache.impls
 
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.netk.okhttp3.cache.NetKOkhttp3Cache
 import com.mozhimen.netk.okhttp3.cache.annors.ACacheMode
 import com.mozhimen.netk.okhttp3.cache.commons.IOkhttp3Cache

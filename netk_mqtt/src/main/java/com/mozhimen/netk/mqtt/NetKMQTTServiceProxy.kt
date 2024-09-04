@@ -2,8 +2,8 @@ package com.mozhimen.netk.mqtt
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
-import com.mozhimen.basick.lintk.optins.OApiCall_BindLifecycle
-import com.mozhimen.basick.lintk.optins.OApiInit_ByLazy
+import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy
 import com.mozhimen.netk.mqtt.bases.BaseNetKMQTTService
 import com.mozhimen.servicek.ServiceKProxy
 import com.mozhimen.servicek.bases.BaseServiceResCallback

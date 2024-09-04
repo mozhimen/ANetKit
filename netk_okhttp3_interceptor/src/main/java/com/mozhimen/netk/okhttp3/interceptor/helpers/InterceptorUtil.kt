@@ -1,7 +1,7 @@
 package com.mozhimen.netk.okhttp3.interceptor.helpers
 
-import com.mozhimen.basick.elemk.android.util.cons.CLog
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.elemk.android.util.cons.CLog
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import okhttp3.logging.HttpLoggingInterceptor
 
 /**

@@ -1,7 +1,7 @@
 package com.mozhimen.netk.customs
 
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.netk.annors.methods._METHOD
 import com.mozhimen.netk.commons.INetKChain
 import com.mozhimen.netk.commons.INetKInterceptor

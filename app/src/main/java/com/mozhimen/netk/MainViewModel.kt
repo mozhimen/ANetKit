@@ -1,9 +1,9 @@
 package com.mozhimen.netk
 
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import androidx.lifecycle.MutableLiveData
-import com.mozhimen.basick.elemk.androidx.lifecycle.bases.BaseViewModel
+import com.mozhimen.kotlin.elemk.androidx.lifecycle.bases.BaseViewModel
 import com.mozhimen.netk.commons.INetKListener
 import com.mozhimen.netk.customs.RxJavaResponse
 import com.mozhimen.netk.mos.NetKResponse

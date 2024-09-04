@@ -1,7 +1,7 @@
 package com.mozhimen.netk.helpers
 
 import android.util.Log
-import com.mozhimen.basick.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.basick.cachek.CacheK
 import com.mozhimen.basick.eventk.commons.HandlerRef
 import com.mozhimen.netk.annors._CacheStrategy
