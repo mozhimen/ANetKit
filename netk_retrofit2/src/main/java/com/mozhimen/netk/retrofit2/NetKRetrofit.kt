@@ -7,6 +7,7 @@ import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.java.io.UtilKFileDir
 import com.mozhimen.kotlin.utilk.javax.net.UtilKSSLSocketFactory
+import com.mozhimen.netk.retrofit2.impls.FlowCallAdapterFactory
 import com.mozhimen.netk.retrofit2.utils.NetKRetrofitUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,6 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import okhttp3.Cache
+import retrofit2.CallAdapter
 import java.io.File
 
 /**
@@ -29,10 +31,11 @@ open class NetKRetrofit constructor(
     readTimeoutSecond: Long = 15,
     cacheSize: Long = 0L,
     interceptors: List<Interceptor> = emptyList(),
-    networkInterceptors: List<Interceptor> = emptyList()
+    networkInterceptors: List<Interceptor> = emptyList(),
+    private val _callAdapterFactory: CallAdapter.Factory? = null
 ) : BaseUtilK() {
 
-    companion object{
+    companion object {
         val cacheFolder: File by lazy { File(UtilKFileDir.Internal.getCache(), "netk_retrofit_cache") }
     }
 
@@ -65,7 +68,7 @@ open class NetKRetrofit constructor(
         get() {
             if (field != null)
                 return field
-            return NetKRetrofitUtil.getRetrofit_ofMoshi(baseUrl, _okHttpClient).also { field = it }
+            return NetKRetrofitUtil.getDefaultRetrofit(baseUrl, _okHttpClient, callAdapterFactory = _callAdapterFactory).also { field = it }
         }
 
     /////////////////////////////////////////////////////////////////////////
@@ -80,7 +83,7 @@ open class NetKRetrofit constructor(
     @set:Synchronized
     var baseUrl: String = baseUrl
         set(value) {
-            _retrofit = NetKRetrofitUtil.getRetrofit_ofMoshi(value, _okHttpClient)
+            _retrofit = NetKRetrofitUtil.getDefaultRetrofit(value, _okHttpClient, callAdapterFactory = _callAdapterFactory)
             field = value
         }
 
