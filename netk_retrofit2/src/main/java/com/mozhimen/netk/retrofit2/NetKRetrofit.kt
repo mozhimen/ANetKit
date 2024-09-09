@@ -7,7 +7,6 @@ import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.java.io.UtilKFileDir
 import com.mozhimen.kotlin.utilk.javax.net.UtilKSSLSocketFactory
-import com.mozhimen.netk.retrofit2.impls.FlowCallAdapterFactory
 import com.mozhimen.netk.retrofit2.utils.NetKRetrofitUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -16,6 +15,7 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import okhttp3.Cache
 import retrofit2.CallAdapter
+import retrofit2.Converter
 import java.io.File
 
 /**
@@ -32,6 +32,7 @@ open class NetKRetrofit constructor(
     cacheSize: Long = 0L,
     interceptors: List<Interceptor> = emptyList(),
     networkInterceptors: List<Interceptor> = emptyList(),
+    private val _converterFactory: Converter.Factory,
     private val _callAdapterFactory: CallAdapter.Factory? = null
 ) : BaseUtilK() {
 
@@ -68,7 +69,11 @@ open class NetKRetrofit constructor(
         get() {
             if (field != null)
                 return field
-            return NetKRetrofitUtil.getDefaultRetrofit(baseUrl, _okHttpClient, callAdapterFactory = _callAdapterFactory).also { field = it }
+            return NetKRetrofitUtil.getDefaultRetrofit(
+                baseUrl, _okHttpClient,
+                converterFactory = _converterFactory,
+                callAdapterFactory = _callAdapterFactory
+            ).also { field = it }
         }
 
     /////////////////////////////////////////////////////////////////////////
@@ -83,7 +88,11 @@ open class NetKRetrofit constructor(
     @set:Synchronized
     var baseUrl: String = baseUrl
         set(value) {
-            _retrofit = NetKRetrofitUtil.getDefaultRetrofit(value, _okHttpClient, callAdapterFactory = _callAdapterFactory)
+            _retrofit = NetKRetrofitUtil.getDefaultRetrofit(
+                value, _okHttpClient,
+                converterFactory = _converterFactory,
+                callAdapterFactory = _callAdapterFactory
+            )
             field = value
         }
 

@@ -33,7 +33,6 @@ android {
 
 dependencies {
     implementation project(':SwiftKit:basick')
-    implementation project(':ASerialKit:serialk_moshi')
     implementation project(':ALibKit_Squareup:okhttp3')
     implementation project(':ALibKit_Squareup:okhttp3_logging_interceptor')
 

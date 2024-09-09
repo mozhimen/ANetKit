@@ -30,7 +30,13 @@ include ':netk_filedownload'
 include ':netk_filedownload_test'
 include ':netk_mqtt'
 include ':netk_mqtt_test'
-
+include ':netk_netty'
+include ':netk_lan_netty'
+include ':netk_okhttp3_interceptor'
+include ':netk_retrofit2_cache'
+include ':netk_retrofit2_cache_test'
+include ':netk_okhttp3_cache'
+include ':netk_okhttp3'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
@@ -54,11 +60,14 @@ include ':ALibKit_Squareup:retrofit2_adapter_rxjava2'
 include ':ALibKit_Squareup:okhttp3'
 include ':ALibKit_Squareup:okhttp3_logging_interceptor'
 include ':ALibKit_Squareup:moshi'
+//ACryptoKit
+include ':ACryptoKit'
+project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
+include ':ACryptoKit:cryptok_basic'
+//KUtilKit
+include ':KUtilKit'
+project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
+include ':KUtilKit:utilk_android'
+include ':KUtilKit:utilk_kotlin'
 
-include ':netk_netty'
-include ':netk_lan_netty'
-include ':netk_okhttp3_interceptor'
-include ':netk_retrofit2_cache'
-include ':netk_retrofit2_cache_test'
-include ':netk_okhttp3_cache'
-include ':netk_okhttp3'
+
