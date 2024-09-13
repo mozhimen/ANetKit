@@ -1,6 +1,5 @@
 package com.mozhimen.netk.retrofit2.helpers
 
-import com.google.gson.JsonParseException
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.android.util.e
 import com.mozhimen.netk.retrofit2.mos.MNetKThrowable
@@ -40,7 +39,7 @@ object NetKRepErrorParser : BaseUtilK() {
                 MNetKThrowable(e.code(), message)
             }
 
-            is JsonParseException, is JSONException -> {
+            is JSONException -> {
                 MNetKThrowable(CResCode.PARSE_ERROR, "解析失败")
             }
 

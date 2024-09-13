@@ -38,12 +38,14 @@ android {
 
 dependencies {
 
-    implementation project(':SwiftKit:basick')
+    implementation project(':SwiftKit:mvvmk')
     implementation project(':SwiftKit:xmlk')
     implementation project(':netk_retrofit2')
     implementation project(':netk_retrofit2_cache')
     implementation project(':netk_okhttp3_cache')
     implementation project(':netk_okhttp3_interceptor')
+    implementation project(':ASerialKit:serialk_moshi')
+    implementation project(':ALibKit_Squareup:retrofit2_converter_moshi')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

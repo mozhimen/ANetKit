@@ -43,6 +43,7 @@ project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
 include ':SwiftKit:servicek'
+include ':SwiftKit:mvvmk'
 //ACacheKit
 include ':ACacheKit'
 project(':ACacheKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACacheKit")
@@ -60,6 +61,7 @@ include ':ALibKit_Squareup:retrofit2_adapter_rxjava2'
 include ':ALibKit_Squareup:okhttp3'
 include ':ALibKit_Squareup:okhttp3_logging_interceptor'
 include ':ALibKit_Squareup:moshi'
+include ':ALibKit_Squareup:retrofit2_converter_moshi'
 //ACryptoKit
 include ':ACryptoKit'
 project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
