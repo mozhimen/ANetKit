@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation project(':SwiftKit:basick')
+    implementation project(':KUtilKit:utilk_android')
     implementation project(':ALibKit_Squareup:okhttp3')
     implementation project(':ALibKit_Squareup:okhttp3_logging_interceptor')
 
