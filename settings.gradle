@@ -73,3 +73,5 @@ include ':KUtilKit:utilk_android'
 include ':KUtilKit:utilk_kotlin'
 
 
+include ':netk_retrofit2_converter_kotlinx_serialization'
+include ':netk_retrofit2_adapter_kotlinx_coroutines'
