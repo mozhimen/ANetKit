@@ -8,7 +8,7 @@ import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import androidx.core.app.ActivityCompat
 import com.mozhimen.kotlin.elemk.android.content.cons.CPackageManager
 import com.mozhimen.kotlin.elemk.android.net.cons.ENetType
-import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDB
+import com.mozhimen.bindk.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.elemk.commons.IConnectionListener
 import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
 import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy

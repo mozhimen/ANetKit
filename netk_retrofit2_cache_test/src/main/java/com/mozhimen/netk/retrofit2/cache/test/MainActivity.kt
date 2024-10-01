@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.mvvmk.bases.activity.viewbinding.BaseActivityVBVM
+import com.mozhimen.bindk.bases.activity.viewbinding.BaseActivityVBVM
 import com.mozhimen.netk.retrofit2.cache.test.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
