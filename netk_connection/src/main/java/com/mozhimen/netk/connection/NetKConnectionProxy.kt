@@ -2,7 +2,7 @@ package com.mozhimen.netk.connection
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
-import com.mozhimen.kotlin.elemk.android.content.bases.BaseBroadcastReceiverProxy
+import com.mozhimen.basick.bases.BaseBroadcastReceiverProxy
 import com.mozhimen.kotlin.elemk.android.content.bases.BaseConnectivityBroadcastReceiver
 import com.mozhimen.kotlin.elemk.android.net.cons.CConnectivityManager
 import com.mozhimen.kotlin.elemk.commons.IConnectionListener
