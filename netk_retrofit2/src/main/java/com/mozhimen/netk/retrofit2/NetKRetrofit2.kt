@@ -25,7 +25,7 @@ import java.io.File
  * @Date 2022/5/12 16:01
  * @Version 1.0
  */
-open class NetKRetrofit constructor(
+open class NetKRetrofit2 constructor(
     baseUrl: String,
     connectTimeoutSecond: Long = 15,
     readTimeoutSecond: Long = 15,

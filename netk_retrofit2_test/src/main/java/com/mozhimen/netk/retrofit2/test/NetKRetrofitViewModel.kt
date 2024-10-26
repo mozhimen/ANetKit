@@ -32,7 +32,7 @@ class NetKRetrofitViewModel : BaseViewModel() {
     fun getRealtimeWeatherCoroutine() {
         val time = System.currentTimeMillis()
         viewModelScope.launch(Dispatchers.IO) {
-            NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
+            NetKHelper.createStringFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
                 onSuccess = { data ->
                     uiWeather1.postValue(data.id.toString() + " ${System.currentTimeMillis() - time}")
                 }, onFail = { code, msg ->
@@ -44,7 +44,7 @@ class NetKRetrofitViewModel : BaseViewModel() {
     suspend fun getRealtimeWeatherCoroutine1(): String = suspendCancellableCoroutine { coroutine ->
         viewModelScope.launch(Dispatchers.IO) {
             val time = System.currentTimeMillis()
-            NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
+            NetKHelper.createStringFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
                 onSuccess = { data ->
                     coroutine.resume(data.id.toString() + " ${System.currentTimeMillis() - time}")
                 }, onFail = { code, msg ->
@@ -56,7 +56,7 @@ class NetKRetrofitViewModel : BaseViewModel() {
     fun getRealtimeWeatherCoroutineSync() {
         viewModelScope.launch(Dispatchers.IO) {
             val time = System.currentTimeMillis()
-            val res = NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKResSync()
+            val res = NetKHelper.createStringFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKResSync()
             if (res.bean != null) {
                 uiWeather2.postValue(res.bean!!.id.toString() + " ${System.currentTimeMillis() - time}")
             } else {
@@ -96,7 +96,7 @@ class NetKRetrofitViewModel : BaseViewModel() {
     fun getRealtimeWeatherOkhttp3Cache() {
         viewModelScope.launch(Dispatchers.IO) {
             val time= System.currentTimeMillis()
-            val res = NetKHelper.createFlow { ApiFactory.apisOkHttp3Cache.get_ofOkhttp3Cache("AleynText", "Aleyn123") }.asNetKResSync()
+            val res = NetKHelper.createStringFlow { ApiFactory.apisOkHttp3Cache.get_ofOkhttp3Cache("AleynText", "Aleyn123") }.asNetKResSync()
             if (res.bean != null) {
                 uiWeather4.postValue(res.bean!!.data.toString() + " ${System.currentTimeMillis() - time}")
             } else {
