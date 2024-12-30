@@ -1,6 +1,6 @@
-package com.mozhimen.netk.okhttp3.impls
+package com.mozhimen.netk.okhttp3.cache.helpers
 
-import com.mozhimen.netk.okhttp3.utils.NetKOkhttp3Util
+import com.mozhimen.netk.okhttp3.cache.impls.ResponseBodyCache
 import okhttp3.CipherSuite
 import okhttp3.Handshake
 import okhttp3.Headers
@@ -119,7 +119,7 @@ class Entry {
 
     constructor(response: Response) {
         this.url = response.request.url
-        this.varyHeaders = NetKOkhttp3Util.varyHeaders(response)
+        this.varyHeaders = varyHeaders(response)
         this.requestMethod = response.request.method
         this.protocol = response.protocol
         this.code = response.code
@@ -135,7 +135,7 @@ class Entry {
     fun matches(request: Request, response: Response): Boolean {
         return url == request.url &&
                 requestMethod == request.method &&
-                NetKOkhttp3Util.varyMatches(response, varyHeaders, request)
+                varyMatches(response, varyHeaders, request)
     }
 
     fun response(request: Request, snapshot: DiskLruCache.Snapshot): Response {
@@ -147,7 +147,7 @@ class Entry {
             .code(code)
             .message(message)
             .headers(responseHeaders)
-            .body(CacheResponseBody(snapshot, contentType, contentLength))
+            .body(ResponseBodyCache(snapshot, contentType, contentLength))
             .handshake(handshake)
             .sentRequestAtMillis(sentRequestMillis)
             .receivedResponseAtMillis(receivedResponseMillis)
@@ -196,6 +196,54 @@ class Entry {
     }
 
     /////////////////////////////////////////////////////////////////////////////
+
+    private fun varyFields(headers: Headers): Set<String> {
+        var result: MutableSet<String>? = null
+        for (i in 0 until headers.size) {
+            if (!"Vary".equals(headers.name(i), ignoreCase = true)) {
+                continue
+            }
+
+            val value = headers.value(i)
+            if (result == null) {
+                result = TreeSet(String.CASE_INSENSITIVE_ORDER)
+            }
+            for (varyField in value.split(',')) {
+                result.add(varyField.trim())
+            }
+        }
+        return result ?: emptySet()
+    }
+
+    private fun varyMatches(
+        cachedResponse: Response,
+        cachedRequest: Headers,
+        newRequest: Request
+    ): Boolean {
+        return varyFields(cachedResponse.headers).none {
+            cachedRequest.values(it) != newRequest.headers(it)
+        }
+    }
+
+    private fun varyHeaders(response: Response): Headers {
+        val requestHeaders = response.networkResponse!!.request.headers
+        val responseHeaders = response.headers
+        return varyHeaders(requestHeaders, responseHeaders)
+    }
+
+    private fun varyHeaders(requestHeaders: Headers, responseHeaders: Headers): Headers {
+        val varyFields = varyFields(responseHeaders)
+        if (varyFields.isEmpty()) return EMPTY_HEADERS
+
+        val result = Headers.Builder()
+        for (i in 0 until requestHeaders.size) {
+            val fieldName = requestHeaders.name(i)
+            if (fieldName in varyFields) {
+                result.add(fieldName, requestHeaders.value(i))
+            }
+        }
+        return result.build()
+    }
 
     @Throws(IOException::class)
     private fun readCertificateList(source: BufferedSource): List<Certificate> {

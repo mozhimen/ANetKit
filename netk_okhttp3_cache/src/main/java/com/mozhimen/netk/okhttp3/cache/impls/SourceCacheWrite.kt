@@ -1,4 +1,4 @@
-package com.mozhimen.netk.okhttp3.impls
+package com.mozhimen.netk.okhttp3.cache.impls
 
 import okhttp3.internal.cache.CacheRequest
 import okhttp3.internal.discard
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
  * @Date 2024/8/2
  * @Version 1.0
  */
-class CacheWriteSource constructor(
+class SourceCacheWrite constructor(
     private val _bufferedSource: BufferedSource,
     private val _cacheRequest: CacheRequest,
     private val _bufferedSink: BufferedSink

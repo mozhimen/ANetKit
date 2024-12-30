@@ -13,6 +13,6 @@ import okhttp3.logging.HttpLoggingInterceptor
  */
 object InterceptorUtil {
     @JvmStatic
-    fun getHttpLoggingInterceptor(tag: String): HttpLoggingInterceptor =
+    fun get_ofHttpLogging(tag: String): HttpLoggingInterceptor =
         HttpLoggingInterceptor { msg -> UtilKLogWrapper.pringln_ofLongLog(CLog.VERBOSE, tag, msg) }.also { it.level = HttpLoggingInterceptor.Level.BODY }
 }

@@ -1,21 +1,15 @@
 package com.mozhimen.netk.okhttp3.cache.impls
 
-import android.util.Log
 import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.netk.okhttp3.cache.NetKOkhttp3Cache
 import com.mozhimen.netk.okhttp3.cache.annors.ACacheMode
 import com.mozhimen.netk.okhttp3.cache.commons.IOkhttp3Cache
-import com.mozhimen.netk.okhttp3.cache.helpers.CacheUtil
-import com.mozhimen.netk.okhttp3.cache.mos.CacheStrategy
-import com.mozhimen.netk.okhttp3.impls.CacheWriteSource
+import com.mozhimen.netk.okhttp3.cache.utils.CacheUtil
 import com.mozhimen.netk.okhttp3.interceptor.commons.IInterceptor
 import okhttp3.Interceptor
-import okhttp3.Protocol
-import okhttp3.Request
 import okhttp3.Response
 import okhttp3.internal.EMPTY_RESPONSE
 import okhttp3.internal.cache.CacheRequest
-import okhttp3.internal.closeQuietly
 import okhttp3.internal.http.RealResponseBody
 import okio.buffer
 import java.io.IOException
@@ -87,7 +81,7 @@ class InterceptorOkhttp3Cache(
         val cacheBodyUnbuffered = cacheRequest.body()
         val source = response.body!!.source()
         val cacheBody = cacheBodyUnbuffered.buffer()
-        val cacheWritingSource = CacheWriteSource(source, cacheRequest, cacheBody)
+        val cacheWritingSource = SourceCacheWrite(source, cacheRequest, cacheBody)
         val contentType = response.header("Content-Type")
         val contentLength = response.body!!.contentLength()
         return response.newBuilder()

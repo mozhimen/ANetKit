@@ -3,9 +3,9 @@ package com.mozhimen.netk.okhttp3.cache
 import com.mozhimen.kotlin.utilk.kotlin.megaBytes
 import com.mozhimen.netk.okhttp3.cache.annors.ACacheMode
 import com.mozhimen.netk.okhttp3.cache.commons.IOkhttp3Cache
-import com.mozhimen.netk.okhttp3.impls.CacheResponseBody
-import com.mozhimen.netk.okhttp3.impls.Entry
-import com.mozhimen.netk.okhttp3.utils.NetKOkhttp3Util
+import com.mozhimen.netk.okhttp3.cache.helpers.Entry
+import com.mozhimen.netk.okhttp3.cache.impls.ResponseBodyCache
+import com.mozhimen.netk.okhttp3.cache.utils.CacheUtil
 import okhttp3.*
 import okhttp3.internal.cache.CacheRequest
 import okhttp3.internal.cache.DiskLruCache
@@ -64,7 +64,7 @@ class NetKOkhttp3Cache(
     ///////////////////////////////////////////////////////////////////////////////
 
     val diskLruCache: DiskLruCache =
-        NetKOkhttp3Util.getDiskLruCache(directory, 1, 2, maxSize)
+        CacheUtil.getDiskLruCache(directory, 1, 2, maxSize)
 
     val isClosed: Boolean
         get() = diskLruCache.isClosed()
@@ -78,7 +78,7 @@ class NetKOkhttp3Cache(
     ///////////////////////////////////////////////////////////////////////////////
 
     override fun getCache(cacheKey: String, request: Request): Response? {
-        val key = NetKOkhttp3Util.encodeUtf8_md5_hex(cacheKey)
+        val key = CacheUtil.encodeUtf8_md5_hex(cacheKey)
         val snapshot: DiskLruCache.Snapshot = try {
             diskLruCache[key] ?: return null
         } catch (e: IOException) {
@@ -115,11 +115,11 @@ class NetKOkhttp3Cache(
     }
 
     override fun putCache(cacheKey: String, response: Response): CacheRequest? {
-        if (NetKOkhttp3Util.hasVaryAll(response)) return null
+        if (hasVaryAll(response)) return null
         val entry = Entry(response)
         var editor: DiskLruCache.Editor? = null
         return try {
-            val redKey = NetKOkhttp3Util.encodeUtf8_md5_hex(cacheKey)
+            val redKey = CacheUtil.encodeUtf8_md5_hex(cacheKey)
             editor = diskLruCache.edit(redKey) ?: return null
             entry.writeTo(editor)
             RealCacheRequest(editor)
@@ -130,7 +130,7 @@ class NetKOkhttp3Cache(
     }
 
     override fun removeCache(cacheKey: String) {
-        diskLruCache.remove(NetKOkhttp3Util.encodeUtf8_md5_hex(cacheKey))
+        diskLruCache.remove(CacheUtil.encodeUtf8_md5_hex(cacheKey))
     }
 
     override fun removeAll() {
@@ -181,6 +181,27 @@ class NetKOkhttp3Cache(
 
     ///////////////////////////////////////////////////////////////////////////////
 
+    private fun hasVaryAll(response: Response): Boolean =
+        "*" in varyFields(response.headers)
+
+    private fun varyFields(headers: Headers): Set<String> {
+        var result: MutableSet<String>? = null
+        for (i in 0 until headers.size) {
+            if (!"Vary".equals(headers.name(i), ignoreCase = true)) {
+                continue
+            }
+
+            val value = headers.value(i)
+            if (result == null) {
+                result = TreeSet(String.CASE_INSENSITIVE_ORDER)
+            }
+            for (varyField in value.split(',')) {
+                result.add(varyField.trim())
+            }
+        }
+        return result ?: emptySet()
+    }
+
     private fun abortQuietly(editor: DiskLruCache.Editor?) {
         try {
             editor?.abort()
@@ -193,7 +214,7 @@ class NetKOkhttp3Cache(
     private inner class RealCacheRequest(
         private val editor: DiskLruCache.Editor
     ) : CacheRequest {
-        private val cacheOut: Sink = editor.newSink(CacheResponseBody.ENTRY_BODY)
+        private val cacheOut: Sink = editor.newSink(ResponseBodyCache.ENTRY_BODY)
         private val body: Sink
         var done = false
 

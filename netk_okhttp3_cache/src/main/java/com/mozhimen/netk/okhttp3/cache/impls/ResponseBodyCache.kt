@@ -1,4 +1,4 @@
-package com.mozhimen.netk.okhttp3.impls
+package com.mozhimen.netk.okhttp3.cache.impls
 
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -17,7 +17,7 @@ import java.io.IOException
  * @Date 2024/8/2
  * @Version 1.0
  */
-class CacheResponseBody(
+class ResponseBodyCache(
     val snapshot: DiskLruCache.Snapshot,
     private val contentType: String?,
     private val contentLength: String?

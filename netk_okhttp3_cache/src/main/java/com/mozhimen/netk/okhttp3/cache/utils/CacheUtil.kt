@@ -1,12 +1,22 @@
-package com.mozhimen.netk.okhttp3.cache.helpers
+package com.mozhimen.netk.okhttp3.cache.utils
 
 import com.mozhimen.netk.okhttp3.cache.NetKOkhttp3Cache
 import com.mozhimen.netk.okhttp3.cache.annors.ACacheMode
 import com.mozhimen.netk.okhttp3.cache.cons.CCacheHeaders
 import com.mozhimen.netk.okhttp3.cache.mos.CacheStrategy
 import okhttp3.Request
+import okhttp3.internal.cache.DiskLruCache
+import okhttp3.internal.concurrent.TaskRunner
+import okhttp3.internal.io.FileSystem
+import okhttp3.internal.threadFactory
 import okio.Buffer
+import okio.ByteString.Companion.encodeUtf8
 import java.io.EOFException
+import java.io.File
+import java.util.concurrent.Executor
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
 /**
  * @author : Aleyn
@@ -92,6 +102,47 @@ object CacheUtil {
             return true
         } catch (_: EOFException) {
             return false
+        }
+    }
+
+    @JvmStatic
+    fun encodeUtf8_md5_hex(str: String): String =
+        str.encodeUtf8().md5().hex()
+
+    @JvmStatic
+    fun getDiskLruCache(
+        directory: File,
+        appVersion: Int,
+        valueCount: Int,
+        maxSize: Long
+    ): DiskLruCache =
+        DiskLruCache(FileSystem.SYSTEM, directory, appVersion, valueCount, maxSize, TaskRunner.INSTANCE)
+
+    /**
+     * OkHttp 4.0.0 版本开始用 Kotlin 重构， DiskLruCache 的构造函数被 internal 来修饰了，导致kotlin 无法直接创建，坑爹啊。
+     * 不过 Java 可以无视 Kotlin 的 internal 关键字，可以直接过编译期
+     * 这里为了版本兼容没有用 Java 过度 ，还是统一反射创建
+     */
+    @JvmStatic
+    fun getDiskLruCache_ofReflect(
+        directory: File,
+        appVersion: Int,
+        valueCount: Int,
+        maxSize: Long
+    ): DiskLruCache {
+        val clazzDiskLruCache = DiskLruCache::class.java
+        return try {
+            val clazzTaskRunner = Class.forName("okhttp3.internal.concurrent.TaskRunner")
+            val constructorDiskLruCache = clazzDiskLruCache.getConstructor(FileSystem::class.java, File::class.java, Int::class.java, Int::class.java, Long::class.java, clazzTaskRunner)
+            constructorDiskLruCache.newInstance(FileSystem.SYSTEM, directory, appVersion, valueCount, maxSize, TaskRunner.INSTANCE)
+        } catch (e: Exception) {
+            try {
+                val constructorDiskLruCache = clazzDiskLruCache.getConstructor(FileSystem::class.java, File::class.java, Int::class.java, Int::class.java, Long::class.java, Executor::class.java)
+                val threadPoolExecutor = ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, LinkedBlockingQueue(), threadFactory("OkHttp DiskLruCache", true))
+                constructorDiskLruCache.newInstance(FileSystem.SYSTEM, directory, appVersion, valueCount, maxSize, threadPoolExecutor)
+            } catch (e: Exception) {
+                throw IllegalArgumentException("Please use okhttp 4.0.0 or later")
+            }
         }
     }
 }

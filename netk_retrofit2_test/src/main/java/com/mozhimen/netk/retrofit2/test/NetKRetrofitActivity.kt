@@ -2,7 +2,7 @@ package com.mozhimen.netk.retrofit2.test
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import com.mozhimen.bindk.bases.activity.databinding.BaseActivityVDBVM
+import com.mozhimen.bindk.bases.viewdatabinding.activity.BaseActivityVDBVM
 import com.mozhimen.kotlin.elemk.android.cons.CPermission
 import com.mozhimen.manifestk.permission.ManifestKPermission
 import com.mozhimen.manifestk.permission.annors.APermissionCheck
