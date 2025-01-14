@@ -37,8 +37,8 @@ android {
 }
 
 dependencies {
-    implementation project(':SwiftKit:basick')
-    implementation project(':SwiftKit:servicek')
+    implementation project(':ASwiftKit:basick')
+    implementation project(':ASwiftKit:servicek')
     implementation project(':netk_mqtt')
 
 //    implementation 'androidx.core:core-ktx:1.10.1'

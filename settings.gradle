@@ -37,13 +37,13 @@ include ':netk_retrofit2_cache'
 include ':netk_retrofit2_cache_test'
 include ':netk_okhttp3_cache'
 include ':netk_okhttp3'
-//SwiftKit
-include ':SwiftKit'
-project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
-include ':SwiftKit:basick'
-include ':SwiftKit:xmlk'
-include ':SwiftKit:servicek'
-include ':SwiftKit:bindk'
+//ASwiftKit
+include ':ASwiftKit'
+project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
+include ':ASwiftKit:basick'
+include ':ASwiftKit:xmlk'
+include ':ASwiftKit:servicek'
+include ':ASwiftKit:bindk'
 //ACacheKit
 include ':ACacheKit'
 project(':ACacheKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACacheKit")

@@ -1,0 +1,3 @@
+-keepattributes Signature,InnerClasses
+-keepclasseswithmembers class io.netty.** {*;}
+-keepnames class io.netty.** {*;}

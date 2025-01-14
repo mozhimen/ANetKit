@@ -12,13 +12,13 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+//        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -34,8 +34,8 @@ dependencies {
     //mqtt
     api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
     api 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-    implementation project(':SwiftKit:basick')
-    implementation project(':SwiftKit:servicek')
+    implementation project(':ASwiftKit:basick')
+    implementation project(':ASwiftKit:servicek')
     implementation project(':ASerialKit:serialk_moshi')
     implementation project(':ACacheKit:cachek_sharedpreferences')
 
