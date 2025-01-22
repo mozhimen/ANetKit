@@ -1,27 +1,24 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
 }
 
 android {
-    namespace "com.mozhimen.netk"
+    namespace 'com.mozhimen.netk.okhttp3.cache'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.mozhimen.netktest"
-        minSdk 21
-        targetSdk 33
-        versionCode 1
-        versionName "1.0.0"
+        minSdk 19
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -31,14 +28,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
-        dataBinding true
-    }
 }
 
 dependencies {
-    implementation project(':netk')
-    implementation project(':connection')
+    implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3')
+    implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3:interceptor')
+    implementation project(':ALibKit_Squareup:okhttp3')
     implementation project(':ASwiftKit:basick')
 
     testImplementation 'junit:junit:4.13.2'

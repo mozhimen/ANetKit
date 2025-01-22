@@ -5,17 +5,17 @@ plugins {
 }
 
 android {
-    namespace "com.mozhimen.netk"
-    compileSdk 34
+    namespace 'com.mozhimen.netk.file.test'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.mozhimen.netktest"
-        minSdk 21
+        applicationId "com.mozhimen.netk.file.test"
+        minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -37,9 +37,10 @@ android {
 }
 
 dependencies {
-    implementation project(':netk')
-    implementation project(':connection')
     implementation project(':ASwiftKit:basick')
+    implementation project(':ASwiftKit:xmlk')
+    implementation project(':file:okdownload')
+    implementation project(':ANetKit_okdownload:okdownload')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

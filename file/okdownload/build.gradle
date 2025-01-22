@@ -1,21 +1,17 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
 }
 
 android {
-    namespace "com.mozhimen.netk"
+    namespace 'com.mozhimen.netk.file.okdownload'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.mozhimen.netktest"
-        minSdk 21
-        targetSdk 33
-        versionCode 1
-        versionName "1.0.0"
+        minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -31,15 +27,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
-        dataBinding true
-    }
 }
 
 dependencies {
-    implementation project(':netk')
-    implementation project(':connection')
+
     implementation project(':ASwiftKit:basick')
+    implementation project(':ANetKit_okdownload:okdownload')
+    implementation project(':ANetKit_okdownload:okdownload-breakpoint-sqlite')
+    implementation project(':ANetKit_okdownload:okdownload-connection-okhttp')
+    implementation project(':ANetKit_okdownload:okdownload_ext')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

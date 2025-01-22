@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    namespace "com.mozhimen.netk"
+    namespace 'com.mozhimen.netk.retrofit2.cache.test'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.mozhimen.netktest"
+        applicationId "com.mozhimen.netk.retrofit2.cache.test"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,15 +31,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
-        dataBinding true
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
-    implementation project(':netk')
-    implementation project(':connection')
     implementation project(':ASwiftKit:basick')
+    implementation project(':ASwiftKit:xmlk')
+    implementation project(':retrofit2')
+    implementation project(':retrofit2:cache')
+    implementation project(':okhttp3:interceptor')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

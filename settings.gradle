@@ -20,23 +20,56 @@ dependencyResolutionManagement {
 rootProject.name = "ANetKit"
 include ':app'
 include ':netk'
-include ':netk_connection'
-include ':netk_connection_test'
-include ':netk_observer'
-include ':netk_observer_test'
-include ':netk_retrofit2'
-include ':netk_retrofit2_test'
-include ':netk_filedownload'
-include ':netk_filedownload_test'
-include ':netk_mqtt'
-include ':netk_mqtt_test'
-include ':netk_netty'
-include ':netk_lan_netty'
-include ':netk_okhttp3_interceptor'
-include ':netk_retrofit2_cache'
-include ':netk_retrofit2_cache_test'
-include ':netk_okhttp3_cache'
-include ':netk_okhttp3'
+include ':connection'
+include ':connection:test'
+include ':observer'
+include ':observer:test'
+include ':retrofit2'
+include ':retrofit2:test'
+include ':file:download'
+include ':file:download:test'
+include ':file:okdownload'
+include ':file:okdownload:test'
+include ':mqtt'
+include ':mqtt:test'
+include ':netty'
+include ':lan_netty'
+include ':okhttp3:interceptor'
+include ':okhttp3:cache'
+include ':okhttp3'
+include ':retrofit2:cache'
+include ':retrofit2:cache:test'
+include ':retrofit2:converter_kotlinx_serialization'
+include ':retrofit2:adapter_kotlinx_coroutines'
+//ALibKit_Google
+include ':ALibKit_Google'
+project(':ALibKit_Google').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Google")
+include ':ALibKit_Google:material'
+//ALibKit_Jetpack
+include ':ALibKit_Jetpack'
+project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
+include ':ALibKit_Jetpack:databinding'
+include ':ALibKit_Jetpack:core'
+include ':ALibKit_Jetpack:annotation'
+//ALibKit_Squareup
+include ':ALibKit_Squareup'
+project(':ALibKit_Squareup').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Squareup")
+include ':ALibKit_Squareup:retrofit2'
+include ':ALibKit_Squareup:retrofit2_adapter_rxjava2'
+include ':ALibKit_Squareup:okhttp3'
+include ':ALibKit_Squareup:okhttp3_logging_interceptor'
+include ':ALibKit_Squareup:moshi'
+include ':ALibKit_Squareup:retrofit2_converter_moshi'
+//ALibKit_Jetbrains
+include ':ALibKit_Jetbrains'
+project(':ALibKit_Jetbrains').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetbrains")
+include ':ALibKit_Jetbrains:kotlin_stdlib'
+include ':ALibKit_Jetbrains:kotlinx_coroutines'
+//KUtilKit
+include ':KUtilKit'
+project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
+include ':KUtilKit:android'
+include ':KUtilKit:kotlin'
 //ASwiftKit
 include ':ASwiftKit'
 project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
@@ -47,31 +80,24 @@ include ':ASwiftKit:bindk'
 //ACacheKit
 include ':ACacheKit'
 project(':ACacheKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACacheKit")
-include ':ACacheKit:cachek_sharedpreferences'
-include ':ACacheKit:cachek_basic'
+include ':ACacheKit:sharedpreferences'
+include ':ACacheKit:basic'
 //ASerialKit
 include ':ASerialKit'
 project(':ASerialKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASerialKit")
-include ':ASerialKit:serialk_moshi'
-//ALibKit_Squareup
-include ':ALibKit_Squareup'
-project(':ALibKit_Squareup').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Squareup")
-include ':ALibKit_Squareup:retrofit2'
-include ':ALibKit_Squareup:retrofit2_adapter_rxjava2'
-include ':ALibKit_Squareup:okhttp3'
-include ':ALibKit_Squareup:okhttp3_logging_interceptor'
-include ':ALibKit_Squareup:moshi'
-include ':ALibKit_Squareup:retrofit2_converter_moshi'
+include ':ASerialKit:moshi'
 //ACryptoKit
 include ':ACryptoKit'
 project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
-include ':ACryptoKit:cryptok_basic'
-//KUtilKit
-include ':KUtilKit'
-project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
-include ':KUtilKit:utilk_android'
-include ':KUtilKit:utilk_kotlin'
+include ':ACryptoKit:basic'
+//ANetKit_okdownload
+include ':ANetKit_okdownload'
+project(':ANetKit_okdownload').projectDir = new File("D:\\WorkSpace\\GitHub\\ANetKit_okdownload")
+include ':ANetKit_okdownload:okdownload'
+include ':ANetKit_okdownload:okdownload-breakpoint-sqlite'
+include ':ANetKit_okdownload:okdownload-connection-okhttp'
+include ':ANetKit_okdownload:okdownload_ext'
 
 
-include ':netk_retrofit2_converter_kotlinx_serialization'
-include ':netk_retrofit2_adapter_kotlinx_coroutines'
+
+
