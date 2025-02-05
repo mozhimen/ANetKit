@@ -3,7 +3,7 @@ package com.mozhimen.netk.observer.test
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.bindk.bases.activity.databinding.BaseActivityVDB
+import com.mozhimen.uik.databinding.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.lintk.optins.application.OApplication_USES_CLEAR_TEXT_TRAFFIC
 import com.mozhimen.kotlin.elemk.android.cons.CPermission
 import com.mozhimen.manifestk.permission.ManifestKPermission
