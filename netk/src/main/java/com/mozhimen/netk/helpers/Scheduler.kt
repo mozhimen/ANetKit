@@ -17,9 +17,7 @@ import com.mozhimen.netk.mos.NetKResponse
 class Scheduler(
     private val _factory: INetKFactory,
     private val _interceptors: MutableList<INetKInterceptor>
-) {
-    private val TAG = "Scheduler>>>>>"
-
+) :IUtilK {
     fun newCall(request: NetKRequest): INetKCall<*> {
         val newCall: INetKCall<*> = _factory.newCall(request)
         return NetKCallProxy(newCall, request)
