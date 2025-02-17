@@ -2,6 +2,29 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
+      <module name="ANetKit.ACacheKit.cachek_basic" target="17" />
+      <module name="ANetKit.ACacheKit.cachek_sharedpreferences" target="17" />
+      <module name="ANetKit.ACryptoKit.cryptok_basic" target="17" />
+      <module name="ANetKit.ASerialKit.serialk_moshi" target="17" />
+      <module name="ANetKit.netk_connection" target="17" />
+      <module name="ANetKit.netk_connection_test" target="17" />
+      <module name="ANetKit.netk_filedownload" target="17" />
+      <module name="ANetKit.netk_filedownload_test" target="17" />
+      <module name="ANetKit.netk_lan_netty" target="17" />
+      <module name="ANetKit.netk_mqtt" target="17" />
+      <module name="ANetKit.netk_mqtt_test" target="17" />
+      <module name="ANetKit.netk_netty" target="17" />
+      <module name="ANetKit.netk_observer" target="17" />
+      <module name="ANetKit.netk_observer_test" target="17" />
+      <module name="ANetKit.netk_okhttp3" target="17" />
+      <module name="ANetKit.netk_okhttp3_cache" target="17" />
+      <module name="ANetKit.netk_okhttp3_interceptor" target="17" />
+      <module name="ANetKit.netk_retrofit2" target="17" />
+      <module name="ANetKit.netk_retrofit2_adapter_kotlinx_coroutines" target="17" />
+      <module name="ANetKit.netk_retrofit2_cache" target="17" />
+      <module name="ANetKit.netk_retrofit2_cache_test" target="17" />
+      <module name="ANetKit.netk_retrofit2_converter_kotlinx_serialization" target="17" />
+      <module name="ANetKit.netk_retrofit2_test" target="17" />
       <module name="ANetKit.SwiftKit.basick" target="17" />
       <module name="ANetKit.SwiftKit.bindk" target="17" />
       <module name="ANetKit.SwiftKit.servicek" target="17" />

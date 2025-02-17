@@ -31,8 +31,14 @@ android {
 }
 
 dependencies {
-    implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3')
-    implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3:interceptor')
+    if (rootProject.name=="ANetKit"){
+        implementation project(/*project.path.replace(project.name,'')+*/':okhttp3')
+        implementation project(/*project.path.replace(project.name,'')+*/':okhttp3:interceptor')
+    }else {
+        implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3')
+        implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3:interceptor')
+
+    }
     implementation project(':ALibKit_Squareup:okhttp3')
     implementation project(':ASwiftKit:basick')
 
