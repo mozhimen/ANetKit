@@ -41,7 +41,7 @@ class NetKRetrofitViewModel : BaseViewModel() {
         }
     }
 
-    suspend fun getRealtimeWeatherCoroutine1(): String = suspendCancellableCoroutine { coroutine ->
+    suspend fun getRealtimeWeatherCoroutine1(): String = suspendCancellableCoroutine { continuation ->
         viewModelScope.launch(Dispatchers.IO) {
             val time = System.currentTimeMillis()
             NetKHelper.createStringFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
