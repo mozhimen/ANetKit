@@ -99,5 +99,4 @@ include ':ANetKit_okdownload:okdownload-connection-okhttp'
 include ':ANetKit_okdownload:okdownload_ext'
 
 
-
-
+include ':netty:test'
