@@ -1,4 +1,7 @@
-package com.mozhimen.netk.lan.netty.client;
+package com.mozhimen.netk.netty;
+
+import com.mozhimen.netk.netty.mos.Message;
+import com.mozhimen.netk.netty.utils.UtilByteBuf;
 
 import java.util.List;
 
@@ -49,9 +52,9 @@ public class DemoDecoder extends ByteToMessageDecoder {
         }
         ByteBuf readBytes = byteBuf.readBytes(packetSize);
 
-        DemoMessage message = new DemoMessage();
-        message.setMessageSize(packetSize);
-        message.setBody(ProtocolUtils.getString(readBytes, packetSize));
+        Message message = new Message();
+        message.setLen(packetSize);
+        message.setBody(UtilByteBuf.readString(readBytes, packetSize));
 
         packetSize = 0;
         list.add(message);

@@ -1,13 +1,14 @@
-package com.mozhimen.netk.lan.netty.client.client;
+package com.mozhimen.netk.netty.client;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.mozhimen.netk.lan.netty.client.DemoDecoder;
-import com.mozhimen.netk.lan.netty.client.DemoEncoder;
-import com.mozhimen.netk.lan.netty.client.DemoMessage;
-import com.mozhimen.netk.lan.netty.client.UIScheduler;
+import com.mozhimen.netk.netty.DemoDecoder;
+import com.mozhimen.netk.netty.DemoEncoder;
+import com.mozhimen.netk.netty.UIScheduler;
+import com.mozhimen.netk.netty.commons.IConnectClientListener;
+import com.mozhimen.netk.netty.mos.Message;
 
 import java.util.concurrent.TimeUnit;
 
@@ -80,7 +81,7 @@ public class ConnectionClient {
 
     private IdleStateHandler mIdleStateHandler;
 
-    IConnectionListener connectionListener;
+    IConnectClientListener connectionListener;
 
     private ConnectionClient() {
 
@@ -104,7 +105,7 @@ public class ConnectionClient {
     /**
      * 初始化
      */
-    public void init(@NonNull String ip, int port, IConnectionListener listener) {
+    public void init(@NonNull String ip, int port, IConnectClientListener listener) {
         reconnectIndex = 0;
         this.connectionListener = listener;
         this.disConnected = false;
@@ -144,7 +145,7 @@ public class ConnectionClient {
     public void connect() {
         try {
             if (connectionListener != null) {
-                connectionListener.onStartConnect();
+                connectionListener.onServerConnectStart();
             }
             if (mBootstrap == null || isConnected || connecting) {
                 return;
@@ -191,7 +192,7 @@ public class ConnectionClient {
             mChannel.writeAndFlush(object).addListener(new GenericFutureListener<Future<? super Void>>() {
                 @Override
                 public void operationComplete(Future<? super Void> future) {
-                    DemoMessage message = (DemoMessage) object;
+                    Message message = (Message) object;
                     writeLog("writeMessage success " + message.getBody());
                 }
             });
@@ -276,10 +277,10 @@ public class ConnectionClient {
         }
     }
 
-    public class CustomHandler extends SimpleChannelInboundHandler<DemoMessage> {
+    public class CustomHandler extends SimpleChannelInboundHandler<Message> {
 
         @Override
-        protected void channelRead0(ChannelHandlerContext channelHandlerContext, final DemoMessage message) {
+        protected void channelRead0(ChannelHandlerContext channelHandlerContext, final Message message) {
             //接收来自服务端的消息
             notifyReceiveMessage(message);
         }
@@ -371,7 +372,7 @@ public class ConnectionClient {
     private void notifyConnectFailure() {
         runOnUi(() -> {
             if (connectionListener != null) {
-                connectionListener.onConnectFailure();
+                connectionListener.onServerConnectFail();
             }
         });
     }
@@ -383,7 +384,7 @@ public class ConnectionClient {
         runOnUi(() -> {
             reconnectIndex = 0;
             if (connectionListener != null) {
-                connectionListener.onConnect();
+                connectionListener.onServerConnect();
             }
         });
     }
@@ -395,7 +396,7 @@ public class ConnectionClient {
         runOnUi(() -> {
             reconnectIndex = 0;
             if (connectionListener != null) {
-                connectionListener.onDisConnect(disConnected);
+                connectionListener.onServerDisconnect(disConnected);
             }
         });
     }
@@ -405,10 +406,10 @@ public class ConnectionClient {
      *
      * @param message 消息
      */
-    private void notifyReceiveMessage(DemoMessage message) {
+    private void notifyReceiveMessage(Message message) {
         runOnUi(() -> {
             if (connectionListener != null) {
-                connectionListener.onReceiveMessage(message);
+                connectionListener.onServerReceiveMessage(message);
             }
         });
     }
@@ -419,7 +420,7 @@ public class ConnectionClient {
     private void notifyReInit() {
         runOnUiDelay(() -> {
             if (connectionListener != null) {
-                connectionListener.onReInit();
+                connectionListener.onServerReconnect();
             }
         }, TIME_DELAY_CONNECT);
 

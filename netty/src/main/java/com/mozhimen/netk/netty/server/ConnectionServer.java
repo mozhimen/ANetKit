@@ -1,12 +1,13 @@
-package com.mozhimen.netk.lan.netty.client.server;
+package com.mozhimen.netk.netty.server;
 
 import android.content.Context;
 import android.util.Log;
 
 
-import com.mozhimen.netk.lan.netty.client.DemoDecoder;
-import com.mozhimen.netk.lan.netty.client.DemoEncoder;
-import com.mozhimen.netk.lan.netty.client.DemoMessage;
+import com.mozhimen.netk.netty.DemoDecoder;
+import com.mozhimen.netk.netty.DemoEncoder;
+import com.mozhimen.netk.netty.commons.IConnectServerListener;
+import com.mozhimen.netk.netty.mos.Message;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -57,7 +58,7 @@ public class ConnectionServer {
 
     private SimpleChannelHandler mHandler;
 
-    private IClientListener clientListener;
+    private IConnectServerListener clientListener;
 
     private int inetPort;
 
@@ -85,7 +86,7 @@ public class ConnectionServer {
      * @param context 上下文
      */
 
-    public void init(Context context, IClientListener listener, int inetPort) {
+    public void init(Context context, IConnectServerListener listener, int inetPort) {
         this.inetPort = inetPort;
         this.context = context;
         this.clientListener = listener;
@@ -216,11 +217,11 @@ public class ConnectionServer {
         }
     }
 
-    public class SimpleChannelHandler extends SimpleChannelInboundHandler<DemoMessage> {
+    public class SimpleChannelHandler extends SimpleChannelInboundHandler<Message> {
 
 
         @Override
-        protected void channelRead0(ChannelHandlerContext channelHandlerContext, final DemoMessage message) {
+        protected void channelRead0(ChannelHandlerContext channelHandlerContext, final Message message) {
             //接收来自服务端的消息
             Channel channel = channelHandlerContext.channel();
             notifyReceiveMessage(message, channel);
@@ -298,7 +299,7 @@ public class ConnectionServer {
 
     private void notifyClientDisConnect(Channel channel) {
         if (clientListener != null) {
-            clientListener.onClientDisConnect(channel);
+            clientListener.onClientDisconnect(channel);
         }
     }
 
@@ -307,9 +308,9 @@ public class ConnectionServer {
      *
      * @param message 消息
      */
-    private void notifyReceiveMessage(DemoMessage message, Channel channel) {
+    private void notifyReceiveMessage(Message message, Channel channel) {
         if (clientListener != null) {
-            clientListener.onClientMessage(message, channel);
+            clientListener.onClientReceiveMessage(message, channel);
         }
     }
 

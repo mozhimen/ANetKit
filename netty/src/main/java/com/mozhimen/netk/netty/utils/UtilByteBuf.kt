@@ -1,4 +1,4 @@
-package com.mozhimen.netk.netty
+package com.mozhimen.netk.netty.utils
 
 import com.mozhimen.kotlin.utilk.kotlin.bytes2str
 import com.mozhimen.kotlin.utilk.kotlin.str2bytes

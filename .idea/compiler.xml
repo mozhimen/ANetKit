@@ -7,6 +7,7 @@
       <module name="ANetKit.ACryptoKit.cryptok_basic" target="17" />
       <module name="ANetKit.ASerialKit.serialk_moshi" target="17" />
       <module name="ANetKit.ASwiftKit.bindk" target="17" />
+      <module name="ANetKit.lan_netty" target="17" />
       <module name="ANetKit.netk_connection" target="17" />
       <module name="ANetKit.netk_connection_test" target="17" />
       <module name="ANetKit.netk_filedownload" target="17" />

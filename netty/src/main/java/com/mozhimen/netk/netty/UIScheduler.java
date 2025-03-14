@@ -1,4 +1,4 @@
-package com.mozhimen.netk.lan.netty.client;
+package com.mozhimen.netk.netty;
 
 import android.os.Handler;
 import android.os.Looper;

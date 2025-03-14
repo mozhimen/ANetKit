@@ -1,4 +1,4 @@
-package com.mozhimen.netk.lan.netty.client;
+package com.mozhimen.netk.netty;
 
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
