@@ -24,5 +24,5 @@ interface IConnectServerListener {
     /**
      * 接收到客户端消息
      */
-    fun onClientReceiveMessage(message: Message?, channel: Channel?)
+    fun onClientReceiveMessage(channel: Channel?, message: Message)
 }

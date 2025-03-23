@@ -24,7 +24,7 @@ interface IConnectClientListener {
     /**
      * 断开连接
      */
-    fun onServerDisconnect(onPurpose: Boolean)
+    fun onServerDisconnect()
 
     /**
      * 连接失败
@@ -39,5 +39,5 @@ interface IConnectClientListener {
     /**
      * 接收到服务端消息
      */
-    fun onServerReceiveMessage(message: Message?)
+    fun onServerReceiveMessage(message: Message)
 }

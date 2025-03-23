@@ -13,7 +13,7 @@ package com.mozhimen.netk.netty.mos
  * Int : 包体大小（四个字节）
  * String(JSONString)
  */
-data class Message(
-    var body: String? = "",
+data class Message constructor(
+    var body: String = "",
     var len: Int = 0,
 )
