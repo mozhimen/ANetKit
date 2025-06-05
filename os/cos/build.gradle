@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.netk.mqtt'
+    namespace 'com.mozhimen.netk.cos'
     compileSdk 35
 
     defaultConfig {
@@ -31,13 +31,13 @@ android {
 }
 
 dependencies {
-    //mqtt
-    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
-    api 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    api 'com.qcloud.cos:cos-android-nobeacon:5.9.+'
+    if (rootProject.name == "ANetKit") {
+        api project(":os:basic")
+    } else {
+        api project(":ANetKit:os:basic")
+    }
     implementation project(':ASwiftKit:basick')
-    implementation project(':ASwiftKit:servicek')
-    implementation project(':ASerialKit:json:moshi')
-    implementation project(':ACacheKit:sharedpreferences')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

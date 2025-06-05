@@ -1,15 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.mozhimen.netk.retrofit2.test'
+    namespace 'com.mozhimen.netk.os.test'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.mozhimen.netk.retrofit.test"
+        applicationId "com.mozhimen.netk.os.test"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -31,21 +30,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
-        dataBinding true
-    }
 }
 
 dependencies {
-
-    implementation project(':ASwiftKit:uik:databinding')
-    implementation project(':ASwiftKit:xmlk')
-    implementation project(':retrofit2')
-    implementation project(':retrofit2:cache')
-    implementation project(':okhttp3:cache')
-    implementation project(':okhttp3:interceptor')
-    implementation project(':ASerialKit:json:moshi')
-    implementation project(':ALibKit_Squareup:retrofit2_converter_moshi')
+    implementation project(':ASwiftKit:basick')
+    if (rootProject.name == "ANetKit") {
+        implementation project(':os:cos')
+    } else {
+        implementation project(':ANetKit:os:cos')
+    }
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
