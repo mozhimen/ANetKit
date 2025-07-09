@@ -31,8 +31,8 @@ android {
 }
 
 dependencies {
-//    api "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
-    api 'com.squareup.retrofit2:converter-kotlinx-serialization:2.11.0'
+    api "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+//    api 'com.squareup.retrofit2:converter-kotlinx-serialization:2.11.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
