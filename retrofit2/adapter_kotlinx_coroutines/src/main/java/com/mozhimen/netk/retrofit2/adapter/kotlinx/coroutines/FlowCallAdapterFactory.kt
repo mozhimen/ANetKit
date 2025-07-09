@@ -1,4 +1,4 @@
-package com.mozhimen.netk.retrofit2.impls
+package com.mozhimen.netk.retrofit2.adapter.kotlinx.coroutines
 
 import com.mozhimen.kotlin.elemk.commons.IA_Listener
 import kotlinx.coroutines.CancellableContinuation
