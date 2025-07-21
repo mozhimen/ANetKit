@@ -42,7 +42,7 @@ open class NetKRetrofit2 constructor(
 
     /////////////////////////////////////////////////////////////////////////
 
-    private val _okHttpClient by lazy {
+    private val _okHttpClient by lazy {1
         OkHttpClient.Builder().apply {
             connectTimeout(connectTimeoutSecond, TimeUnit.SECONDS)
             readTimeout(readTimeoutSecond, TimeUnit.SECONDS)
