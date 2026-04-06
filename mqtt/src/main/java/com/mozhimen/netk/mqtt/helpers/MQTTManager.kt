@@ -3,9 +3,9 @@ package com.mozhimen.netk.mqtt.helpers
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
-import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
-import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.taskk.temps.TaskKPollInfinite
 import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.commons.IUtilK
@@ -142,7 +142,7 @@ class MQTTManager(
         connectMqtt(connType)
     }
 
-    @OptIn(OPermission_ACCESS_NETWORK_STATE::class)
+    @OptIn(OUsesPermission_ACCESS_NETWORK_STATE::class)
     private fun connectMqtt(connType: Int) {
         try {
             if (!UtilKNet.hasConnected()) {

@@ -6,10 +6,10 @@ import com.mozhimen.basick.bases.BaseBroadcastReceiverProxy
 import com.mozhimen.kotlin.elemk.android.content.bases.BaseConnectivityBroadcastReceiver
 import com.mozhimen.kotlin.elemk.android.net.cons.CConnectivityManager
 import com.mozhimen.kotlin.elemk.commons.IConnectionListener
-import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
-import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_INTERNET
+import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_INTERNET
 
 
 /**
@@ -24,7 +24,7 @@ class NetKConnectionProxy<C> : BaseBroadcastReceiverProxy<C> where C : Context, 
 
     private val _listener: IConnectionListener
 
-    @OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class)
+    @OptIn(OUsesPermission_ACCESS_NETWORK_STATE::class, OUsesPermission_INTERNET::class)
     constructor(
         context: C,
         listener: IConnectionListener,
@@ -34,7 +34,7 @@ class NetKConnectionProxy<C> : BaseBroadcastReceiverProxy<C> where C : Context, 
         (_receiver as BaseConnectivityBroadcastReceiver).registerListener(_listener)
     }
 
-    @OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class)
+    @OptIn(OUsesPermission_ACCESS_NETWORK_STATE::class, OUsesPermission_INTERNET::class)
     override fun onDestroy(owner: LifecycleOwner) {
         (_receiver as BaseConnectivityBroadcastReceiver).unRegisterListener(_listener)
         super.onDestroy(owner)

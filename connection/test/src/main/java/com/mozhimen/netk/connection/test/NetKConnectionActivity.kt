@@ -10,11 +10,11 @@ import com.mozhimen.kotlin.elemk.android.content.cons.CPackageManager
 import com.mozhimen.kotlin.elemk.android.net.cons.ENetType
 import com.mozhimen.uik.databinding.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.elemk.commons.IConnectionListener
-import com.mozhimen.kotlin.lintk.optins.OApiCall_BindLifecycle
-import com.mozhimen.kotlin.lintk.optins.OApiInit_ByLazy
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_FINE_LOCATION
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_WIFI_STATE
+import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_FINE_LOCATION
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_WIFI_STATE
 import com.mozhimen.kotlin.elemk.android.cons.CPermission
 import com.mozhimen.manifestk.permission.ManifestKPermission
 import com.mozhimen.kotlin.utilk.android.net.UtilKNet
@@ -30,10 +30,10 @@ import com.mozhimen.netk.connection.test.databinding.ActivityNetkConnectionBindi
  * @Version 1.0
  */
 class NetKConnectionActivity : BaseActivityVDB<ActivityNetkConnectionBinding>() {
-    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OPermission_ACCESS_NETWORK_STATE::class)
+    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OUsesPermission_ACCESS_NETWORK_STATE::class)
     private val _netKConnectionProxy: NetKConnectionProxy<NetKConnectionActivity> by lazy_ofNone { NetKConnectionProxy(this, _netKConnListener).apply { bindLifecycle(this@NetKConnectionActivity) } }
 
-    @OptIn(OPermission_ACCESS_WIFI_STATE::class, OPermission_ACCESS_FINE_LOCATION::class)
+    @OptIn(OUsesPermission_ACCESS_WIFI_STATE::class, OUsesPermission_ACCESS_FINE_LOCATION::class)
     private val _netKConnListener = object : IConnectionListener {
         override fun onDisconnect() {
             vdb.netkConnTxt.text = "断网了"

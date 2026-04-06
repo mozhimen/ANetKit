@@ -2,7 +2,7 @@ package com.mozhimen.netk.file.okdownload
 
 import android.content.Context
 import com.liulishuo.okdownload.core.ExtOkDownload
-import com.mozhimen.kotlin.lintk.optins.OApiInit_InApplication
+import com.mozhimen.kotlin.lintk.optins.api.OApiInit_InApplication
 import com.mozhimen.netk.okdownload.ext.NetKOkDownloadExt
 
 /**

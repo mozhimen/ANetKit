@@ -5,8 +5,8 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.mozhimen.kotlin.elemk.android.os.cons.CVersCode
 import com.mozhimen.kotlin.lintk.annors.ANetType
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_INTERNET
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_INTERNET
 import com.mozhimen.kotlin.utilk.android.app.UtilKApplicationWrapper
 import com.mozhimen.kotlin.utilk.android.net.UtilKConnectivityManager
 import com.mozhimen.kotlin.utilk.android.os.UtilKBuildVersion
@@ -21,7 +21,7 @@ import com.mozhimen.netk.observer.helpers.NetworkCallbackProxy
  * @Date 2023/9/27 14:08
  * @Version 1.0
  */
-@OptIn(OPermission_ACCESS_NETWORK_STATE::class, OPermission_INTERNET::class)
+@OptIn(OUsesPermission_ACCESS_NETWORK_STATE::class, OUsesPermission_INTERNET::class)
 @RequiresApi(CVersCode.V_21_5_L)
 class NetKObserver : BaseUtilK(), INetKObserver {
     companion object {

@@ -1,6 +1,6 @@
 package com.mozhimen.netk.okhttp3.interceptor.impls
 
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
 import com.mozhimen.netk.okhttp3.interceptor.annors.AInterceptor
 import com.mozhimen.netk.okhttp3.interceptor.commons.IInterceptor
@@ -48,7 +48,7 @@ class InterceptorCacheOffline(
 
     private var _lastTime = System.currentTimeMillis()
 
-    @OptIn(OPermission_ACCESS_NETWORK_STATE::class)
+    @OptIn(OUsesPermission_ACCESS_NETWORK_STATE::class)
     private var _isConnected: Boolean = UtilKNet.isConnected_ofActive()
         get() {
             val time = System.currentTimeMillis()

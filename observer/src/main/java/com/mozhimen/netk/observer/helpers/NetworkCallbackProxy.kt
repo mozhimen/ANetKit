@@ -17,8 +17,8 @@ import com.mozhimen.kotlin.elemk.android.content.bases.BaseConnectivityBroadcast
 import com.mozhimen.kotlin.elemk.android.net.cons.CConnectivityManager
 import com.mozhimen.kotlin.elemk.android.os.cons.CVersCode
 import com.mozhimen.kotlin.lintk.annors.ANetType
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.kotlin.lintk.optins.permission.OPermission_INTERNET
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
+import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_INTERNET
 import com.mozhimen.kotlin.utilk.android.app.UtilKApplicationWrapper
 import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
 import com.mozhimen.kotlin.utilk.wrapper.eNetType2strNetType
@@ -37,8 +37,8 @@ import java.lang.reflect.Method
  * @Date 2023/9/27 10:52
  * @Version 1.0
  */
-@OPermission_INTERNET
-@OPermission_ACCESS_NETWORK_STATE
+@OUsesPermission_INTERNET
+@OUsesPermission_ACCESS_NETWORK_STATE
 @RequiresApi(CVersCode.V_21_5_L)
 @SuppressLint("UnspecifiedRegisterReceiverFlag")
 class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INetKObserver {
@@ -162,7 +162,7 @@ class NetworkCallbackProxy : ConnectivityManager.NetworkCallback(), IUtilK, INet
 
     //////////////////////////////////////////////////////////////////////////////////
 
-    @OPermission_INTERNET
+    @OUsesPermission_INTERNET
     inner class NetworkStatusReceiver : BaseConnectivityBroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             context ?: return
