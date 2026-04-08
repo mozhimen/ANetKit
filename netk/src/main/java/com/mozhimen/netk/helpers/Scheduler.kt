@@ -1,15 +1,14 @@
 package com.mozhimen.netk.helpers
 
-import android.util.Log
 import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.basick.cachek.CacheK
-import com.mozhimen.basick.eventk.commons.HandlerRef
 import com.mozhimen.netk.annors._CacheStrategy
-import com.mozhimen.basick.executork.ExecutorK
-import com.mozhimen.basick.extsk.sendMsgAtFrontOfQueue
+import com.mozhimen.kotlin.elemk.android.os.bases.BaseWeakRefMainHandler
+import com.mozhimen.kotlin.utilk.android.os.sendMessageAtFrontOfQueue
+import com.mozhimen.kotlin.utilk.commons.IUtilK
 import com.mozhimen.netk.commons.*
 import com.mozhimen.netk.mos.NetKRequest
 import com.mozhimen.netk.mos.NetKResponse
+import com.mozhimen.taskk.executor.TaskKExecutor
 
 /**
  * 代理CallFactory创建出来的Call对象, 从而实现拦截器的派发动作
@@ -17,7 +16,7 @@ import com.mozhimen.netk.mos.NetKResponse
 class Scheduler(
     private val _factory: INetKFactory,
     private val _interceptors: MutableList<INetKInterceptor>
-) :IUtilK {
+) : IUtilK {
     fun newCall(request: NetKRequest): INetKCall<*> {
         val newCall: INetKCall<*> = _factory.newCall(request)
         return NetKCallProxy(newCall, request)
@@ -45,11 +44,11 @@ class Scheduler(
         override fun enqueue(callback: INetKListener<T>) {
             dispatchInterceptor(_request, null)
             if (_request.cacheStrategy == _CacheStrategy.CACHE_FIRST) {
-                ExecutorK.execute(TAG, runnable = {
+                TaskKExecutor.execute(TAG, runnable = {
                     val cacheResponseK = readCache<T>(_request.getCacheKey())
                     if (cacheResponseK.data != null) {
                         //抛到主线程
-                        HandlerRef(this@Scheduler).sendMsgAtFrontOfQueue {
+                        BaseWeakRefMainHandler(this@Scheduler).sendMessageAtFrontOfQueue {
                             callback.onSuccess(
                                 cacheResponseK
                             )
@@ -76,9 +75,9 @@ class Scheduler(
         private fun <T> readCache(cacheKey: String): NetKResponse<T> {
             //cacheK 查询缓存 需要提供一个cache key
             //request de url+参数
-            val cache = CacheK.getCache<T>(cacheKey)
+//TODO            val cache = CacheK.getCache<T>(cacheKey)
             val cacheResponse = NetKResponse<T>()
-            cacheResponse.data = cache
+//TODO            cacheResponse.data = cache
             cacheResponse.code = NetKResponse.CACHE_SUCCESS
             cacheResponse.msg = "缓存获取成功"
             return cacheResponse
@@ -89,8 +88,8 @@ class Scheduler(
                 || _request.cacheStrategy == _CacheStrategy.NET_CACHE
             ) {
                 if (response.data != null) {
-                    ExecutorK.execute(TAG, runnable = {
-                        CacheK.saveCache(_request.getCacheKey(), response.data)
+                    TaskKExecutor.execute(TAG, runnable = {
+//TODO                        CacheK.saveCache(_request.getCacheKey(), response.data)
                     })
                 }
             }

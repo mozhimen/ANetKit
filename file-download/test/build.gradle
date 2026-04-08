@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.netk.os.test'
+    namespace 'com.mozhimen.netk.file.download.test'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.mozhimen.netk.os.test"
+        applicationId "com.mozhimen.netk.file.download.test"
         minSdk 21
         targetSdk 34
         versionCode 1
@@ -34,11 +34,8 @@ android {
 
 dependencies {
     implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
-    if (rootProject.name == "ANetKit") {
-        implementation project(':os-cos')
-    } else {
-        implementation project(':ANetKit:os-cos')
-    }
+    implementation 'com.github.mozhimen.ASwiftKit:xmlk:2.0.3'
+    implementation project(':file-download')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

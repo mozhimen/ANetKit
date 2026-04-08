@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.netk.mqtt'
+    namespace 'com.mozhimen.netk.okhttp3.cache'
     compileSdk 35
 
     defaultConfig {
@@ -31,14 +31,16 @@ android {
 }
 
 dependencies {
-    //mqtt
-    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
-    api 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-    implementation 'com.github.mozhimen.ATaskKit:taskk:0.0.1'
-    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
-    implementation 'com.github.mozhimen.ASwiftKit:servicek-aidl:2.0.4'
-    implementation 'com.github.mozhimen.ASerialKit:json-moshi:0.0.2'
-    implementation 'com.github.mozhimen.ACacheKit:sharedpreferences:0.0.1'
+    if (rootProject.name=="ANetKit"){
+        implementation project(/*project.path.replace(project.name,'')+*/':okhttp3')
+        implementation project(/*project.path.replace(project.name,'')+*/':okhttp3-interceptor')
+    }else {
+        implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3')
+        implementation project(/*project.path.replace(project.name,'')+*/':ANetKit:okhttp3-interceptor')
+
+    }
+    implementation 'com.github.mozhimen.ALibKit_Squareup:okhttp3:0.0.1'
+    implementation 'com.github.mozhimen.KUtilKit:android:0.0.3'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

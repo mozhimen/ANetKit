@@ -1,13 +1,9 @@
 package com.mozhimen.netk
 
-import com.mozhimen.kotlin.lintk.annors.AManifestRequire
-import com.mozhimen.kotlin.elemk.android.cons.CPermission
 import com.mozhimen.netk.helpers.ClientBuilder
 import okhttp3.Interceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 /**
  * @ClassName RxJavaFactory
@@ -16,7 +12,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
  * @Date 2022/5/12 16:01
  * @Version 1.0
  */
-@AManifestRequire(CPermission.INTERNET)
 class NetKRxJava(
     private val _baseUrl: String
 ) {
@@ -38,8 +33,6 @@ class NetKRxJava(
         return Retrofit.Builder()
             .baseUrl(_baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(ClientBuilder.getClient(_interceptors))
             .build().also { _retrofit = it }
     }

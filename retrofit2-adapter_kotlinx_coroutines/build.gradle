@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.netk.mqtt'
+    namespace 'com.mozhimen.netk.retrofit2.adapter.kotlinx.coroutines'
     compileSdk 35
 
     defaultConfig {
@@ -31,16 +31,10 @@ android {
 }
 
 dependencies {
-    //mqtt
-    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
-    api 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-    implementation 'com.github.mozhimen.ATaskKit:taskk:0.0.1'
-    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
-    implementation 'com.github.mozhimen.ASwiftKit:servicek-aidl:2.0.4'
-    implementation 'com.github.mozhimen.ASerialKit:json-moshi:0.0.2'
-    implementation 'com.github.mozhimen.ACacheKit:sharedpreferences:0.0.1'
+    implementation 'com.github.mozhimen.KUtilKit:android:0.0.3'
+    api "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }

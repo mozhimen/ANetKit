@@ -5,8 +5,8 @@ import androidx.lifecycle.LifecycleOwner
 import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
 import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
 import com.mozhimen.netk.mqtt.bases.BaseNetKMQTTService
-import com.mozhimen.servicek.ServiceKProxy
-import com.mozhimen.servicek.bases.BaseServiceResCallback
+import com.mozhimen.servicek.aidl.ServiceKProxy
+import com.mozhimen.servicek.aidl.bases.BaseServiceResCallback
 
 
 /**

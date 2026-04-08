@@ -5,7 +5,7 @@ import com.mozhimen.netk.mqtt.commons.IMQTTGenConnBeanListener
 import com.mozhimen.netk.mqtt.commons.IMQTTListener
 import com.mozhimen.netk.mqtt.commons.IMQTTSubsResListener
 import com.mozhimen.netk.mqtt.helpers.MQTTManager
-import com.mozhimen.servicek.bases.BaseLifecycleService2
+import com.mozhimen.servicek.aidl.bases.BaseLifecycleService
 
 /**
  * @ClassName MQTTService
@@ -14,7 +14,7 @@ import com.mozhimen.servicek.bases.BaseLifecycleService2
  * @Date 2022/9/26 18:20
  * @Version 1.0
  */
-abstract class BaseNetKMQTTService : BaseLifecycleService2(), IMQTTListener {
+abstract class BaseNetKMQTTService : BaseLifecycleService(), IMQTTListener {
 
     private val _mqttDataListener: IMQTTDataListener = object : IMQTTDataListener {
         override fun onGetData(data: String) {

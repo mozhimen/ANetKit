@@ -32,12 +32,10 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.mozhimen.KUtilKit:android:0.0.2'
-    implementation project(':ALibKit_Squareup:okhttp3')
-    implementation project(':ALibKit_Squareup:okhttp3_logging_interceptor')
-
-    //////////////////////////////////////////////////////////////////
-    api project(':ALibKit_Squareup:retrofit2')
+    implementation 'com.github.mozhimen.ALibKit_Squareup:okhttp3-logging_interceptor:0.0.1'
+    implementation 'com.github.mozhimen.KUtilKit:android:0.0.3'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:okhttp3:0.0.1'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:retrofit2:0.0.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -1,6 +1,10 @@
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://jitpack.io" }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
@@ -11,94 +15,36 @@ dependencyResolutionManagement {
         maven { url 'https://gitee.com/liuchaoya/libcommon/raw/master/repository/' }
         maven { url "https://repo.eclipse.org/content/repositories/paho-snapshots/" }
         maven { url 'https://developer.huawei.com/repo/' }
-        maven { url "https://jitpack.io" }
         maven { url 'https://www.jitpack.io' }
-        mavenCentral()
-        google()
     }
 }
+
 rootProject.name = "ANetKit"
-//ALibKit_Google
-include ':ALibKit_Google'
-project(':ALibKit_Google').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Google")
-include ':ALibKit_Google:material'
-//ALibKit_Jetpack
-include ':ALibKit_Jetpack'
-project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
-include ':ALibKit_Jetpack:databinding'
-include ':ALibKit_Jetpack:core'
-include ':ALibKit_Jetpack:annotation'
-//ALibKit_Squareup
-include ':ALibKit_Squareup'
-project(':ALibKit_Squareup').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Squareup")
-include ':ALibKit_Squareup:retrofit2'
-include ':ALibKit_Squareup:retrofit2_adapter_rxjava2'
-include ':ALibKit_Squareup:okhttp3'
-include ':ALibKit_Squareup:okhttp3_logging_interceptor'
-include ':ALibKit_Squareup:moshi'
-include ':ALibKit_Squareup:retrofit2_converter_moshi'
-//ALibKit_Jetbrains
-include ':ALibKit_Jetbrains'
-project(':ALibKit_Jetbrains').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetbrains")
-include ':ALibKit_Jetbrains:kotlin_stdlib'
-include ':ALibKit_Jetbrains:kotlinx_coroutines'
-//KUtilKit
-include ':KUtilKit'
-project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
-include ':KUtilKit:android'
-include ':KUtilKit:kotlin'
-//ASwiftKit
-include ':ASwiftKit'
-project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
-include ':ASwiftKit:basick'
-include ':ASwiftKit:xmlk'
-include ':ASwiftKit:servicek'
-include ':ASwiftKit:uik:databinding'
-//ACacheKit
-include ':ACacheKit'
-project(':ACacheKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACacheKit")
-include ':ACacheKit:sharedpreferences'
-include ':ACacheKit:basic'
-//ASerialKit
-include ':ASerialKit'
-project(':ASerialKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASerialKit")
-include ':ASerialKit:json:moshi'
-//ACryptoKit
-include ':ACryptoKit'
-project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
-include ':ACryptoKit:basic'
-//ANetKit_okdownload
-include ':ANetKit_okdownload'
-project(':ANetKit_okdownload').projectDir = new File("D:\\WorkSpace\\GitHub\\ANetKit_okdownload")
-include ':ANetKit_okdownload:okdownload'
-include ':ANetKit_okdownload:okdownload-breakpoint-sqlite'
-include ':ANetKit_okdownload:okdownload-connection-okhttp'
-include ':ANetKit_okdownload:okdownload_ext'
-//
 include ':app'
-include ':netk'
 include ':connection'
 include ':connection:test'
+include ':file-download'
+include ':file-download:test'
+include ':file-okdownload'
+include ':file-okdownload:test'
+include ':mqtt'
+include ':mqtt:test'
+include ':netk'
 include ':observer'
 include ':observer:test'
 include ':retrofit2'
 include ':retrofit2:test'
-include ':file:download'
-include ':file:download:test'
-include ':file:okdownload'
-include ':file:okdownload:test'
-include ':mqtt'
-include ':mqtt:test'
 include ':netty'
-include ':okhttp3:interceptor'
-include ':okhttp3:cache'
 include ':okhttp3'
-include ':retrofit2:cache'
-include ':retrofit2:cache:test'
-include ':retrofit2:converter_kotlinx_serialization'
-include ':retrofit2:adapter_kotlinx_coroutines'
 include ':netty:test'
-include ':os:basic'
-include ':os:cos'
-include ':os:oss'
+include ':okhttp3-cache'
+include ':okhttp3-interceptor'
+include ':os-basic'
+include ':os-cos'
+include ':os-oss'
 include ':os:test'
+include ':retrofit2-cache'
+include ':retrofit2-cache:test'
+include ':retrofit2-converter_kotlinx_serialization'
+include ':retrofit2-adapter_kotlinx_coroutines'
+

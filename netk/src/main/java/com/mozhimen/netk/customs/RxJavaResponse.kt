@@ -1,10 +1,10 @@
 package com.mozhimen.netk.customs
 
-import com.mozhimen.basick.extsk.toJson
 import com.mozhimen.netk.commons.INetKConverter
 import com.mozhimen.netk.helpers.StatusParser
 import com.mozhimen.netk.mos.NetKResponse
 import com.mozhimen.netk.mos.NetKThrowable
+import com.mozhimen.serialk.gson.t2strJson_gson
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import java.lang.reflect.ParameterizedType
@@ -48,7 +48,7 @@ abstract class RxJavaResponse<T : Any>(private val _converter: INetKConverter = 
     }
 
     private fun <T> parseResponse(value: T): NetKResponse<T> {
-        val rawData: String = value!!::class.toJson() /*UtilKJson.t2Json(value)*/
+        val rawData: String = value!!::class.t2strJson_gson() /*UtilKJson.t2Json(value)*/
         return _converter.convert(rawData, getParentGenericTypeClazz(this@RxJavaResponse, 0)!!)
     }
 

@@ -1,13 +1,12 @@
 package com.mozhimen.netk.helpers
 
-import com.mozhimen.basick.extsk.throwIllegalStateException
-import com.mozhimen.kotlin.utilk.UtilKDataType
+import com.mozhimen.kotlin.utilk.kotlin.UtilKAny
 import com.mozhimen.netk.commons.INetKCall
 import com.mozhimen.netk.annors.*
 import com.mozhimen.netk.annors.methods.*
 import com.mozhimen.netk.mos.NetKRequest
 import java.lang.reflect.*
-
+import com.mozhimen.kotlin.utilk.kotlin.UtilKT
 /**
  * @ClassName MethodParser
  * @Description MethodParser
@@ -23,7 +22,7 @@ class MethodParser(private val baseUrl: String, method: Method) {
     private var _cacheStrategy: Int = _CacheStrategy.NET_ONLY
     private var _domainUrl: String? = null
     private var _formPost = true
-    private var _httpMethod = -1
+    private var _httpMethod = _METHOD._GET
 
     private var _headers: MutableMap<String, String> = mutableMapOf()
     private var _parameters: MutableMap<String, String> = mutableMapOf()
@@ -110,7 +109,7 @@ class MethodParser(private val baseUrl: String, method: Method) {
                     }
                 }
                 else -> {
-                    "can't handle method annotation: ${annotation.javaClass}".throwIllegalStateException()
+                    throw IllegalStateException("can't handle method annotation: ${annotation.javaClass}")
                 }
             }
         }
@@ -154,7 +153,7 @@ class MethodParser(private val baseUrl: String, method: Method) {
             }
             _returnType = argument
         } else {
-            "method ${method.name} must has one generic return type".throwIllegalStateException()
+            throw IllegalStateException("method ${method.name} must has one generic return type")
         }
     }
 
@@ -210,7 +209,7 @@ class MethodParser(private val baseUrl: String, method: Method) {
                 "field can only has one annotation: index = $index"
             }
             val value = args[index]
-            require(UtilKDataType.isPrimitive(value)) {
+            require(UtilKAny.isObjPrimitive(value)) {
                 "8 basic types are supported for now, index = $index"
             }
 
@@ -229,7 +228,7 @@ class MethodParser(private val baseUrl: String, method: Method) {
                     _cacheStrategy = value as Int
                 }
                 else -> {
-                    "can't handle parameter annotation: ${annotation.javaClass}".throwIllegalStateException()
+                    throw IllegalStateException("can't handle parameter annotation: ${annotation.javaClass}")
                 }
             }
         }

@@ -39,7 +39,7 @@ class NetKObserver : BaseUtilK(), INetKObserver {
         if (UtilKBuildVersion.isAfterV_24_7_N())
             UtilKConnectivityManager.registerDefaultNetworkCallback(_context, _networkCallbackProxy)
         else
-            UtilKConnectivityManager.registerNetworkCallback(_context, NetworkRequest.Builder().build(), _networkCallbackProxy)
+            UtilKConnectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), _context,_networkCallbackProxy)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////

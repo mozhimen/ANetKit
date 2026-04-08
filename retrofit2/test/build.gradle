@@ -37,15 +37,16 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.mozhimen.ASwiftKit:uik-databinding:2.0.3'
+    implementation 'com.github.mozhimen.ASwiftKit:xmlk:2.0.3'
+    implementation 'com.github.mozhimen.ASerialKit:json-moshi:0.0.2'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:retrofit2-converter_moshi:0.0.1'
 
-    implementation project(':ASwiftKit:uik:databinding')
-    implementation project(':ASwiftKit:xmlk')
     implementation project(':retrofit2')
-    implementation project(':retrofit2:cache')
-    implementation project(':okhttp3:cache')
-    implementation project(':okhttp3:interceptor')
-    implementation project(':ASerialKit:json:moshi')
-    implementation project(':ALibKit_Squareup:retrofit2_converter_moshi')
+    implementation project(':retrofit2-cache')
+    implementation project(':okhttp3-cache')
+    implementation project(':okhttp3-interceptor')
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

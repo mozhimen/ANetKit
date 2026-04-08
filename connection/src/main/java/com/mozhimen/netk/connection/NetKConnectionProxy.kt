@@ -7,6 +7,7 @@ import com.mozhimen.kotlin.elemk.android.content.bases.BaseConnectivityBroadcast
 import com.mozhimen.kotlin.elemk.android.net.cons.CConnectivityManager
 import com.mozhimen.kotlin.elemk.commons.IConnectionListener
 import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindViewLifecycle
 import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
 import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_INTERNET
@@ -18,18 +19,20 @@ import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission
  * @Author Mozhimen & Kolin Zhao
  * @Version 1.0
  */
+@OApiCall_BindViewLifecycle
 @OApiCall_BindLifecycle
 @OApiInit_ByLazy
-class NetKConnectionProxy<C> : BaseBroadcastReceiverProxy<C> where C : Context, C : LifecycleOwner {
+class NetKConnectionProxy : BaseBroadcastReceiverProxy {
 
     private val _listener: IConnectionListener
 
     @OptIn(OUsesPermission_ACCESS_NETWORK_STATE::class, OUsesPermission_INTERNET::class)
     constructor(
-        context: C,
+        context: Context,
+        owner: LifecycleOwner,
         listener: IConnectionListener,
         receiver: BaseConnectivityBroadcastReceiver = BaseConnectivityBroadcastReceiver(),
-    ) : super(context, receiver, arrayOf(CConnectivityManager.CONNECTIVITY_ACTION)) {
+    ) : super(context, owner, receiver, arrayOf(CConnectivityManager.CONNECTIVITY_ACTION)) {
         _listener = listener
         (_receiver as BaseConnectivityBroadcastReceiver).registerListener(_listener)
     }

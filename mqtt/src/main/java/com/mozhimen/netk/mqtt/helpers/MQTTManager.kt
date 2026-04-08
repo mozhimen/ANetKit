@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindViewLifecycle
 import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
 import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
-import com.mozhimen.taskk.temps.TaskKPollInfinite
 import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.commons.IUtilK
 import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
@@ -18,7 +18,8 @@ import com.mozhimen.netk.mqtt.commons.IMQTTSubsResListener
 import com.mozhimen.netk.mqtt.commons.MQTTSubsCallback
 import com.mozhimen.netk.mqtt.mos.MQTTCommBean
 import com.mozhimen.netk.mqtt.mos.MQTTConnBean
-import com.mozhimen.serialk.moshi.UtilKMoshiWrapper
+import com.mozhimen.serialk.moshi.UtilMoshiWrapper
+import com.mozhimen.taskk.temps.TaskKPollInfinite
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 
@@ -77,9 +78,9 @@ class MQTTManager(
             exception?.printStackTrace()
             UtilKLogWrapper.e(TAG, "_iMqttActionListener: connType $_connType onFailure: ${exception?.message ?: ""}")
             if (_connType == AConnType.REGISTER) {
-                _mqttDataListener.onGetData(UtilKMoshiWrapper.t2strJson_ofMoshi(MQTTCommBean(false, "MQTT连接失败,${exception?.message ?: "请检查网络"}")))//"MQTT连接失败,请检查网络"
+                _mqttDataListener.onGetData(UtilMoshiWrapper.t2strJson_moshi(MQTTCommBean(false, "MQTT连接失败,${exception?.message ?: "请检查网络"}")))//"MQTT连接失败,请检查网络"
             } else {
-                _mqttDataListener.onGetData(UtilKMoshiWrapper.t2strJson_ofMoshi(MQTTCommBean(false, "登录失败,请在后台配置设备信息")))
+                _mqttDataListener.onGetData(UtilMoshiWrapper.t2strJson_moshi(MQTTCommBean(false, "登录失败,请在后台配置设备信息")))
             }
             startConnectTask()
         }
@@ -89,7 +90,7 @@ class MQTTManager(
         override fun connectionLost(cause: Throwable?) {
             cause?.printStackTrace()
             UtilKLogWrapper.e(TAG, "_mqttCallback: connectionLost")
-            _mqttDataListener.onGetData(UtilKMoshiWrapper.t2strJson_ofMoshi(false, "后台服务失去连接,请检查网络"))//失去连接 //onCallback("${MQTTCmd.pre_fail}###后台服务失去连接,请检查网络")//失去连接
+            _mqttDataListener.onGetData(UtilMoshiWrapper.t2strJson_moshi(false, "后台服务失去连接,请检查网络"))//失去连接 //onCallback("${MQTTCmd.pre_fail}###后台服务失去连接,请检查网络")//失去连接
             startConnectTask()
         }
 
@@ -109,7 +110,7 @@ class MQTTManager(
             Log.d(TAG, "_mqttCallback: deliveryComplete")
         }
     }//MQTT监听并且接受消息
-    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class)
+    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OApiCall_BindViewLifecycle::class)
     private var _connectTask: TaskKPollInfinite? = null
         get() {
             if (field != null) return field
@@ -146,7 +147,7 @@ class MQTTManager(
     private fun connectMqtt(connType: Int) {
         try {
             if (!UtilKNet.hasConnected()) {
-                _mqttDataListener.onGetData(UtilKMoshiWrapper.t2strJson_ofMoshi(MQTTCommBean(false, "亲,网络丢失了")))//断网情况下
+                _mqttDataListener.onGetData(UtilMoshiWrapper.t2strJson_moshi(MQTTCommBean(false, "亲,网络丢失了")))//断网情况下
                 UtilKLogWrapper.w(TAG, "connectMqtt: connType $connType 断网~")
                 return
             }

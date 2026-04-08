@@ -28,13 +28,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        buildConfig = true
+    }
 }
 
 dependencies {
-    implementation project(":ASwiftKit:basick")
-    implementation project(':ALibKit_Squareup:okhttp3')
-    implementation project(':ALibKit_Squareup:retrofit2')
-    implementation project(':ALibKit_Squareup:retrofit2_adapter_rxjava2')
+    implementation 'com.github.mozhimen.KUtilKit:android:0.0.3'
+    implementation 'com.github.mozhimen.ASerialKit:json-gson:0.0.2'
+    implementation 'com.github.mozhimen.ATaskKit:executor:0.0.1'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:okhttp3:0.0.1'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:retrofit2:0.0.1'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:retrofit2-adapter_rxjava2:0.0.1'
+    implementation 'com.github.mozhimen.ALibKit_Squareup:retrofit2-converter_gson:0.0.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

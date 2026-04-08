@@ -4,12 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.netk.mqtt'
+    namespace 'com.mozhimen.netk.file.okdownload'
     compileSdk 35
 
     defaultConfig {
         minSdk 19
-        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        consumerProguardFiles "consumer-rules.pro"
@@ -31,14 +30,11 @@ android {
 }
 
 dependencies {
-    //mqtt
-    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
-    api 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'com.github.mozhimen.ATaskKit:taskk:0.0.1'
-    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
-    implementation 'com.github.mozhimen.ASwiftKit:servicek-aidl:2.0.4'
-    implementation 'com.github.mozhimen.ASerialKit:json-moshi:0.0.2'
-    implementation 'com.github.mozhimen.ACacheKit:sharedpreferences:0.0.1'
+    implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload:0.0.2'
+    implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload-breakpoint-sqlite:0.0.2'
+    implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload-connection-okhttp:0.0.2'
+    implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload-ext:0.0.2'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

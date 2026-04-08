@@ -1,7 +1,6 @@
 package com.mozhimen.netk.helpers
 
 import android.annotation.SuppressLint
-import com.mozhimen.netk.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.security.SecureRandom
@@ -11,7 +10,7 @@ import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
-
+import com.mozhimen.netk.BuildConfig
 /**
  * @ClassName ClientBuilder
  * @Description TODO
