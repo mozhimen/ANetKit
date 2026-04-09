@@ -8,6 +8,10 @@
       <module name="ANetKit.ACacheKit.sharedpreferences" target="17" />
       <module name="ANetKit.ACryptoKit.basic" target="17" />
       <module name="ANetKit.ACryptoKit.cryptok_basic" target="17" />
+      <module name="ANetKit.ALibKit_Google.material" target="17" />
+      <module name="ANetKit.ALibKit_Jetpack.annotation" target="17" />
+      <module name="ANetKit.ALibKit_Squareup.okhttp3" target="17" />
+      <module name="ANetKit.ALibKit_Squareup.retrofit2" target="17" />
       <module name="ANetKit.ANetKit_okdownload.okdownload" target="17" />
       <module name="ANetKit.ANetKit_okdownload.okdownload-breakpoint-sqlite" target="17" />
       <module name="ANetKit.ANetKit_okdownload.okdownload-connection-okhttp" target="17" />
@@ -18,8 +22,12 @@
       <module name="ANetKit.ASwiftKit.servicek" target="17" />
       <module name="ANetKit.ASwiftKit.uik" target="17" />
       <module name="ANetKit.ASwiftKit.xmlk" target="17" />
+      <module name="ANetKit.file.download" target="17" />
+      <module name="ANetKit.file.download.test" target="17" />
       <module name="ANetKit.file.file-download" target="17" />
       <module name="ANetKit.file.file-okdownload" target="17" />
+      <module name="ANetKit.file.okdownload" target="17" />
+      <module name="ANetKit.file.okdownload.test" target="17" />
       <module name="ANetKit.lan_netty" target="17" />
       <module name="ANetKit.netk_connection" target="17" />
       <module name="ANetKit.netk_connection_test" target="17" />
@@ -40,6 +48,15 @@
       <module name="ANetKit.netk_retrofit2_cache_test" target="17" />
       <module name="ANetKit.netk_retrofit2_converter_kotlinx_serialization" target="17" />
       <module name="ANetKit.netk_retrofit2_test" target="17" />
+      <module name="ANetKit.okhttp3.cache" target="17" />
+      <module name="ANetKit.okhttp3.interceptor" target="17" />
+      <module name="ANetKit.os.basic" target="17" />
+      <module name="ANetKit.os.cos" target="17" />
+      <module name="ANetKit.os.oss" target="17" />
+      <module name="ANetKit.retrofit2.adapter_kotlinx_coroutines" target="17" />
+      <module name="ANetKit.retrofit2.cache" target="17" />
+      <module name="ANetKit.retrofit2.cache.test" target="17" />
+      <module name="ANetKit.retrofit2.converter_kotlinx_serialization" target="17" />
       <module name="ANetKit.SwiftKit.basick" target="17" />
       <module name="ANetKit.SwiftKit.bindk" target="17" />
       <module name="ANetKit.SwiftKit.servicek" target="17" />

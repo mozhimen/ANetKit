@@ -6,8 +6,7 @@ import com.alibaba.sdk.android.oss.OSSClient
 import com.alibaba.sdk.android.oss.common.auth.OSSStsTokenCredentialProvider
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.java.text.UtilKSimpleDateFormat
-import com.mozhimen.kotlin.utilk.java.util.UtilKDate
-import com.mozhimen.kotlin.utilk.java.util.date2longDate
+import com.mozhimen.kotlin.utilk.java.text.date2longDate
 import com.mozhimen.netk.os.basic.commons.IOSProxy
 import okhttp3.OkHttpClient
 import java.text.SimpleDateFormat

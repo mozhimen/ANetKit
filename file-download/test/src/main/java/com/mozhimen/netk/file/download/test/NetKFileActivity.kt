@@ -2,16 +2,8 @@ package com.mozhimen.netk.file.download.test
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
-import com.mozhimen.uik.databinding.bases.activity.databinding.BaseActivityVDB
-import com.mozhimen.kotlin.lintk.optin.OptInApiCall_BindLifecycle
-import com.mozhimen.kotlin.lintk.optin.OptInApiDeprecated_ThirdParty
-import com.mozhimen.kotlin.lintk.optin.OptInApiInit_ByLazy
-import com.mozhimen.kotlin.elemk.android.cons.CPermission
-import com.mozhimen.manifestk.permission.ManifestKPermission
-import com.mozhimen.manifestk.permission.annors.APermissionCheck
-import com.mozhimen.kotlin.lintk.annors.AManifestRequire
+import com.mozhimen.kotlin.utilk.kotlin.UtilKLazyJVM
 import com.mozhimen.kotlin.utilk.kotlin.UtilKStrFile
 import com.mozhimen.kotlin.utilk.kotlin.UtilKStrPath
 import com.mozhimen.netk.file.download.DownloadRequest
@@ -19,22 +11,14 @@ import com.mozhimen.netk.file.download.annors.ADownloadEngine
 import com.mozhimen.netk.file.download.annors.ANotificationVisibility
 import com.mozhimen.netk.file.download.commons.IDownloadListener
 import com.mozhimen.netk.file.download.test.databinding.ActivityNetkFileBinding
+import com.mozhimen.permissionk.PermissionK
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDB
 import java.io.File
 
-@AManifestRequire(
-    CPermission.READ_EXTERNAL_STORAGE,
-    CPermission.WRITE_EXTERNAL_STORAGE,
-    CPermission.INTERNET
-)
-@APermissionCheck(
-    CPermission.READ_EXTERNAL_STORAGE,
-    CPermission.WRITE_EXTERNAL_STORAGE,
-    CPermission.INTERNET
-)
 class NetKFileActivity : BaseActivityVDB<ActivityNetkFileBinding>() {
 //    private val _netKFile by lazy { NetKFileOkDownload(this) }
     private val _musicUrl = "http://192.168.2.6/construction-sites-images/voice/20221102/176f9197f0694591b16ffd47a0f117fe.wav"
-    private val _musicPath by lazy_ofNone { UtilKStrPath.Absolute.Internal.getFiles() + "/netkfile/music.wav" }
+    private val _musicPath by UtilKLazyJVM.lazy_ofNone { UtilKStrPath.Absolute.Internal.getFiles() + "/netkfile/music.wav" }
     private var _downloadRequest: DownloadRequest? = null
 
 //    private val _fileDownloadSingleListener = object : IFileDownloadSingleListener {
@@ -74,14 +58,13 @@ class NetKFileActivity : BaseActivityVDB<ActivityNetkFileBinding>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        ManifestKPermission.requestPermissions(this) {
+        PermissionK.requestPermissions(this) {
             if (it) {
                 super.initData(savedInstanceState)
             }
         }
     }
 
-    @OptIn(OptInApiCall_BindLifecycle::class, OptInApiInit_ByLazy::class, OptInApiDeprecated_ThirdParty::class)
     override fun initView(savedInstanceState: Bundle?) {
 //        vdb.netkFileBtn1.setOnClickListener {
 //            vdb.netkFileBtn1.isClickable = false

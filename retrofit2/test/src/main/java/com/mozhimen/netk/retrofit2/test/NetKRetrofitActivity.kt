@@ -3,15 +3,12 @@ package com.mozhimen.netk.retrofit2.test
 import android.annotation.SuppressLint
 import android.os.Bundle
 import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDBVM
-import com.mozhimen.kotlin.elemk.android.cons.CPermission
-import com.mozhimen.manifestk.permission.ManifestKPermission
-import com.mozhimen.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.netk.retrofit2.test.databinding.ActivityNetkHttpBinding
+import com.mozhimen.permissionk.PermissionK
 
-@APermissionCheck(CPermission.INTERNET)
 class NetKRetrofitActivity : BaseActivityVDBVM<ActivityNetkHttpBinding, NetKRetrofitViewModel>() {
     override fun initData(savedInstanceState: Bundle?) {
-        ManifestKPermission.requestPermissions(this) {
+        PermissionK.requestPermissions(this) {
             if (it) {
                 super.initData(savedInstanceState)
             }

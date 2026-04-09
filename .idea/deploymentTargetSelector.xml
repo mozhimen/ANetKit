@@ -66,13 +66,25 @@
       <SelectionState runConfigName="os.test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="retrofit2-cache.test">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
       <SelectionState runConfigName="file-okdownload.test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="file-download.test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="retrofit2-cache.test">
+      <SelectionState runConfigName="coil2.test">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="fastimagesize.exam">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="fastimagesize-ext.exam">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="glide.test">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

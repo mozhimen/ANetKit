@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.Uri
-import com.mozhimen.kotlin.utilk.android.content.UtilKPackageInfo
+import com.mozhimen.kotlin.utilk.android.content.UtilKPackageInfoGet
 import com.mozhimen.kotlin.utilk.android.net.uri2strFilePathName
 import com.mozhimen.kotlin.utilk.android.os.UtilKBuildVersion
-import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper.e
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.netk.file.download.BuildConfig
 import java.io.File
@@ -27,10 +27,10 @@ object InstallUtils : BaseUtilK() {
         val realFilePath = uri.uri2strFilePathName() ?: return false
         val fileApkInfo = getFileApkSignature(context, realFilePath) ?: return false
         try {
-            val packageInfo = UtilKPackageInfo.getOfGetConfigurations(context)!!
+            val packageInfo = UtilKPackageInfoGet.get_GET_CONFIGURATIONS(context.packageName,context)/*UtilKPackageInfo.getOfGetConfigurations(context)*/!!
             if (BuildConfig.DEBUG) {
-                et(TAG, "apk file package=${fileApkInfo.packageName},versionCode=${fileApkInfo.versionCode}")
-                et(TAG, "current package=${packageInfo.packageName},versionCode=${packageInfo.versionCode}")
+                UtilKLogWrapper.e(TAG, "apk file package=${fileApkInfo.packageName},versionCode=${fileApkInfo.versionCode}")
+                UtilKLogWrapper.e(TAG, "current package=${packageInfo.packageName},versionCode=${packageInfo.versionCode}")
             }
             //String appName = pm.getApplicationLabel(appInfo).toString();
             //Drawable icon = pm.getApplicationIcon(appInfo);//得到图标信息

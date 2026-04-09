@@ -9,7 +9,6 @@ import com.mozhimen.netk.cos.impls.COSStaticCredentialProvider
 import com.mozhimen.netk.os.basic.commons.IOSProxy
 import com.tencent.cos.xml.CosXmlService
 import com.tencent.cos.xml.CosXmlServiceConfig
-import com.tencent.qcloud.core.auth.QCloudCredentialProvider
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
@@ -22,7 +21,7 @@ import java.util.TimeZone
  * @Date 2023/12/21
  * @Version 1.0
  */
-class COSProxy : BaseUtilK(), IOSProxy<QCloudCredentialProvider> {
+class COSProxy : BaseUtilK(), IOSProxy {
     @Volatile
     private var _cosXmlService: CosXmlService? = null
     private val _simpleDateFormat: SimpleDateFormat by lazy { UtilKSimpleDateFormat.get("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault()).apply { timeZone = TimeZone.getTimeZone("UTC") } }

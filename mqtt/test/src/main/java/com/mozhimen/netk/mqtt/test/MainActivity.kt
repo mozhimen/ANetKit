@@ -2,12 +2,12 @@ package com.mozhimen.netk.mqtt.test
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.uik.databinding.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
 import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
 import com.mozhimen.netk.mqtt.NetKMQTTServiceProxy
 import com.mozhimen.netk.mqtt.test.databinding.ActivityMainBinding
-import com.mozhimen.servicek.bases.BaseServiceResCallback
+import com.mozhimen.servicek.aidl.bases.BaseServiceResCallback
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

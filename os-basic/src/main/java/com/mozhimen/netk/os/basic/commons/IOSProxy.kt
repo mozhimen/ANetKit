@@ -7,6 +7,6 @@ package com.mozhimen.netk.os.basic.commons
  * @Date 2023/12/21
  * @Version 1.0
  */
-interface IOSProxy<T> {
+interface IOSProxy {
     fun strTimeExpiration2longTimeExpiration(strDate: String): Long?
 }

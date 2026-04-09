@@ -39,7 +39,9 @@ android {
 dependencies {
     implementation project(':netk')
     implementation project(':connection')
-    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
+    implementation 'com.github.mozhimen.ASwiftKit:uik-databinding:2.0.4'
+    implementation 'com.github.mozhimen.ARxKit:rxjava2:0.0.1'
+    implementation 'com.github.mozhimen.APermissionKit:permissionk:0.0.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

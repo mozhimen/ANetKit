@@ -27,10 +27,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
-    implementation 'com.github.mozhimen.ATaskKit:taskk:0.0.1'
+    api 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
+    api 'com.github.mozhimen.ATaskKit:taskk:0.0.1'
     implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload:0.0.2'
     implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload-breakpoint-sqlite:0.0.2'
     implementation 'com.github.mozhimen.ANetKit_okdownload:okdownload-connection-okhttp:0.0.2'

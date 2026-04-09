@@ -46,9 +46,9 @@ class NetKRetrofitViewModel : BaseViewModel() {
             val time = System.currentTimeMillis()
             NetKHelper.createFlow { ApiFactory.apis.get_ofCoroutine() }.asNetKRes(
                 onSuccess = { data ->
-                    coroutine.resume(data.id.toString() + " ${System.currentTimeMillis() - time}")
+                    continuation.resume(data.id.toString() + " ${System.currentTimeMillis() - time}")
                 }, onFail = { code, msg ->
-                    coroutine.resume("$code $msg ${System.currentTimeMillis() - time}")
+                    continuation.resume("$code $msg ${System.currentTimeMillis() - time}")
                 })
         }
     }
@@ -96,7 +96,7 @@ class NetKRetrofitViewModel : BaseViewModel() {
     fun getRealtimeWeatherOkhttp3Cache() {
         viewModelScope.launch(Dispatchers.IO) {
             val time= System.currentTimeMillis()
-            val res = NetKHelper.createStringFlow { ApiFactory.apisOkHttp3Cache.get_ofOkhttp3Cache("AleynText", "Aleyn123") }.asNetKResSync()
+            val res = NetKHelper.createFlow { ApiFactory.apisOkHttp3Cache.get_ofOkhttp3Cache("AleynText", "Aleyn123") }.asNetKResSync()
             if (res.bean != null) {
                 uiWeather4.postValue(res.bean!!.data.toString() + " ${System.currentTimeMillis() - time}")
             } else {

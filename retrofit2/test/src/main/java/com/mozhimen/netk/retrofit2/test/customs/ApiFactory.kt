@@ -6,7 +6,7 @@ import com.mozhimen.netk.okhttp3.cache.NetKOkhttp3Cache
 import com.mozhimen.netk.okhttp3.cache.impls.InterceptorOkhttp3Cache
 import com.mozhimen.netk.retrofit2.NetKRetrofit2
 import com.mozhimen.netk.retrofit2.cache.impls.InterceptorRetrofit2Cache
-import com.mozhimen.serialk.moshi.UtilKMoshiWrapper
+import com.mozhimen.serialk.moshi.UtilMoshiWrapper
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
@@ -17,7 +17,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  * @Version 1.0
  */
 object ApiFactory : IUtilK {
-    val netKRetrofit2 by lazy { NetKRetrofit2("http://jsonplaceholder.typicode.com", _converterFactory =  MoshiConverterFactory.create(UtilKMoshiWrapper.moshiBuilder)) }
+    val netKRetrofit2 by lazy { NetKRetrofit2("http://jsonplaceholder.typicode.com", _converterFactory =  MoshiConverterFactory.create(UtilMoshiWrapper.moshiBuilder)) }
 
     val netKRetrofit2Cache by lazy {
         //方式1
@@ -29,7 +29,7 @@ object ApiFactory : IUtilK {
 //            .supportCache(Cache(directory = File(UtilKFileDir.Internal.getCache(), "retrofit"), 10 * 1024))
 
         //方式2
-        NetKRetrofit2("http://www.randomnumberapi.com", cacheSize = 10L.megaBytes(), networkInterceptors = listOf(InterceptorRetrofit2Cache()),_converterFactory =  MoshiConverterFactory.create(UtilKMoshiWrapper.moshiBuilder))
+        NetKRetrofit2("http://www.randomnumberapi.com", cacheSize = 10L.megaBytes(), networkInterceptors = listOf(InterceptorRetrofit2Cache()),_converterFactory =  MoshiConverterFactory.create(UtilMoshiWrapper.moshiBuilder))
     }
 
     val netKOkHttp3Cache by lazy {
@@ -37,7 +37,7 @@ object ApiFactory : IUtilK {
 //        CacheManager.setCacheModel(CacheMode.READ_CACHE_NETWORK_PUT)// 设置全局缓存模式
 //            .setCacheTime(15 * 1000) // 设置全局 过期时间 (毫秒)
 //            .useExpiredData(true)// 缓存过期时是否继续使用，仅对 ONLY_CACHE 生效
-        NetKRetrofit2("https://www.wanandroid.com", interceptors = listOf(InterceptorOkhttp3Cache(NetKOkhttp3Cache(NetKRetrofit2.cacheFolder))),_converterFactory =  MoshiConverterFactory.create(UtilKMoshiWrapper.moshiBuilder))
+        NetKRetrofit2("https://www.wanandroid.com", interceptors = listOf(InterceptorOkhttp3Cache(NetKOkhttp3Cache(NetKRetrofit2.cacheFolder))),_converterFactory =  MoshiConverterFactory.create(UtilMoshiWrapper.moshiBuilder))
     }
 
     /////////////////////////////////////////////////////////////////

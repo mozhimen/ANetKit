@@ -29,10 +29,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        buildConfig true
+    }
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
-
+    implementation 'com.github.mozhimen.ACacheKit:sharedpreferences:0.0.1'
     implementation 'com.github.mozhimen.KUtilKit:android:0.0.3'
     kapt 'androidx.room:room-compiler:2.6.1'
 

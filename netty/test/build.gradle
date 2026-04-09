@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.mozhimen.netk.netty.test"
-        minSdk 19
+        minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'

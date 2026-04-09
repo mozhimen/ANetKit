@@ -3,6 +3,7 @@ package com.mozhimen.netk
 import com.mozhimen.netk.helpers.ClientBuilder
 import okhttp3.Interceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
@@ -33,6 +34,7 @@ class NetKRxJava(
         return Retrofit.Builder()
             .baseUrl(_baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(ClientBuilder.getClient(_interceptors))
             .build().also { _retrofit = it }
     }

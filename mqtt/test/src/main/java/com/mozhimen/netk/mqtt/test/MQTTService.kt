@@ -1,7 +1,7 @@
 package com.mozhimen.netk.mqtt.test
 
-import com.mozhimen.basick.postk.crypto.PostKCryptoDES
-import com.mozhimen.basick.postk.crypto.mos.MCryptoDESConfig
+import com.mozhimen.cryptok.basic.CryptoKDES
+import com.mozhimen.cryptok.basic.mos.MCryptoDESConfig
 import com.mozhimen.netk.mqtt.annors.AConnType
 import com.mozhimen.netk.mqtt.bases.BaseNetKMQTTService
 import com.mozhimen.netk.mqtt.commons.IMQTTGenConnBeanListener
@@ -128,7 +128,7 @@ class MQTTService : BaseNetKMQTTService() {
             }
 
             override fun onGetPassword(connType: Int): String {
-                return if (connType == AConnType.REGISTER) Config.mqtt_public_key else PostKCryptoDES.with(MCryptoDESConfig(secretKey = Config.loginTenantAccessKey)).encryptWithBase64(Config.mqttResPwd)
+                return if (connType == AConnType.REGISTER) Config.mqtt_public_key else CryptoKDES.with(MCryptoDESConfig(secretKey = Config.loginTenantAccessKey)).encryptWithBase64(Config.mqttResPwd)
             }
 
             override fun onGetClientId(connType: Int): String {

@@ -4,7 +4,8 @@ import android.app.DownloadManager
 import android.net.Uri
 import android.widget.Toast
 import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
-import com.mozhimen.kotlin.utilk.android.app.UtilKLaunchActivity
+import com.mozhimen.kotlin.utilk.android.app.UtilKActivityStart
+import com.mozhimen.kotlin.utilk.android.content.UtilKPackage
 import com.mozhimen.kotlin.utilk.android.content.UtilKPackageManager
 import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.commons.IUtilK
@@ -21,13 +22,13 @@ internal class SystemDownloader(request: DownloadRequest) : BaseDownloader(reque
     }
 
     override fun startDownload() {
-        if (!UtilKPackageManager.isDownloadComponentEnabled(request.context)) {
+        if (!UtilKPackage.isDownloadComponentEnabled(request.context)) {
             Toast.makeText(
                 request.context,
                 R.string.netk_file_component_disable,
                 Toast.LENGTH_SHORT
             ).show()
-            UtilKLaunchActivity.startSettingAppDetailsDownloads(request.context)
+            UtilKActivityStart.startSettingsApplicationDetailsSettings_ofDownloads(request.context)
             //InstallUtils.showDownloadComponentSetting(request.context)
             return
         }

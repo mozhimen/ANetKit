@@ -3,7 +3,7 @@ package com.mozhimen.netk.file.download
 import android.content.Context
 import android.net.Uri
 import androidx.annotation.DrawableRes
-import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper.e
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.kotlin.utilk.androidx.core.UtilKNotificationManagerCompat
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
@@ -221,7 +221,7 @@ class DownloadRequest(
      */
     fun startDownload(): Boolean {
         if (DownloaderManager.isRunning(this)) {
-            if (BuildConfig.DEBUG) et(TAG, "下载任务已经存在")
+            if (BuildConfig.DEBUG) UtilKLogWrapper.e(TAG, "下载任务已经存在")
             return false
         }
         if (notificationVisibility != ANotificationVisibility.HIDDEN && showNotificationDisableTip&&!UtilKNotificationManagerCompat.areNotificationsEnabled()) {

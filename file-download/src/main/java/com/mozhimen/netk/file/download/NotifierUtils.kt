@@ -9,7 +9,7 @@ import android.content.Intent
 import androidx.annotation.DrawableRes
 import androidx.core.app.NotificationCompat
 import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
-import com.mozhimen.kotlin.utilk.android.app.UtilKPendingIntent
+import com.mozhimen.kotlin.utilk.android.app.UtilKPendingIntentGet
 import com.mozhimen.kotlin.utilk.android.os.UtilKBuildVersion
 import com.mozhimen.netk.file.download.annors.ADownloadStatus
 import java.io.File
@@ -28,7 +28,7 @@ internal class NotifierUtils private constructor() {
                     as NotificationManager
         }
 
-        @SuppressLint("SwitchIntDef")
+        @SuppressLint("SwitchIntDef", "LaunchActivityFromNotification")
         fun showNotification(
             context: Context,
             id: Int,
@@ -91,7 +91,7 @@ internal class NotifierUtils private constructor() {
                     intent.putExtra(CDownloadParameter.EXTRA_URL, url)
                     intent.putExtra(CDownloadParameter.EXTRA_FROM, CDownloadParameter.EXTRA_FROM_NOTIFIER)
                     val pendingIntent =
-                        PendingIntent.getService(context, 1, intent, UtilKPendingIntent.getFlagOfUpdate())
+                        PendingIntent.getService(context, 1, intent, UtilKPendingIntentGet.getFlag_UPDATE_CURRENT())
                     builder.setContentIntent(pendingIntent)
                     //builder.addAction(NotificationCompat.Action(null, null, pendingIntent))
                 }

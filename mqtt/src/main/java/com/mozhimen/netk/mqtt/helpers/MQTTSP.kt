@@ -12,5 +12,5 @@ import com.mozhimen.cachek.sharedpreferences.temps.CacheKSPVarPropertyInt
  */
 object MQTTSP {
     private val _spMQTT = CacheKSP.instance.with("netk_mqtt_sp")
-    var mqttConnType: Int by CacheKSPVarPropertyInt(_spMQTT,"mqttConnType")
+    var mqttConnType: Int by CacheKSPVarPropertyInt(_spMQTT)
 }

@@ -26,7 +26,7 @@ class SystemDownloadBroadcastReceiver : BaseBroadcastReceiver() {
     }
 
     private fun installApk(context: Context, downloadApkId: Long) {
-        UtilKDownloadManager.getUriForDownloadedFile(context, downloadApkId)?.let {
+        UtilKDownloadManager.getUriForDownloadedFile(downloadApkId, context)?.let {
             //TODO
             //startInstall(context, it)
         }

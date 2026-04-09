@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,11 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        dataBinding true
+    }
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
+    implementation 'com.github.mozhimen.ASwiftKit:uik-databinding:2.0.4'
     implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
-    implementation 'com.github.mozhimen.ASwiftKit:xmlk:2.0.3'
+    implementation 'com.github.mozhimen.ASwiftKit:xmlk:2.0.4'
+    implementation 'com.github.mozhimen.APermissionKit:permissionk:0.0.1'
     implementation project(':file-download')
 
     testImplementation 'junit:junit:4.13.2'

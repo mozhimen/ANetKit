@@ -3,24 +3,24 @@ package com.mozhimen.netk.connection.test
 import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import androidx.core.app.ActivityCompat
+import com.mozhimen.kotlin.elemk.android.cons.CPermission
 import com.mozhimen.kotlin.elemk.android.content.cons.CPackageManager
 import com.mozhimen.kotlin.elemk.android.net.cons.ENetType
-import com.mozhimen.uik.databinding.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.elemk.commons.IConnectionListener
 import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindLifecycle
+import com.mozhimen.kotlin.lintk.optins.api.OApiCall_BindViewLifecycle
 import com.mozhimen.kotlin.lintk.optins.api.OApiInit_ByLazy
 import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_FINE_LOCATION
-import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_NETWORK_STATE
 import com.mozhimen.kotlin.lintk.optins.manifest.uses_permission.OUsesPermission_ACCESS_WIFI_STATE
-import com.mozhimen.kotlin.elemk.android.cons.CPermission
-import com.mozhimen.manifestk.permission.ManifestKPermission
-import com.mozhimen.kotlin.utilk.android.net.UtilKNet
-import com.mozhimen.kotlin.utilk.android.net.eNetType2strNetType
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
+import com.mozhimen.kotlin.utilk.kotlin.UtilKLazyJVM.lazy_ofNone
+import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
+import com.mozhimen.kotlin.utilk.wrapper.eNetType2strNetType
 import com.mozhimen.netk.connection.NetKConnectionProxy
 import com.mozhimen.netk.connection.test.databinding.ActivityNetkConnectionBinding
+import com.mozhimen.permissionk.PermissionK
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDB
 
 /**
  * @ClassName NetKConnActivity
@@ -30,8 +30,8 @@ import com.mozhimen.netk.connection.test.databinding.ActivityNetkConnectionBindi
  * @Version 1.0
  */
 class NetKConnectionActivity : BaseActivityVDB<ActivityNetkConnectionBinding>() {
-    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OUsesPermission_ACCESS_NETWORK_STATE::class)
-    private val _netKConnectionProxy: NetKConnectionProxy<NetKConnectionActivity> by lazy_ofNone { NetKConnectionProxy(this, _netKConnListener).apply { bindLifecycle(this@NetKConnectionActivity) } }
+    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OApiCall_BindViewLifecycle::class)
+    private val _netKConnectionProxy: NetKConnectionProxy by lazy_ofNone { NetKConnectionProxy(this, this, _netKConnListener).apply { bindLifecycle(this@NetKConnectionActivity) } }
 
     @OptIn(OUsesPermission_ACCESS_WIFI_STATE::class, OUsesPermission_ACCESS_FINE_LOCATION::class)
     private val _netKConnListener = object : IConnectionListener {
@@ -67,9 +67,9 @@ class NetKConnectionActivity : BaseActivityVDB<ActivityNetkConnectionBinding>() 
         }
     }
 
-    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class)
+    @OptIn(OApiCall_BindLifecycle::class, OApiInit_ByLazy::class, OApiCall_BindViewLifecycle::class)
     override fun initView(savedInstanceState: Bundle?) {
-        ManifestKPermission.requestPermissions(this, arrayOf(CPermission.ACCESS_FINE_LOCATION)) {
+        PermissionK.requestPermissions(this, arrayOf(CPermission.ACCESS_FINE_LOCATION)) {
             if (it) {
                 _netKConnectionProxy.bindLifecycle(this)
             }

@@ -1,18 +1,13 @@
 package com.mozhimen.netk
 
-import android.Manifest
 import android.os.Bundle
-import com.mozhimen.kotlin.elemk.androidx.appcompat.bases.databinding.BaseActivityVBVM
-import com.mozhimen.kotlin.lintk.annors.AManifestRequire
-import com.mozhimen.manifestk.permission.ManifestKPermission
-import com.mozhimen.manifestk.permission.annors.APermissionCheck
 import com.mozhimen.netk.databinding.ActivityMainBinding
+import com.mozhimen.permissionk.PermissionK
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDBVM
 
-@AManifestRequire(Manifest.permission.INTERNET)
-@APermissionCheck(Manifest.permission.INTERNET)
-class MainActivity : BaseActivityVBVM<ActivityMainBinding, MainViewModel>() {
+class MainActivity : BaseActivityVDBVM<ActivityMainBinding, MainViewModel>() {
     override fun initData(savedInstanceState: Bundle?) {
-        ManifestKPermission.requestPermissions(this) {
+        PermissionK.requestPermissions(this) {
             if (it) {
                 super.initData(savedInstanceState)
             }
@@ -29,7 +24,7 @@ class MainActivity : BaseActivityVBVM<ActivityMainBinding, MainViewModel>() {
         }
     }
 
-    override fun bindViewVM(vb: ActivityMainBinding) {
-        vdb.vm = vm
+    override fun bindViewVM(vdb: ActivityMainBinding) {
+        this.vdb.vm = vm
     }
 }

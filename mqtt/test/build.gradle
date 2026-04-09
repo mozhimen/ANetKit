@@ -37,8 +37,10 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.mozhimen.ASwiftKit:uik-databinding:2.0.4'
     implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
     implementation 'com.github.mozhimen.ASwiftKit:servicek:2.0.3'
+    implementation 'com.github.mozhimen:ACryptoKit:0.0.2'
     implementation project(':mqtt')
 
     testImplementation 'junit:junit:4.13.2'

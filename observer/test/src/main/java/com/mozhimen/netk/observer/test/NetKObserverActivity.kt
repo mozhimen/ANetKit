@@ -3,16 +3,18 @@ package com.mozhimen.netk.observer.test
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.uik.databinding.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.lintk.optins.manifest.application.OApplication_USES_CLEAR_TEXT_TRAFFIC
 import com.mozhimen.kotlin.elemk.android.cons.CPermission
-import com.mozhimen.manifestk.permission.ManifestKPermission
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.android.util.d
 import com.mozhimen.kotlin.utilk.java.net.UtilKHttpURLConnectionWrapper
 import com.mozhimen.kotlin.utilk.java.net.UtilKNetworkInterface
+import com.mozhimen.kotlin.utilk.wrapper.UtilKNet
 import com.mozhimen.netk.observer.NetKObserver
 import com.mozhimen.netk.observer.annors.ANetKObserver
 import com.mozhimen.netk.observer.test.databinding.ActivityNetkObserverBinding
+import com.mozhimen.permissionk.PermissionK
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDB
 import kotlinx.coroutines.launch
 
 /**
@@ -24,7 +26,7 @@ import kotlinx.coroutines.launch
  */
 class NetKObserverActivity : BaseActivityVDB<ActivityNetkObserverBinding>()/*, INetKObserverOwner*/ {
     override fun initData(savedInstanceState: Bundle?) {
-        ManifestKPermission.requestPermissions(this, arrayOf(CPermission.ACCESS_FINE_LOCATION)) {
+        PermissionK.requestPermissions(this, arrayOf(CPermission.ACCESS_FINE_LOCATION)) {
             if (it) {
                 super.initData(savedInstanceState)
             }
@@ -36,7 +38,7 @@ class NetKObserverActivity : BaseActivityVDB<ActivityNetkObserverBinding>()/*, I
     override fun initView(savedInstanceState: Bundle?) {
         NetKObserver.instance.register(this)
         vdb.netkObserverTxt.setOnClickListener {
-            UtilKNetworkInterface.printStrIP()
+            UtilKLogWrapper.i(TAG,"${UtilKNet.getStrIP()}")
             lifecycleScope.launch {
                 UtilKHttpURLConnectionWrapper.getStrIPOnBack().d(TAG)
             }

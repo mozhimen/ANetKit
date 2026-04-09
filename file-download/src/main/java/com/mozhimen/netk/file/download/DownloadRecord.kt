@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import com.mozhimen.kotlin.elemk.android.app.cons.CDownloadManager
 import com.mozhimen.kotlin.utilk.android.database.getColumnValue
-import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper.d
+import com.mozhimen.kotlin.utilk.android.util.UtilKLogWrapper
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.netk.file.download.annors.ANotificationVisibility
 
@@ -129,9 +129,9 @@ class DownloadRecord(
             -1
         }
         if (rowId > 0) {
-            dt(TAG, "record insert success $this")
+            UtilKLogWrapper.d(TAG, "record insert success $this")
         } else {
-            dt(TAG, "record insert failed $rowId $this")
+            UtilKLogWrapper.d(TAG, "record insert failed $rowId $this")
         }
         return rowId
     }
@@ -153,9 +153,9 @@ class DownloadRecord(
             -1
         }
         if (result > 0) {
-            dt(TAG, "record update success $this")
+            UtilKLogWrapper.d(TAG, "record update success $this")
         } else {
-            dt(TAG, "record update failed $result $this")
+            UtilKLogWrapper.d(TAG, "record update failed $result $this")
         }
         return result
     }
@@ -172,9 +172,9 @@ class DownloadRecord(
             -1
         }
         if (rows > 0) {
-            dt(TAG, "record delete success $this")
+            UtilKLogWrapper.d(TAG, "record delete success $this")
         } else {
-            dt(TAG, "record delete failed $this")
+            UtilKLogWrapper.d(TAG, "record delete failed $this")
         }
         return rows
     }
