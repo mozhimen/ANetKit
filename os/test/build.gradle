@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.6'
+    implementation 'com.github.mozhimen.ASwiftKit:basick:2.1.6'
     if (rootProject.name == "ANetKit") {
         implementation project(':os-cos')
     } else {

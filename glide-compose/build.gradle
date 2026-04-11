@@ -35,7 +35,7 @@ android {
 
 dependencies {
     api 'com.github.bumptech.glide:compose:1.0.0-beta01'//图片加载库
-//    implementation 'com.github.mozhimen.ASwiftKit:composek:2.0.6'
+//    implementation 'com.github.mozhimen.ASwiftKit:composek:2.1.6'
 //    implementation project(project.path.replace(project.name, '') +':glide')
 //    api 'com.google.accompanist:accompanist-glide:0.15.0'
     
