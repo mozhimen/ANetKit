@@ -30,7 +30,7 @@ task clean(type: Delete) {
 
 subprojects {
     apply plugin: 'maven-publish'
-    def versionToPublished = '0.0.5'
+    def versionToPublished = '0.0.7'
     def groupIdToPublished = 'com.github.mozhimen.ANetKit'
 
     afterEvaluate { project ->
