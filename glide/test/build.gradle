@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.imagek.test'
+    namespace 'com.mozhimen.netk.test'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.mozhimen.imagek.test"
+        applicationId "com.mozhimen.netk.test"
         minSdk 21
         targetSdk 34
         versionCode 1

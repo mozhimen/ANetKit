@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.imagek.glide'
+    namespace 'com.mozhimen.netk.glide'
     compileSdk 35
 
     defaultConfig {

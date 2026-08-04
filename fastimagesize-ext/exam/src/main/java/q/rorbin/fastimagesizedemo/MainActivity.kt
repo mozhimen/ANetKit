@@ -3,7 +3,7 @@ package q.rorbin.fastimagesizedemo
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.imagek.fastimagesize.ImageKFastImageSize
+import com.mozhimen.netk.fastimagesize.ext.ImageKFastImageSize
 import com.mozhimen.kotlin.utilk.android.view.applySuspendDebounceClickListener
 import com.mozhimen.uik.databinding.bases.viewbinding.activity.BaseActivityVB
 import q.rorbin.fastimagesizedemo.databinding.ActivityMainBinding

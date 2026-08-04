@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.imagek.coil1'
+    namespace 'com.mozhimen.netk.coil1'
     compileSdk 35
 
     defaultConfig {

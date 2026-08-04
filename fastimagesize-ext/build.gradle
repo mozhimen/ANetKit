@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.imagek.basic'
+    namespace 'com.mozhimen.netk.fastimagesize.ext'
     compileSdk 35
 
     defaultConfig {
